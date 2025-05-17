@@ -1,0 +1,977 @@
+상병코드,상    병    명,국비,사비
+A020 ,Salmonella enteritis,4,1
+A045 ,Campylobacter enteritis,3,1
+A047 ,Enterocolitis due to Clostridium difficile,5,5
+A090 ,Other and unspecified gastroenteritis and colitis of infectious origin,3,5
+A099 ,Gastroenteritis and colitis of unspecified origin,36,34
+A1621 ,"Tuberculosis of lung without cavitation or unspecified, without mention of bacteriological or histological confirmation",4,1
+A1651 ,"Tuberculous pleurisy without cavitation or unspecified, without mention of bacteriological or histological confirmation",1,
+A170 ,Tuberculous meningitis(G01*),,1
+A419 ,"Sepsis, unspecified",5,13
+A499 ,"Bacterial infection, unspecified",3,4
+A753 ,Typhus fever due to Rickettsia tsutsugamushi,,2
+A830 ,Japanese encephalitis,,1
+A879 ,"Viral meningitis, unspecified",,2
+B009 ,"Herpesviral infection, unspecified",2,2
+B019 ,Varicella without complication,,1
+B029 ,Zoster without complication,1,3
+B178 ,Other specified acute viral hepatitis,,1
+B1809 ,"Chronic viral hepatitis B with delta-agent, other and unspecified phase",,1
+B1819 ,"Chronic viral hepatitis B without delta-agent, other and unspecified phase",1,
+B182 ,Chronic viral hepatitis C,1,
+B342 ,"Coronavirus infection, unspecified site",1,
+B465 ,"Mucormycosis, unspecified",,1
+B49 ,Unspecified mycosis,1,
+B956 ,Staphylococcus aureus as the cause of diseases classified to other chapters,1,
+C029 ,"Malignant neoplasm of tongue, unspecified",,3
+C051 ,Malignant neoplasm of soft palate,,1
+C069 ,"Malignant neoplasm of mouth, unspecified",,1
+C109 ,"Malignant neoplasm of oropharynx, unspecified",,1
+C138 ,Malignant neoplasm of overlapping lesion of hypopharynx,1,2
+C139 ,"Malignant neoplasm of hypopharynx, unspecified",1,1
+C155 ,Malignant neoplasm of lower third of oesophagus,,1
+C159 ,"Malignant neoplasm of oesophagus, unspecified",2,6
+C1620 ,"Malignant neoplasm of body of stomach, early",,1
+C1621 ,"Malignant neoplasm of body of stomach, advanced",,7
+C1629 ,"Malignant neoplasm of body of stomach, unspecified",,2
+C1631 ,"Malignant neoplasm of pyloric antrum, advanced",,5
+C1690 ,"Malignant neoplasm of stomach, unspecified, early",2,3
+C1691 ,"Malignant neoplasm of stomach, unspecified, advanced",5,10
+C1699 ,"Malignant neoplasm of stomach, unspecified, unspecified",17,37
+C170 ,Malignant neoplasm of duodenum,7,
+C179 ,"Malignant neoplasm of small intestine, unspecified",,2
+C182 ,Malignant neoplasm of ascending colon,2,8
+C183 ,Malignant neoplasm of hepatic flexure,,2
+C184 ,Malignant neoplasm of transverse colon,,5
+C186 ,Malignant neoplasm of descending colon,1,
+C187 ,Malignant neoplasm of sigmoid colon,6,10
+C188 ,Malignant neoplasm of overlapping lesion of colon,4,
+C189 ,"Malignant neoplasm of colon, unspecified",34,12
+C19 ,Malignant neoplasm of rectosigmoid junction,1,4
+C20 ,Malignant neoplasm of rectum,28,12
+C210 ,"Malignant neoplasm of anus, unspecified",1,
+C218 ,"Malignant neoplasm of overlapping lesion of rectum, anus and anal canal",,2
+C220 ,Malignant neoplasm of liver cell carcinoma,36,34
+C221 ,Malignant neoplasm of intrahepatic bile duct carcinoma,23,32
+C23 ,Malignant neoplasm of gallbladder,6,24
+C240 ,Malignant neoplasm of extrahepatic bile duct,3,7
+C241 ,Malignant neoplasm of ampulla of Vater,3,1
+C250 ,Malignant neoplasm of head of pancreas,,4
+C251 ,Malignant neoplasm of body of pancreas,,3
+C252 ,Malignant neoplasm of tail of pancreas,3,4
+C253 ,Malignant neoplasm of pancreatic duct,,1
+C259 ,"Malignant neoplasm of pancreas, unspecified",47,30
+C269 ,Malignant neoplasm of ill-defined sites within the digestive system,,1
+C310 ,Malignant neoplasm of maxillary sinus,,1
+C321 ,Malignant neoplasm of supraglottis,,1
+C329 ,"Malignant neoplasm of larynx, unspecified",,1
+C3400 ,"Malignant neoplasm of main bronchus, right",1,
+C3401 ,"Malignant neoplasm of main bronchus, left",,1
+C3410 ,"Malignant neoplasm of upper lobe, bronchus or lung, right",2,9
+C3411 ,"Malignant neoplasm of upper lobe, bronchus or lung, left",,4
+C3419 ,"Malignant neoplasm of upper lobe, bronchus or lung, unspecified side",1,3
+C342 ,"Malignant neoplasm of middle lobe, bronchus or lung",,1
+C3430 ,"Malignant neoplasm of lower lobe, bronchus or lung, right",1,8
+C3431 ,"Malignant neoplasm of lower lobe, bronchus or lung, left",1,10
+C3439 ,"Malignant neoplasm of lower lobe, bronchus or lung, unspecified side",2,2
+C3489 ,"Malignant neoplasm of overlapping lesion of bronchus and lung, unspecified side",1,
+C3490 ,"Malignant neoplasm of bronchus or lung, unspecified, right",1,2
+C3491 ,"Malignant neoplasm of bronchus or lung, unspecified, left",1,3
+C3499 ,"Malignant neoplasm of bronchus or lung, unspecified, unspecified side",17,8
+C439 ,"Malignant melanoma of skin, unspecified",1,1
+C445 ,Malignant neoplasm of skin of trunk,,1
+C449 ,"Malignant neoplasm of skin, unspecified",1,
+C451 ,Mesothelioma of peritoneum,,1
+C479 ,"Malignant neoplasm of peripheral nerves and autonomic nervous system, unspecified",,1
+C495 ,Malignant neoplasm of connective and soft tissue of pelvis,,1
+C499 ,"Malignant neoplasm of connective and soft tissue, unspecified",,1
+C5090 ,"Malignant neoplasm of breast unspecified, right",,1
+C5099 ,"Malignant neoplasm of breast unspecified, unspecified side",,4
+C539 ,"Malignant neoplasm of cervix uteri, unspecified",,2
+C541 ,Malignant neoplasm of endometrium,,1
+C55 ,"Malignant neoplasm of uterus, part unspecified",,1
+C560 ,"Malignant neoplasm of ovary, right",,1
+C569 ,"Malignant neoplasm of ovary, unspecified side",,1
+C570 ,Malignant neoplasm of fallopian tube,,1
+C61 ,Malignant neoplasm of prostate,152,73
+C632 ,Malignant neoplasm of scrotum,2,
+C640 ,"Malignant neoplasm of kidney, except renal pelvis, right",,2
+C641 ,"Malignant neoplasm of kidney, except renal pelvis, left",,2
+C649 ,"Malignant neoplasm of kidney, except renal pelvis, unspecified side",3,9
+C651 ,"Malignant neoplasm of renal pelvis, left",,1
+C659 ,"Malignant neoplasm of renal pelvis, unspecified side",,1
+C660 ,"Malignant neoplasm of ureter, right",2,1
+C661 ,"Malignant neoplasm of ureter, left",,5
+C672 ,Malignant neoplasm of lateral wall of bladder,,2
+C678 ,Malignant neoplasm of overlapping lesion of bladder,,1
+C679 ,"Malignant neoplasm of bladder, unspecified",83,48
+C700 ,Malignant neoplasm of cerebral Meninges,1,1
+C709 ,"Malignant neoplasm of meninges, unspecified",,2
+C710 ,"Malignant neoplasm of cerebrum, except lobes and ventricles",,5
+C719 ,"Malignant neoplasm of brain, unspecified",4,1
+C720 ,Malignant neoplasm of spinal cord,,1
+C73 ,Malignant neoplasm of thyroid gland,4,9
+C749 ,"Malignant neoplasm of adrenal gland, unspecified",,1
+C770 ,"Secondary and unspecified malignant neoplasm of lymph nodes of head, face and neck",,1
+C774 ,Secondary and unspecified malignant neoplasm of inguinal and lower limb lymph nodes,1,
+C779 ,"Secondary and unspecified malignant neoplasm of lymph node, unspecified",1,
+C786 ,Secondary malignant neoplasm of retroperitoneum and peritoneum,1,2
+C787 ,Secondary malignant neoplasm of liver and intrahepatic bile duct,1,1
+C7930 ,Secondary malignant neoplasm of brain,,1
+C795 ,Secondary malignant neoplasm of bone and bone marrow,,1
+C809 ,"Malignant neoplasm, primary site unspecified",1,3
+C833 ,Diffuse large B-cell lymphoma,2,3
+C859 ,"Non-Hodgkin lymphoma, unspecified",1,1
+D012 ,Carcinoma in situ of rectum,,1
+D090 ,Carcinoma in situ of bladder,3,4
+D103 ,Benign neoplasm of other and unspecified parts of mouth,1,
+D121 ,Benign neoplasm of appendix,3,
+D122 ,Benign neoplasm of ascending colon,,1
+D123 ,Benign neoplasm of transverse colon,1,
+D125 ,Benign neoplasm of sigmoid colon,1,
+D126 ,"Benign neoplasm of colon, unspecified",2,2
+D127 ,Benign neoplasm of rectosigmoid junction,5,5
+D131 ,Benign neoplasm of stomach,14,4
+D133 ,Benign neoplasm of other and unspecified parts of small intestine,1,
+D135 ,Benign neoplasm of extrahepatic bile ducts,2,2
+D136 ,Benign neoplasm of pancreas,3,
+D169 ,"Benign neoplasm of bone and articular cartilage, unspecified",1,
+D171 ,Benign lipomatous neoplasm of skin and subcutaneous tissue of trunk,1,
+D1721 ,Benign lipomatous neoplasm of skin and subcutaneous tissue of lower limb,1,
+D179 ,"Benign lipomatous neoplasm, unspecified",2,
+D181 ,"Lymphangioma, any site",1,
+D210 ,"Other benign neoplasms of connective and other soft tissue of head, face and neck",,1
+D219 ,"Other benign neoplasms of connective and other soft tissue, unspecified",2,3
+D232 ,Other benign neoplasms of skin of ear and external auricular canal,,1
+D2430 ,"Multiple benign neoplasm of breast, right",,1
+D303 ,Benign neoplasm of bladder,1,1
+D329 ,"Benign neoplasm of meninges, unspecified",,3
+D34 ,Benign neoplasm of thyroid gland,,1
+D350 ,Benign neoplasm of adrenal gland,8,9
+D352 ,Benign neoplasm of pituitary gland,2,
+D371 ,Neoplasm of uncertain or unknown behavior of stomach,,1
+D373 ,Neoplasm of uncertain or unknown behavior of appendix,,1
+D374 ,Neoplasm of uncertain or unknown behavior of colon,2,
+D377 ,Neoplasm of uncertain or unknown behavior of other digestive organs,1,1
+D430 ,"Neoplasm of uncertain or unknown behavior of brain, supratentorial",,1
+D432 ,"Neoplasm of uncertain or unknown behavior of brain, unspecified",,1
+D469 ,"Myelodysplastic syndrome, unspecified",2,
+D471 ,Chronic myeloproliferative disease,6,
+D474 ,Osteomyelofibrosis,3,
+D480 ,Neoplasm of uncertain or unknown behavior of bone and articular cartilage,1,
+D508 ,Other iron deficiency anaemias,1,2
+D509 ,"Iron deficiency anaemia, unspecified",1,8
+D539 ,"Nutritional anaemia, unspecified",1,
+D649 ,"Anaemia, unspecified",8,14
+D694 ,Other primary thrombocytopenia,1,
+D728 ,Other specified disorders of white blood cells,1,
+D758 ,Other specified diseases of blood and blood-forming organs,21,8
+E039 ,"Hypothyroidism, unspecified",1,1
+E041 ,Nontoxic single thyroid nodule,3,1
+E050 ,Thyrotoxicosis with diffuse goitre,,1
+E1058 ,"Type 1 diabetes mellitus, with other and unspecified peripheral circulatory complications",6,2
+E1063 ,"Type 1 diabetes mellitus, with hypoglycemia",,1
+E1070 ,"Type 1 diabetes mellitus, with diabetic foot ulcer",,1
+E1128 ,"Type 2 diabetes mellitus, with other and unspecified renal complication(N08.3*)",4,
+E1142 ,"Type 2 diabetes mellitus, with diabetic autonomic neuropathy(G99.0*)",2,1
+E1148 ,"Type 2 diabetes mellitus, with other and unspecified neurological complication",1,
+E1158 ,"Type 2 diabetes mellitus, with other and unspecified peripheral circulatory complications",2,1
+E1168 ,"Type 2 diabetes mellitus, with other specified complication, not elsewhere classified",,1
+E1170 ,"Type 2 diabetes mellitus, with diabetic foot ulcer",,2
+E1171 ,"Type 2 diabetes mellitus, with diabetic foot ulcer and gangrene",1,
+E118 ,"Type 2 diabetes mellitus, with unspecified complications",65,25
+E119 ,"Type 2 diabetes mellitus, without complications",14,1
+E1408 ,"Unspecified diabetes mellitus, with coma, other and unspecified",1,2
+E148 ,"Unspecified diabetes mellitus, with unspecified complications",5,1
+E149 ,"Unspecified diabetes mellitus, without complications",1,
+E230 ,Hypopituitarism,1,41
+E232 ,Diabetes insipidus,1,
+E260 ,Primary hyperaldosteronism,1,1
+E274 ,Other and unspecified adrenocortical insufficiency,,3
+E279 ,"Disorder of adrenal gland, unspecified",1,1
+E301 ,Precocious puberty,,14
+E343 ,"Short stature, NEC",,43
+E785 ,"Hyperlipidaemia, unspecified",4,2
+E871 ,Hypo-osmolality and hyponatraemia,4,9
+E872 ,Acidosis,1,
+E875 ,Hyperkalaemia,,1
+E880 ,"Disorders of plasma-protein metabolism, NEC",1,1
+F009 ,"Dementia in Alzheimer´s disease, unspecified(G30.9†)",9,7
+F010 ,Vascular dementia of acute onset,2,
+F013 ,Mixed cortical and subcortical vascular dementia,,1
+F018 ,Other vascular dementia,1,
+F019 ,"Vascular dementia, unspecified",1,
+F023 ,Dementia in Parkinson’s disease(G20†),1,
+F03 ,Unspecified dementia,4,8
+F058 ,Other delirium,,2
+F059 ,"Delirium, unspecified",,1
+F072 ,Postconcussional syndrome,1,
+F320 ,Mild depressive episode,1,
+F329 ,"Depressive episode, unspecified",,1
+F431 ,Post-traumatic stress disorder,1,
+G039 ,"Meningitis, unspecified",,1
+G048 ,"Other encephalitis, myelitis and encephalomyelitis",,1
+G214 ,Vascular parkinsonism,7,2
+G218 ,Other secondary parkinsonism,4,
+G219 ,"Secondary parkinsonism, unspecified",2,
+G22 ,Parkinsonism in diseases classified elsewhere,2,1
+G233 ,"Multiple system atrophy, cerebellar type [MSA-C]",1,
+G249 ,"Dystonia, unspecified",1,
+G253 ,Myoclonus,1,1
+G373 ,Acute transverse myelitis in demyelinating disease of central nervous system,,2
+G4011 ,Localization-related (focal)(partial) symptomatic epilepsy and epileptic syndromes with simple partial seizures with intractable epilepsy,1,
+G4021 ,Localization-related (focal)(partial) symptomatic epilepsy and epileptic syndromes with complex partial seizures with intractable epilepsy,1,
+G4030 ,Generalized idiopathic epilepsy and epileptic syndromes without intractable epilepsy,,1
+G4031 ,Generalized idiopathic epilepsy and epileptic syndromes with intractable epilepsy,2,
+G4040 ,Other generalized epilepsy and epileptic syndromes without intractable epilepsy,1,
+G4090 ,"Epilepsy, unspecified without intractable epilepsy",,1
+G418 ,Other status epilepticus,,1
+G439 ,"Migraine, unspecified",2,3
+G442 ,Tension-type headache,2,10
+G448 ,Other specified headache syndromes,,1
+G454 ,Transient global amnesia,,1
+G459 ,"Transient cerebral ischaemic attack, unspecified",8,3
+G467 ,Other lacunar syndromes(I60-I67†),,1
+G470 ,Disorders of initiating and maintaining sleep [insomnias],,1
+G500 ,Trigeminal neuralgia,,2
+G501 ,Atypical facial pain,,1
+G510 ,Bell’s palsy,6,1
+G518 ,Other disorders of facial nerve,,1
+G529 ,"Cranial nerve disorder, unspecified",,1
+G530 ,Postzoster neuralgia(B02.2†),1,3
+G542 ,"Cervical root disorders, NEC",4,3
+G544 ,"Lumbosacral root disorders, NEC",9,1
+G560 ,Carpal tunnel syndrome,,1
+G562 ,Lesion of ulnar nerve,1,1
+G573 ,Lesion of lateral popliteal nerve,,1
+G576 ,Lesion of plantar nerve,1,
+G580 ,Intercostal neuropathy,1,
+G589 ,"Mononeuropathy, unspecified",2,
+G609 ,"Hereditary and idiopathic neuropathy, unspecified",4,
+G610 ,Guillain-Barre syndrome,2,
+G629 ,"Polyneuropathy, unspecified",12,
+G724 ,"Inflammatory myopathy, NEC",,1
+G730 ,Myasthenic syndromes in endocrine diseases,1,
+G731 ,Lambert-Eaton syndrome(C00-D48†),3,
+G809 ,"Cerebral palsy, unspecified",1,
+G810 ,Flaccid hemiplegia,,2
+G811 ,Spastic hemiplegia,3,1
+G819 ,"Hemiplegia, unspecified",10,6
+G820 ,Flaccid paraplegia,,2
+G822 ,"Paraplegia, unspecified",1,
+G825 ,"Tetraplegia, unspecified",4,3
+G834 ,Cauda equina syndrome,4,3
+G839 ,"Paralytic syndrome, unspecified",,2
+G905 ,Complex regional pain syndrome type I,3,
+G906 ,Complex regional pain syndrome type II,,1
+G919 ,"Hydrocephalus, unspecified",,1
+G943 ,Encephalopathy in diseases classified elsewhere,2,
+G951 ,Vascular myelopathies,2,
+G959 ,"Disease of spinal cord, unspecified",24,6
+G992 ,Myelopathy in diseases classified elsewhere,1,
+H0202 ,Senile entropion of eyelid,1,
+H0208 ,Other and unspecified entropion of eyelid,6,2
+H0248 ,Other and unspecified ptosis of eyelid,1,
+H1101 ,Central pterygium of eye,1,
+H1108 ,Other and unspecified pterygium of eye,1,
+H2500 ,"Senile incipient cataract, right",5,1
+H2501 ,"Senile incipient cataract, left",3,1
+H2502 ,"Senile incipient cataract, bilateral",8,1
+H2510 ,"Senile nuclear cataract, right",148,86
+H2511 ,"Senile nuclear cataract, left",141,99
+H2512 ,"Senile nuclear cataract, bilateral",52,40
+H2580 ,"Other senile cataract, right",,1
+H26021 ,"Presenile cataract, left",1,
+H26022 ,"Presenile cataract, bilateral",,1
+H270 ,Aphakia,,1
+H470 ,"Disorders of optic nerve, NEC",1,
+H490 ,Third[oculomotor] nerve palsy,2,1
+H532 ,Diplopia,1,
+H539 ,"Visual disturbance, unspecified",,1
+H604 ,Cholesteatoma of external ear,,2
+H6531 ,Bilateral chronic mucoid otitis media,,1
+H65480 ,"Other chronic nonsuppurative otitis media, unilateral or unspecified",14,27
+H65481 ,"Other chronic nonsuppurative otitis media, bilateral",,2
+H6620 ,"Chronic atticoantral suppurative otitis media, unilateral or unspecified",2,1
+H6621 ,"Chronic atticoantral suppurative otitis media, bilateral",2,1
+H690 ,Patulous Eustachian tube,6,10
+H711 ,Acquired Cholesteatoma of middle ear,1,3
+H811 ,Benign paroxysmal vertigo,16,16
+H812 ,Vestibular neuronitis,5,2
+H814 ,Vertigo of central origin,1,1
+H818 ,Other disorders of vestibular function,,1
+H819 ,"Disorder of vestibular function, unspecified",2,2
+H830 ,Labyrinthitis,,1
+H831 ,Labyrinthine fistula,,1
+H903 ,"Sensorineural hearing loss, bilateral",12,1
+H904 ,"Sensorineural hearing loss, unilateral with unrestricted hearing on the contralateral side",13,6
+H905 ,"Sensorineural hearing loss, unspecified",2,3
+H9129 ,"Sudden idiopathic hearing loss, unspecified side",,1
+H9199 ,"Hearing loss, unspecified, unspecified side",1,
+I050 ,Mitral stenosis,2,3
+I101 ,Malignant hypertension,,1
+I109 ,Other and unspecified primary hypertension,73,44
+I110 ,Hypertensive heart disease with (congestive) heart failure,1,2
+I200 ,Unstable angina,123,57
+I201 ,Angina pectoris with documented spasm,24,3
+I2080 ,Atypical angina,2,1
+I2088 ,Other forms of angina pectoris,171,50
+I209 ,"Angina pectoris, unspecified",223,80
+I214 ,Acute subendocardial myocardial infarction,3,2
+I219 ,"Acute myocardial infarction, unspecified",10,17
+I249 ,"Acute ischaemic heart disease, unspecified",2,
+I251 ,Atherosclerotic heart disease,2,
+I252 ,Old myocardial infarction,15,2
+I255 ,Ischaemic cardiomyopathy,3,
+I258 ,Other forms of chronic ischaemic heart disease,4,
+I259 ,"Chronic ischaemic heart disease, unspecified",5,3
+I269 ,Pulmonary embolism without mention of acute cor pulmonale,4,6
+I313 ,Pericardial effusion(noninflammatory),,2
+I319 ,"Disease of pericardium, unspecified",1,
+I330 ,Acute and subacute infective endocarditis,1,
+I340 ,Mitral(valve) insufficiency,1,1
+I348 ,Other nonrheumatic mitral valve disorders,,1
+I350 ,Aortic(valve) stenosis,3,7
+I352 ,Aortic(valve) stenosis with insufficiency,,1
+I359 ,"Aortic valve disorder, unspecified",2,
+I371 ,Pulmonary valve insufficiency,1,
+I420 ,Dilated cardiomyopathy,,3
+I4221 ,Apical hypertrophic cardiomyopathy,2,
+I4228 ,Other hypertrophic cardiomyopathy,,1
+I4280 ,Stress induced cardiomyopathy,,1
+I429 ,"Cardiomyopathy, unspecified",,1
+I442 ,"Atrioventricular block, complete",8,5
+I443 ,Other and unspecified atrioventricular block,,1
+I455 ,Other specified heart block,1,2
+I469 ,"Cardiac arrest, unspecified",,1
+I471 ,Supraventricular tachycardia,2,3
+I472 ,Ventricular tachycardia ,2,
+I480 ,Paroxysmal atrial fibrillation,52,44
+I482 ,Chronic atrial fibrillation,,2
+I4890 ,"Atrial fibrillation, unspecified",5,3
+I495 ,Sick sinus syndrome,3,1
+I5003 ,Right heart failure,4,
+I5005 ,Congestive heart failure with preserved systolic function,4,2
+I5008 ,Other and unspecified congestive heart failure,12,15
+I501 ,Left ventricular failure,10,20
+I509 ,"Heart failure, unspecified",1,5
+I515 ,Myocardial degeneration,,1
+I609 ,"Subarachnoid haemorrhage, unspecified",5,1
+I610 ,"Intracerebral haemorrhage in hemisphere, subcortical",,4
+I614 ,Intracerebral haemorrhage in cerebellum,,1
+I615 ,"Intracerebral haemorrhage, intraventricular",1,
+I618 ,Other intracerebral haemorrhage,1,
+I619 ,"Intracerebral haemorrhage, unspecified",18,11
+I620 ,Nontraumatic subdural haemorrhage,6,5
+I629 ,"Intracranial haemorrhage(nontraumatic), unspecified",5,9
+I6308 ,Cerebral infarction due to thrombosis of other precerebral artery,,1
+I6312 ,Cerebral infarction due to embolism of carotid artery,,1
+I6318 ,Cerebral infarction due to embolism of other precerebral artery,1,
+I6319 ,Cerebral infarction due to embolism of unspecified precerebral artery,,1
+I6320 ,Cerebral infarction due to unspecified occlusion or stenosis of vertebral artery,1,
+I6330 ,Cerebral infarction due to thrombosis of middle cerebral artery,1,3
+I6332 ,Cerebral infarction due to thrombosis of posterior cerebral artery,1,
+I6339 ,Cerebral infarction due to thrombosis of unspecified cerebral arteries,12,12
+I6340 ,Cerebral infarction due to embolism of middle cerebral artery,,2
+I6349 ,Cerebral infarction due to embolism of unspecified cerebral arteries,3,4
+I6350 ,Cerebral infarction due to unspecified occlusion or stenosis of middle cerebral artery,8,6
+I6352 ,Cerebral infarction due to unspecified occlusion or stenosis of posterior cerebral artery,2,1
+I6359 ,Cerebral infarction due to unspecified occlusion or stenosis of unspecified cerebral arteries,3,4
+I638 ,Other cerebral infarction,61,24
+I639 ,"Cerebral infarction, unspecified",58,33
+I651 ,Occlusion and stenosis of basilar artery,,1
+I652 ,Occlusion and stenosis of carotid artery,5,3
+I659 ,Occlusion and stenosis of unspecified precerebral artery,6,
+I660 ,Occlusion and stenosis of middle cerebral artery,,2
+I663 ,Occlusion and stenosis of cerebellar arteries,1,
+I671 ,"Cerebral aneurysm, nonruptured",2,2
+I672 ,Cerebral atherosclerosis,3,
+I678 ,Other specified cerebrovascular diseases,1,4
+I679 ,"Cerebrovascular disease, unspecified",1,
+I7022 ,Atherosclerosis of arteries of extremities with intermittent claudication,,2
+I7025 ,Atherosclerosis of arteries of extremities  with gangrene,,1
+I7029 ,"Atherosclerosis of arteries of extremities, unspecified",15,4
+I70920 ,"Generalized atherosclerosis, without gangrene",3,1
+I7109 ,Dissection of unspecified site,6,
+I714 ,"Abdominal aortic aneurysm, without mention of rupture",5,1
+I716 ,"Thoracoabdominal aortic aneurysm, without mention of rupture",1,
+I719 ,"Aortic aneurysm of unspecified site, without mention of rupture",1,2
+I729 ,Aneurysm and dissection of unspecified site,1,
+I739 ,"Peripheral vascular disease, unspecified",8,4
+I749 ,Embolism and thrombosis of unspecified artery,1,
+I770 ,"Arteriovenous fistula, acquired",1,
+I771 ,Stricture of artery,1,
+I7782 ,Peripheral artery occlusive disease involving arteries of lower extremities,21,10
+I792 ,Peripheral angiopathy in diseases classified elsewhere,1,
+I802 ,Phlebitis and thrombophlebitis of other deep vessels of lower extremities,,7
+I809 ,Phlebitis and thrombophlebitis of unspecified site,1,
+I839 ,Varicose veins of lower extremities without ulcer or inflammation,22,13
+I861 ,Scrotal varices,,5
+I872 ,Venous insufficiency (chronic)(peripheral),1,
+I890 ,"Lymphoedema, NEC",1,
+I951 ,Orthostatic hypotension,2,2
+I952 ,Hypotension due to drugs,1,
+I959 ,"Hypotension, unspecified",3,2
+I982 ,Oesophageal varices without bleeding in diseases classified elsewhere,4,1
+I983 ,Oesophageal varices with bleeding in diseases classified elsewhere,4,
+J00 ,Acute nasopharyngitis[common cold],1,
+J0390 ,"Acute tonsillitis, unspecified, not specified as recurrent ",,1
+J0391 ,"Acute tonsillitis, unspecified, recurrent",,1
+J069 ,"Acute upper respiratory infection, unspecified",,1
+J09 ,Influenza due to identified zoonotic or pandemic influenza virus,2,
+J111 ,"Influenza with other respiratory manifestations, virus not identified",5,3
+J1288 ,Other viral pneumonia,1,2
+J129 ,"Viral pneumonia, unspecified",,1
+J152 ,Pneumonia due to staphylococcus,1,
+J158 ,Other bacterial pneumonia,1,
+J159 ,"Bacterial pneumonia, unspecified",6,10
+J168 ,Pneumonia due to other specified infectious organisms,,1
+J180 ,"Bronchopneumonia, unspecified",4,10
+J181 ,"Lobar pneumonia, unspecified",,1
+J188 ,"Other pneumonia, organism unspecified",1,
+J189 ,"Pneumonia, unspecified",32,32
+J209 ,"Acute bronchitis, unspecified",1,
+J219 ,"Acute bronchiolitis, unspecified",2,1
+J300 ,Vasomotor rhinitis,4,
+J301 ,Allergic rhinitis due to pollen,1,
+J302 ,Other seasonal allergic rhinitis,1,
+J310 ,Chronic rhinitis,28,8
+J320 ,Chronic maxillary sinusitis,3,8
+J322 ,Chronic ethmoidal sinusitis,1,
+J323 ,Chronic sphenoidal sinusitis,1,
+J329 ,"Chronic sinusitis, unspecified",5,
+J341 ,Cyst and mucocele of nose and nasal sinus,1,
+J342 ,Deviated nasal septum,3,
+J343 ,Hypertrophy of nasal turbinates,4,1
+J40 ,"Bronchitis, not specified as acute or chronic",1,1
+J42 ,Unspecified chronic bronchitis,,1
+J4419 ,"Chronic obstructive pulmonary disease with acute exacerbation, unspecified, unspecified",1,
+J4481 ,"Other specified chronic obstructive pulmonary disease, moderate",1,1
+J4491 ,"Chronic obstructive pulmonary disease, unspecified, moderate",3,
+J4492 ,"Chronic obstructive pulmonary disease, unspecified, severe",2,1
+J4499 ,"Chronic obstructive pulmonary disease, unspecified, unspecified",9,4
+J4500 ,Cough variant asthma,,1
+J4503 ,"Other allergic asthma, severe persistent",1,
+J4519 ,Unspecified nonallergic asthma,,1
+J690 ,Pneumonitis due to food and vomit,,1
+J698 ,Pneumonitis due to other solids and liquids,12,8
+J80 ,Adult respiratory distress syndrome,,2
+J81 ,Pulmonary oedema,,1
+J841 ,Other interstitial pulmonary diseases with fibrosis,,1
+J849 ,"Interstitial pulmonary disease, unspecified",5,3
+J852 ,Abscess of lung without pneumonia,1,
+J869 ,Pyothorax without fistula,2,
+J90 ,"Pleural effusion, NEC",2,1
+J91 ,Pleural effusion in conditions classified elsewhere,,2
+J931 ,Other spontaneous pneumothorax,,1
+J939 ,"Pneumothorax, unspecified",4,1
+J942 ,Haemothorax,,1
+J9609 ,"Acute respiratory failure, type unspecified",,1
+J9611 ,"Chronic respiratory failure, type II [hypercapnic]",1,
+J9810 ,Atelectasis,,1
+J982 ,Interstitial emphysema,1,
+K1120 ,Acute sialoadenitis,1,
+K208 ,Other and unspecified oesophagitis,,1
+K210 ,Gastro-oesophageal reflux disease with oesophagitis,10,11
+K219 ,Gastro-oesophageal reflux disease without oesophagitis,7,2
+K2210 ,Ulcer of oesophagus without bleeding,,2
+K222 ,Oesophageal obstruction,2,1
+K2501 ,Acute gastric ulcer with hemorrhage,3,3
+K2511 ,Acute gastric ulcer with perforation,2,
+K2531 ,Acute gastric ulcer without hemorrhage or perforation,3,1
+K2551 ,Chronic or unspecified gastric ulcer with perforation,,1
+K2591 ,Unspecified as acute or chronic gastric ulcer without hemorrhage or perforation,2,1
+K260 ,Acute duodenal ulcer with hemorrhage,1,
+K261 ,Acute duodenal ulcer with perforation,,2
+K269 ,Unspecified as acute or chronic duodenal ulcer without hemorrhage or perforation,1,2
+K290 ,Acute haemorrhagic gastritis,,1
+K291 ,Other acute gastritis,,1
+K294 ,Chronic atrophic gastritis,3,2
+K295 ,"Chronic gastritis, unspecified",1,1
+K296 ,Other gastritis,,1
+K297 ,"Gastritis, unspecified",10,7
+K298 ,Duodenitis,,1
+K30 ,Functional dyspepsia,4,17
+K311 ,Adult hypertrophic pyloric stenosis,2,
+K317 ,Polyp of stomach and duodenum,,1
+K3188 ,Other specified diseases of stomach and  duodenum,,1
+K352 ,Acute appendicitis with generalized peritonitis,1,
+K353 ,Acute appendicitis with localized peritonitis,12,27
+K358 ,"Acute appendicitis, other and unspecified",4,13
+K36 ,Other appendicitis,2,7
+K388 ,Other specified diseases of appendix,,2
+K4000 ,"Bilateral inguinal hernia, with obstruction, without gangrene, not specified as recurrent",,1
+K4020 ,"Bilateral inguinal hernia, without obstruction or gangrene, not specified as recurrent",3,1
+K4021 ,"Bilateral inguinal hernia, without obstruction or gangrene, recurrent",,1
+K4090 ,"Unilateral or unspecified inguinal hernia, without obstruction or gangrene, not specified as recurrent",23,20
+K419 ,"Unilateral or unspecified femoral hernia, without obstruction or gangrene",,2
+K429 ,Umbilical hernia without obstruction or gangrene,2,1
+K432 ,Incisional hernia without obstruction or gangrene,4,1
+K435 ,Parastomal hernia without obstruction or gangrene,1,
+K449 ,Diaphragmatic hernia without obstruction or gangrene,,1
+K469 ,Unspecified abdominal hernia without obstruction or gangrene,2,1
+K510 ,Ulcerative (chronic) pancolitis,1,
+K515 ,Left side colitis,,1
+K518 ,Other ulcerative colitis,1,
+K519 ,"Ulcerative colitis, unspecified",1,1
+K529 ,"Noninfective gastroenteritis and colitis, unspecified",4,3
+K559 ,"Vascular disorder of intestine, unspecified",1,6
+K561 ,Intussusception,2,1
+K566 ,Other and unspecified intestinal obstruction,10,7
+K567 ,"Ileus, unspecified",3,3
+K5722 ,"Diverticular disease of large intestine with perforation and abscess, diverticulitis, without bleeding",1,
+K5732 ,"Diverticular disease of large intestine without perforation or abscess, diverticulitis, without bleeding",,1
+K5733 ,"Diverticular disease of large intestine without perforation or abscess, diverticulitis, with bleeding",1,
+K5792 ,"Diverticular disease of intestine, part unspecified, without perforation or abscess, diverticulitis, without bleeding",2,8
+K581 ,Irritable bowel syndrome with predominant diarrhoea [IBS-D],1,1
+K588 ,Other and unspecified irritable bowel syndrome,2,
+K5900 ,Slow transit constipation,2,
+K5909 ,Other and unspecified constipation,11,1
+K591 ,Functional diarrhoea,3,2
+K5988 ,Other specified functional intestinal disorders,2,
+K599 ,"Functional intestinal disorder, unspecified",9,13
+K601 ,Chronic anal fissure,1,
+K602 ,"Anal fissure, unspecified",1,1
+K603 ,Anal fistula,3,1
+K605 ,Anorectal fistula,,1
+K610 ,Anal abscess,5,2
+K623 ,Rectal prolapse,1,3
+K625 ,Haemorrhage of anus and rectum,1,2
+K628 ,Other specified diseases of anus and rectum,,2
+K629 ,"Disease of anus and rectum, unspecified",1,
+K631 ,Perforation of intestine(nontraumatic),,3
+K6320 ,Entero-cutaneous fistula,1,
+K633 ,Ulcer of intestine,1,
+K635 ,Polyp of colon,3,3
+K639 ,"Disease of intestine, unspecified",1,1
+K641 ,Second degree haemorrhoids,3,
+K642 ,Third degree haemorrhoids,7,3
+K643 ,Fourth degree haemorrhoids,,2
+K648 ,Other specified haemorrhoids,,1
+K649 ,"Haemorrhoids, unspecified",8,8
+K659 ,"Peritonitis, unspecified",,2
+K7030 ,"Alcoholic cirrhosis of liver, without ascites",4,4
+K7031 ,"Alcoholic cirrhosis of liver, with ascites",,2
+K709 ,"Alcoholic liver disease, unspecified",2,2
+K7290 ,"Hepatic failure, unspecified, without coma",1,1
+K7439 ,"Primary biliary cirrhosis, unspecified",1,
+K7463 ,"Other and unspecified cirrhosis of liver, Compansated",1,
+K7464 ,"Other and unspecified cirrhosis of liver, Uncompansated",4,5
+K7469 ,"Other and unspecified cirrhosis of liver, unspecified",12,12
+K750 ,Abscess of liver,1,7
+K754 ,Autoimmune hepatitis,,1
+K759 ,"Inflammatory liver disease, unspecified",6,
+K769 ,"Liver disease, unspecified",4,1
+K8000 ,"Calculus of gallbladder with acute cholecystitis, without mention of obstruction",1,1
+K8010 ,"Calculus of gallbladder with other cholecystitis, without mention of obstruction",4,16
+K8020 ,"Calculus of gallbladder without cholecystitis, without mention of obstruction",4,8
+K8030 ,"Calculus of bile duct with cholangitis, without mention of obstruction",10,13
+K8031 ,"Calculus of bile duct with cholangitis, with obstruction ",1,
+K8040 ,"Calculus of bile duct with cholecystitis, without mention of obstruction",1,5
+K8050 ,"Calculus of bile duct without cholangitis or cholecystitis, without mention of obstruction",13,20
+K8080 ,"Other cholelithiasis, without mention of obstruction",5,18
+K810 ,Acute cholecystitis,19,27
+K811 ,Chronic cholecystitis,3,3
+K819 ,"Cholecystitis, unspecified",10,12
+K829 ,"Disease of gallbladder, unspecified",1,
+K830 ,Cholangitis,8,10
+K8589 ,"Other acute pancreatitis, unspecified",,1
+K8590 ,"Acute pancreatitis, unspecified, mild",,2
+K8591 ,"Acute pancreatitis, unspecified, moderately severe",1,
+K8599 ,"Acute pancreatitis, unspecified, unspecified",2,3
+K861 ,Other chronic pancreatitis,7,2
+K862 ,Cyst of pancreas,,1
+K869 ,"Disease of pancreas, unspecified",1,
+K921 ,Melaena,3,2
+K922 ,"Gastrointestinal haemorrhage, unspecified",4,6
+L0230 ,Cutaneous abscess of buttock,2,
+L0240 ,Cutaneous abscess of limb,,1
+L0290 ,"Cutaneous abscess, unspecified",3,4
+L0301 ,Cellulitis of toe,2,5
+L0310 ,Cellulitis of upper limb,1,3
+L0311 ,Cellulitis of lower limb,11,6
+L0335 ,Cellulitis of buttock,1,
+L039 ,"Cellulitis, unspecified",7,6
+L059 ,Pilonidal cyst without abscess,1,
+L512 ,Toxic epidermal necrolysis [Lyell],,1
+L720 ,Epidermal cyst,1,2
+L738 ,Other specified follicular disorders,,1
+L892 ,Stage III decubitus ulcer and pressure area,3,2
+L893 ,Stage IV decubitus ulcer and pressure area,,1
+L899 ,"Decubitus ulcer and pressure area, unspecified",6,1
+L910 ,Hypertrophic scar,,1
+L929 ,"Granulomatous disorder of skin and subcutaneous tissue, unspecified",1,
+L97 ,"Ulcer of lower limb, NEC",3,
+L984 ,"Chronic ulcer of skin, NEC",3,
+L989 ,"Disorder of skin and subcutaneous tissue, unspecified",,4
+M0529 ,"Rheumatoid vasculitis, site unspecified",,1
+M1007 ,"Idiopathic gout, ankle and foot",2,
+M1009 ,"Idiopathic gout, site unspecified",1,
+M1096 ,"Gout, unspecified, lower leg",1,
+M1097 ,"Gout, unspecified, ankle and foot",3,1
+M1099 ,"Gout, unspecified, site unspecified",1,1
+M1286 ,"Other specified arthropathies, NEC, lower leg",,1
+M1381 ,"Other specified arthritis, shoulder region",,1
+M1385 ,"Other specified arthritis, pelvic region and thigh",2,
+M1386 ,"Other specified arthritis, lower leg",9,6
+M1391 ,"Arthritis, unspecified, shoulder region",1,
+M1394 ,"Arthritis, unspecified, hand",1,
+M1399 ,"Arthritis, unspecified, site unspecified",,2
+M154 ,Erosive (osteo)arthrosis,1,
+M170 ,"Primary gonarthrosis, bilateral",,3
+M171 ,Other primary gonarthrosis,1,1
+M179 ,"Gonarthrosis, unspecified",16,38
+M1989 ,"Other specified arthrosis, site unspecified",1,
+M1993 ,"Arthrosis, unspecified, forearm",1,
+M1994 ,"Arthrosis, unspecified, hand",1,
+M1996 ,"Arthrosis, unspecified, lower leg",4,3
+M1998 ,"Arthrosis, unspecified, other",1,
+M1999 ,"Arthrosis, unspecified, site unspecified",7,4
+M201 ,Hallux valgus (acquired),,1
+M205 ,Other deformities of toe(s) (acquired),1,
+M2137 ,"Wrist or foot drop (acquired), ankle and foot",,1
+M2139 ,"Wrist or foot drop (acquired), site unspecified",,1
+M2329 ,"Derangement of meniscus due to old tear or injury, unspecified meniscus or ligament",2,1
+M2389 ,"Other internal derangements of knee, unspecified meniscus or ligament",1,1
+M2399 ,"Internal derangement of knee, unspecified, unspecified meniscus or ligament",,1
+M2506 ,"Haemarthrosis, lower leg",1,2
+M2509 ,"Haemarthrosis, site unspecified",1,1
+M4319 ,"Spondylolisthesis, site unspecified",1,
+M4646 ,"Discitis, unspecified, lumbar region",1,
+M4649 ,"Discitis, unspecified, site unspecified",2,
+M4712 ,"Other spondylosis with myelopathy, cervical region",1,
+M4781 ,"Other spondylosis, occipito-atlanto-axial region",,1
+M4789 ,"Other spondylosis, site unspecified",3,1
+M4796 ,"Spondylosis, unspecified, lumbar region",4,2
+M4800 ,"Spinal stenosis, multiple sites in spine",1,
+M4802 ,"Spinal stenosis, cervical region",12,2
+M4806 ,"Spinal stenosis, lumbar region",221,46
+M4807 ,"Spinal stenosis, lumbosacral region",1,1
+M4809 ,"Spinal stenosis, site unspecified",36,8
+M4854 ,"Collapsed vertebra, NEC, thoracic region",1,2
+M4855 ,"Collapsed vertebra, NEC, thoracolumbar region",,1
+M4856 ,"Collapsed vertebra, NEC, lumbar region",2,2
+M4859 ,"Collapsed vertebra, NEC, site unspecified",7,4
+M4889 ,"Other specified spondylopathies, site unspecified",1,1
+M500 ,Cervical disc disorder with myelopathy(G99.2*),1,
+M501 ,Cervical disc disorder with radiculopathy,5,1
+M502 ,Other cervical disc displacement,1,2
+M511 ,Lumbar and other intervertebral disc disorders with radiculopathy(G55.1*),55,22
+M512 ,Other specified intervertebral disc displacement,30,7
+M519 ,"Intervertebral disc disorder, unspecified",3,
+M5416 ,"Radiculopathy, lumbar region",5,
+M5417 ,"Radiculopathy, lumbosacral region",1,
+M5419 ,"Radiculopathy, site unspecified",2,
+M5429 ,"Cervicalgia, site unspecified",1,1
+M5449 ,"Lumbago with sciatica, site unspecified",1,
+M5459 ,"Low back pain, site unspecified",11,3
+M6009 ,"Infective myositis, site unspecified",1,
+M6269 ,"Muscle strain, site unspecified",,1
+M6289 ,"Other specified disorders of muscle, site unspecified",1,2
+M6516 ,"Other infective (teno)synovitis, lower leg",2,3
+M6534 ,"Trigger finger, hand",6,1
+M6539 ,"Nodular tendinous disease, site unspecified",3,2
+M6595 ,"Synovitis and tenosynovitis, unspecified, pelvic region and thigh",,1
+M6719 ,"Other contracture of tendon (sheath), site unspecified",1,
+M702 ,Olecranon bursitis,2,1
+M707 ,Other bursitis of hip,1,
+M7107 ,"Abscess of bursa, ankle and foot",3,1
+M7109 ,"Abscess of bursa, site unspecified",,1
+M7155 ,"Other bursitis, NEC, pelvic region and thigh",,1
+M7157 ,"Other bursitis, NEC, ankle and foot",1,
+M7158 ,"Other bursitis, NEC, other",,2
+M7159 ,"Other bursitis, NEC, site unspecified",2,2
+M722 ,Plantar fascial fibromatosis,1,
+M72960 ,"Fasciitis NOS, lower leg",,1
+M750 ,Adhesive capsulitis of shoulder,2,5
+M751 ,Rotator cuff syndrome,20,15
+M754 ,Impingement syndrome of shoulder,1,
+M755 ,Bursitis of shoulder,1,
+M758 ,Other shoulder lesions,,1
+M760 ,Gluteal tendinitis,1,1
+M7687 ,"Other enthesopathies of lower limb, excluding foot, ankle and foot",1,1
+M7979 ,"Fibromyalgia, site unspecified",2,
+M8198 ,"Osteoporosis, unspecified, other",1,
+M8597 ,"Disorder of bone density and structure, unspecified, ankle and foot",3,
+M8607 ,"Acute haematogenous osteomyelitis, ankle and foot",1,
+M8609 ,"Acute haematogenous osteomyelitis, site unspecified",,2
+M8629 ,"Subacute osteomyelitis, site unspecified",1,
+M8645 ,"Chronic osteomyelitis with draining sinus, pelvic region and thigh",2,
+M8696 ,"Osteomyelitis, unspecified, lower leg",,1
+M8699 ,"Osteomyelitis, unspecified, site unspecified",2,1
+M8725 ,"Osteonecrosis due to previous trauma, pelvic region and thigh",1,
+M8785 ,"Other osteonecrosis, pelvic region and thigh",,1
+M8789 ,"Other osteonecrosis, site unspecified",1,
+M8795 ,"Osteonecrosis, unspecified, pelvic region and thigh",2,1
+M932 ,Osteochondritis dissecans,,2
+M9497 ,"Disorder of cartilage, unspecified, ankle and foot",,2
+M960 ,Pseudarthrosis after fusion or arthrodesis,1,
+M961 ,"Postlaminectomy syndrome, NEC",14,
+M9973 ,"Connective tissue and disc stenosis of intervertebral foramina, lumbar region",1,
+N049 ,Unspecified nephrotic syndrome,,2
+N088 ,Glomerular disorders in other diseases classified elsewhere,1,
+N10 ,Acute tubulo-interstitial nephritis,3,24
+N12 ,"Tubulo-interstitial nephritis, not specified as acute or chronic",,1
+N1330 ,Hydronephrosis with ureterovesical junction obstruction,1,
+N151 ,Renal and perinephric abscess,1,
+N179 ,"Acute renal failure, unspecified",4,5
+N183 ,"Chronic kidney disease, stage 3",2,1
+N184 ,"Chronic kidney disease, stage 4",3,1
+N185 ,"Chronic kidney disease, stage 5",44,23
+N189 ,"Chronic kidney disease, unspecified",18,7
+N200 ,Calculus of kidney,3,1
+N201 ,Calculus of ureter,9,37
+N210 ,Calculus in bladder,5,5
+N281 ,"Cyst of kidney, acquired",1,2
+N300 ,Acute cystitis,,4
+N302 ,Other chronic cystitis,1,2
+N304 ,Irradiation cystitis,,1
+N308 ,Other cystitis,4,2
+N309 ,"Cystitis, unspecified",2,1
+N319 ,"Neuromuscular dysfunction of bladder, unspecified",5,2
+N320 ,Bladder-neck obstruction,4,3
+N359 ,"Urethral stricture, unspecified",5,
+N361 ,Urethral diverticulum,1,
+N390 ,"Urinary tract infection, site not specified",21,27
+N393 ,Stress incontinence,1,5
+N400 ,Hyperplasia of prostate without complication,212,87
+N401 ,Hyperplasia of prostate with urinary tract obstruction,18,6
+N402 ,Hyperplasia of prostate with hematuria,,1
+N408 ,Hyperplasia of prostate with other complication,169,214
+N410 ,Acute prostatitis,5,7
+N411 ,Chronic prostatitis,1,1
+N433 ,"Hydrocele, unspecified",3,3
+N4500 ,Epididymitis with abscess,1,1
+N4590 ,Epididymitis without abscess,5,5
+N4592 ,Epididymo-orchitis without abscess,1,1
+N481 ,Balanoposthitis,1,
+N4828 ,Other inflammatory disorder of penis,1,
+N5088 ,Other specified disorders of male genital organs,,1
+N62 ,Hypertrophy of breast,2,
+Q231 ,Congenital insufficiency of aortic valve,1,
+Q245 ,Malformation of coronary vessels,1,1
+Q273 ,Peripheral arteriovenous malformation,1,1
+Q282 ,Arteriovenous malformation of cerebral vessels,1,
+Q613 ,"Polycystic kidney, unspecified",1,1
+Q668 ,Other congenital deformities of feet,1,
+R02 ,"Gangrene, NEC",6,1
+R030 ,"Elevated blood-pressure reading, without diagnosis of hypertension",,3
+R042 ,Haemoptysis,1,1
+R05 ,Cough,,1
+R060 ,Dyspnoea,9,14
+R074 ,"Chest pain, unspecified",14,12
+R090 ,Asphyxia,1,2
+R1010 ,Right upper quadrant abdominal pain,,1
+R1012 ,Epigastric pain,1,2
+R1019 ,"Upper abdominal pain, unspecified",1,
+R1039 ,"Lower abdominal pain, unspecified",2,
+R1049 ,Unspecified abdominal pain,9,3
+R112 ,Vomiting alone,1,1
+R13 ,Dysphagia,1,1
+R15 ,Faecal incontinence,1,
+R170 ,"Hyperbilirubinaemia with mention of jaundice, not elsewhere classified",,1
+R201 ,Hypoaesthesia of skin,,1
+R21 ,Rash and other nonspecific skin eruption,,1
+R223 ,"Localized swelling, mass and lump, upper limb",1,
+R251 ,"Tremor, unspecified",5,2
+R270 ,"Ataxia, unspecified",1,1
+R300 ,Dysuria,,1
+R310 ,Gross hematuria,2,2
+R311 ,Microscopic hematuria,,1
+R318 ,Other and unspecified hematuria,1,1
+R418 ,Other and unspecified symptoms and signs involving cognitive functions and awareness,10,1
+R42 ,Dizziness and giddiness,65,52
+R448 ,Other and unspecified symptoms and signs involving general sensations and perceptions,,1
+R508 ,Other specified fever,,1
+R5090 ,Fever of unknown origin,3,2
+R5099 ,"Fever, unspecified",4,14
+R51 ,Headache,7,16
+R522 ,Other chronic pain,,1
+R529 ,"Pain, unspecified",1,
+R53 ,Malaise and fatigue,22,11
+R550 ,Vasovagal  syncope,1,
+R558 ,Other syncope and collapse,21,11
+R568 ,Other and unspecified convulsions,2,4
+R590 ,Localized enlarged lymph nodes,2,
+R601 ,Generalized oedema,,1
+R609 ,"Oedema, unspecified",7,3
+R634 ,Abnormal weight loss,1,
+R739 ,"Hyperglycaemia, unspecified",,1
+R749 ,Abnormal level of unspecified serum enzyme,3,
+R808 ,Other and unspecified isolated proteinuria,2,
+R91 ,Abnormal findings on diagnostic imaging of lung,,1
+R945 ,Abnormal results of liver function studies,1,6
+S010 ,Open wound of scalp,2,
+S0211 ,"Fracture of base of skull, open",,1
+S0220 ,"Fracture of nasal bone, closed",,1
+S0600 ,"Concussion, without open intracranial wound",3,4
+S0601 ,"Concussion, with open intracranial wound",,1
+S0641 ,"Epidural haemorrhage, with open intracranial wound",,1
+S0650 ,"Traumatic subdural haemorrhage, without open intracranial wound",4,1
+S0651 ,"Traumatic subdural haemorrhage, with open intracranial wound",16,2
+S0660 ,"Traumatic subarachnoid haemorrhage, without open intracranial wound",,1
+S0661 ,"Traumatic subarachnoid haemorrhage, with open intracranial wound",1,
+S0680 ,"Other intracranial injuries, without open intracranial wound",1,
+S0681 ,"Other intracranial injuries, with open intracranial wound",2,1
+S092 ,Traumatic rupture of ear drum,,1
+S099 ,Unspecified injury of head,1,
+S1290 ,"Fracture of neck,part unspecified, closed",,2
+S134 ,Sprain and strain of cervical spine,1,2
+S143 ,Injury of brachial plexus,2,
+S146 ,Injury of other and unspecified nerves of neck,4,5
+S200 ,Contusion of breast,,1
+S22020 ,"Fracture of T1 and T2 level, closed",,1
+S22040 ,"Fracture of T5 and T6 level, closed",,1
+S22050 ,"Fracture of T7 and T8 level, closed",2,1
+S22060 ,"Fracture of T9 and T10 level, closed",,1
+S22070 ,"Fracture of T11 and T12 level, closed",15,15
+S22090 ,"Fracture of thoracic vertebra, level unspecified, closed",3,3
+S2220 ,"Fracture of sternum, closed",1,
+S22320 ,"Fracture of first rib, closed",4,2
+S22321 ,"Fracture of first rib, open",7,5
+S22330 ,"Fracture of rib, other than first rib, closed",1,3
+S22420 ,"Multiple fracture of involving first rib, closed",,1
+S22460 ,"Multiple fracture of ribs, other than first rib, closed",2,1
+S22490 ,"Multiple fracture of unspecified ribs, closed",5,4
+S2340 ,Sprain and strain of ribs,,1
+S246 ,Injury of unspecified nerve of thorax,,2
+S300 ,Contusion of lower back and pelvis,1,
+S301 ,Contusion of abdominal wall,,1
+S32020 ,"Fracture of L1 level, closed",6,11
+S32030 ,"Fracture of L2 level, closed",3,5
+S32040 ,"Fracture of L3 level, closed",4,2
+S32050 ,"Fracture of L4 level, closed",,2
+S32060 ,"Fracture of L5 level, closed",1,2
+S32090 ,"Fracture of lumbar vertebra, level unspecified, closed",2,2
+S3210 ,"Fracture of sacrum, closed",1,4
+S3220 ,"Fracture of coccyx, closed",1,
+S3230 ,"Fracture of ilium, closed",,1
+S3250 ,"Fracture of pubis, closed",,2
+S32880 ,"Other pelvic fracture, closed",1,1
+S32890 ,"Fracture of pelvis, part unspecified, closed",,2
+S330 ,Traumatic rupture of lumbar intervertebral disc,,1
+S3350 ,Sprain and strain of lumbar spine,6,8
+S341 ,Other injury of lumbar spinal cord,1,
+S42040 ,"Fracture of shaft of clavicle, closed",1,
+S42050 ,"Fracture of acromial end of clavicle, closed",,3
+S42090 ,"Fracture of clavicle, part unspecified, closed",,2
+S42190 ,"Fracture of scapula, part unspecified, closed",,1
+S42230 ,"Fracture of surgical neck of humerus, closed",1,2
+S42240 ,"Fracture of anatomical neck of humerus, closed",,1
+S42290 ,"Fracture of upper end of humerus, part unspecified, closed",5,
+S42420 ,"Supracondylar fracture of humerus, closed",1,
+S42430 ,"Fracture of lateral condyle of humerus, closed",,1
+S42460 ,"T-shape fracture of distal humerus, closed",,1
+S4290 ,"Fracture of shoulder girdle, part unspecified, closed",,1
+S4600 ,"Injury of muscle(s) and tendon(s) of the rotator cuff of shoulder, laceration",1,5
+S4608 ,"Injury of muscle(s) and tendon(s) of the rotator cuff of shoulder, other and unspecified injury",2,
+S52020 ,"Fracture of olecranon process of ulna, closed",,1
+S5230 ,"Fracture of shaft of radius, closed ",1,
+S52520 ,"Fracture of lower end of radius with dorsal angulation, closed",1,6
+S52580 ,"Other and multiple fracture of lower end of radius, closed",1,2
+S52590 ,"Fracture of lower end of radius, unspecified, closed",1,2
+S5260 ,"Fracture of lower end of both ulna and radius, closed",2,7
+S5270 ,"Multiple fracture of forearm, closed",2,3
+S5341 ,Sprain and strain of ulnar collateral ligament,,1
+S5349 ,"Sprain and strain of elbow, part unspecified",,1
+S5630 ,"Injury of extensor or abductor muscles and tendons of thumb at forearm level, laceration",1,
+S581 ,Traumatic amputation at level between elbow and wrist,2,
+S597 ,Multiple injuries of forearm,,1
+S610 ,Open wound of finger(s) without damage to nail,1,1
+S617 ,Multiple open wounds of wrist and hand,1,
+S618 ,Open wound of other parts of wrist and hand,,3
+S6200 ,"Fracture of navicular [scaphoid] bone of hand, close",,1
+S62290 ,"Fracture of first metacarpal bone, part unspecified, close",1,
+S62341 ,"Fracture of neck of other metacarpal bone, open",,1
+S62390 ,"Fracture of metacarpal bone, part unspecified, close",1,1
+S62630 ,"Fracture of middle phalanx of other finger, close",,1
+S62670 ,"Multiple fracture of phalanx, close",,1
+S62691 ,"Fracture of phalanx, part unspecified, open",3,
+S657 ,Injury of multiple blood vessels at wrist and hand level,1,
+S6650 ,"Injury of intrinsic muscle and tendon of other finger at wrist and hand level, laceration",1,
+S6658 ,"Injury of intrinsic muscle and tendon of other finger at wrist and hand level, other and unspecified injury",1,
+S682 ,Traumatic amputation of two or more fingers alone (complete)(partial),2,
+S700 ,Contusion of hip,,3
+S72060 ,"Fracture of base of neck of femur, closed",1,3
+S72080 ,"Fracture of other parts of neck of femur, closed",,4
+S72090 ,"Fracture of neck of femur, part unspecified, closed",7,9
+S72091 ,"Fracture of neck of femur, part unspecified, open",1,
+S72120 ,"Fracture of intertrochanteric section of femur, closed",6,27
+S72190 ,"Fracture of trochanteric section of femur, unspecified, closed",1,4
+S7220 ,"Subtrochanteric fracture of femur, closed",,1
+S7230 ,"Fracture of shaft of femur, closed",,3
+S7280 ,"Fracture of other parts of femur, closed",3,1
+S7290 ,"Fracture of femur,part unspecified, closed",1,
+S730 ,Dislocation of hip,1,1
+S7319 ,Sprain and strain of unspecified site of hip,2,2
+S757 ,Injury of multiple blood vessels at hip and thigh level,1,
+S7608 ,"Injury of muscle and tendon of hip, other and unspecified injury",1,
+S7620 ,"Injury of adductor muscle and tendon of thigh, laceration",,1
+S800 ,Contusion of knee,,2
+S801 ,Contusion of other and unspecified parts of lower leg,1,
+S809 ,"Superficial injury of lower leg, unspecified",1,
+S818 ,Open wound of other parts of lower leg,1,
+S819 ,"Open wound of lower leg, part unspecified",1,
+S8200 ,"Fracture of patella, closed",1,7
+S82180 ,"Other fracture of upper end of tibia, closed",1,1
+S82220 ,"Fracture of shaft of tibia of fracture of fibula(any part), closed",1,1
+S82280 ,"Other fracture of shaft of tibia, closed",1,2
+S82320 ,"Fracture of lower end of tibia with fracture of fibula(any part), closed",2,3
+S82380 ,"Other fracture of lower end of tibia, closed",1,1
+S82430 ,"Fracture of shaft, fibula , closed",1,
+S82480 ,"Fracture of fibular, other and unspecified part, closed",6,2
+S8260 ,"Fracture of lateral malleolus, closed",1,
+S82820 ,"Bimalleolar fracture, ankle, closed",,2
+S82821 ,"Bimalleolar fracture, ankle, open",1,
+S82830 ,"Trimalleolar fracture, ankle, closed",1,1
+S8320 ,Tear of medial meniscus,,1
+S8321 ,Tear of lateral meniscus,1,
+S8329 ,"Tear of meniscus, unspecified",1,
+S8341 ,Sprain and strain of medial collateral ligament,,1
+S8353 ,Rupture of posterior cruciate ligament,,1
+S836 ,Sprain and strain of other and unspecified parts of knee,,4
+S837 ,Injury to multiple structures of knee,4,
+S857 ,Injury of multiple blood vessels at lower leg level,2,
+S8608 ,"Injury of Achilles tendon, other and unspecified injury",,1
+S8610 ,"Injury of other muscle(s) and tendon(s) of posterior muscle group at lower leg level, laceration",2,
+S8698 ,"Injury of unspecified muscles and tendons at lower leg level, other and unspecified injury",1,2
+S910 ,Open wound of ankle,2,
+S911 ,Open wound of toe(s) without damage to nail,1,
+S9200 ,"Fracture of calcaneus, closed",1,1
+S9230 ,"Fracture of metatarsal bone, closed",2,2
+S9250 ,"Fracture of other toe, closed",1,3
+S9251 ,"Fracture of other toe, open",,1
+S9270 ,"Multiple fracture of foot, closed",1,
+S932 ,Rupture of ligaments at ankle and foot level,1,2
+S9348 ,Sprain and strain of other part of ankle,2,1
+S9349 ,"Sprain and strain of ankle, part unspecified",,1
+T009 ,"Multiple superficial injuries, unspecified",2,4
+T093 ,"Injury of spinal cord, level unspecified",3,
+T131 ,"Open wound of lower limb, level unspecified",1,
+T140 ,Superficial injury of unspecified body region,6,3
+T141 ,Open wound of unspecified body region,1,2
+T181 ,Foreign body in oesophagus,1,
+T189 ,"Foreign body in alimentary tract, part unspecified",2,
+T2429 ,"Burn of second degree of hip and lower limb, except ankle and foot, unspecified site",,1
+T2439 ,"Burn of third degree of hip and lower limb, except ankle and foot, unspecified site",1,
+T300 ,"Burn of unspecified body region, unspecified degree",5,1
+T634 ,Toxic effects of venom of other arthropods,1,
+T782 ,"Anaphylactic-shock, unspecified",,1
+T793 ,"Post-traumatic wound infection, NEC",1,
+T797 ,Traumatic subcutaneous emphysema,,1
+T810 ,"Haemorrhage and haematoma complicating a procedure, NEC",4,3
+T814 ,"Infection following a procedure, NEC",1,
+T824 ,Mechanical complication of vascular dialysis catheter,,1
+T840 ,Mechanical complication of internal joint prosthesis,3,1
+T844 ,"Mechanical complication of other internal orthopaedic devices, implants and grafts",2,
+T845 ,Infection and inflammatory reaction due to internal joint prosthesis,1,
+T847 ,"Infection and inflammatory reaction due to other internal orthopaedic prosthetic devices, implants and grafts",1,
+T848 ,"Other complications of internal orthopaedic prosthetic devices, implants and grafts",,1
+T913 ,Sequelae of injury of spinal cord,1,
+Z000 ,General medical examination,3,8
+Z038 ,Observation for other suspected diseases and conditions,1,
+Z139 ,"Special screening examination, unspecified",1,
+Z951 ,Presence of aortocoronary bypass graft,,1
+Z952 ,Presence of prosthetic heart valve,1,
+Z954 ,Presence of other heart-valve replacement,7,
+Z955 ,Presence of coronary angioplasty implant and graft,1,
