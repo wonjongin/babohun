@@ -158,4 +158,53 @@ for df in dfs:
     df['병실 합계'] = df[room_columns].sum(axis=1)
 
 merged_df = pd.concat(dfs, ignore_index=True)
+
+values = merged_df['병동 구분'].dropna().unique()
+values_sorted = sorted(values)
+
+for v in values_sorted:
+    print(v)
+
+merged_df['병동 구분'] = merged_df['병동 구분'].astype(str).str.strip().str.lower()
+
+mapping = {
+     '51병동': '일반병동',
+    '61병동': '일반병동',
+    '71병동': '일반병동',
+    '일반병실': '일반병동',
+
+    '간호간병': '간호간병병동',
+
+    '격리병실': '격리병실',
+    '음압격리실': '음압격리실',
+    '음압실': '음압격리리실',
+
+    '무균치료실': '무균치료실',
+    '물리치료실': '물리치료실',
+    '분만실': '분만실',
+    '수술실': '수술실',
+    '신생아실': '신생아실',
+    '완화의료': '완화의료실',
+    '응급실': '응급실',
+    '인공신장실': '인공신장실',
+    '재활병동': '재활병동',
+    '정신과폐쇄': '정신과폐쇄병동',
+    '중환자': '중환자실',
+    '중환자실': '중환자실',
+    '회복실': '회복실',
+
+    # 코로나 관련
+    '코로나 전담병동': '코로나전담병동',
+    '코로나19전담병동': '코로나전담병동',
+    '코로나전담병동': '코로나전담병동',
+
+    # 합계/계
+    '계': None
+}
+
+merged_df = merged_df[merged_df['병동 구분'] != '계']
+merged_df['병동 구분'] = merged_df['병동 구분'].map(mapping).fillna(merged_df['병동 구분'])
+
+print(merged_df['병동 구분'].unique())
+
 merged_df.to_csv('C:/Users/julia/Downloads/병상정보.csv', index=False, encoding='UTF-8')
