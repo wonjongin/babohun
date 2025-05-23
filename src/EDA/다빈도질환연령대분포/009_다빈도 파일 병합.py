@@ -79,8 +79,8 @@ merged_df = pd.concat(all_dfs, ignore_index=True)
 df = merged_df.replace('NA', pd.NA)
 
 df['구분'] = df['구분'].replace({
-    '입원 실인원': '입원(실인원)',
-    '입원 연인원': '입원(연인원)',
+    '입원실인원': '입원(실인원)',
+    '입원연인원': '입원(연인원)',
 })
 
 age_columns = "59이하,60-64,65-69,70-79,80-89,90이상".split(',')

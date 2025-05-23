@@ -6,7 +6,7 @@ regions_df = {}
 
 for region in regions:
     regions_df[region] = pd.read_csv(f"data/연도별 진료인원 UTF8/한국보훈복지의료공단_년도별 국가유공자 진료인원_{region}보훈병원_20231231.csv")
-    regions_df[region]['년도'] = 2023
+    # regions_df[region]['년도'] = 2023
     if region != '중앙':
         regions_df[region]['지역'] = region
     else:
