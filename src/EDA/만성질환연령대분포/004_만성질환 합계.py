@@ -40,7 +40,7 @@ for col in df.columns:
     print(f"========= Column: {col} =========")
     print(df[col].unique())
 
-df[age_columns].replace(np.nan, 0, inplace=True)
+df[age_columns] = df[age_columns].replace(np.nan, 0)
 columns = "년도,지역,구분,코드,상병명,59세 이하,60-64세,65-69세,70-79세,80-89세,90세 이상,연령별_합계".split(',')
 df = df[columns]
 df.to_csv('result_utf8.csv', index=False, encoding='utf-8')
