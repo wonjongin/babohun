@@ -10,3 +10,5 @@ dtale
 wordcloud
 folium
 geopandas
+plotly
+scikit-learn
