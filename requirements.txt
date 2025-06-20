@@ -2,6 +2,13 @@ pandas
 numpy
 matplotlib
 seaborn
-plotly
+lux-api
+pandasgui
+jupyterlab
+lux-widget
+dtale
 wordcloud
+folium
+geopandas
+plotly
 scikit-learn
