@@ -56,6 +56,22 @@ doc_sum = pd.DataFrame({
 
 # 연도별 진료과별 환자 수와 전문의 수 결합
 merged = pd.merge(annual_demand, doc_sum, on='진료과', how='left').fillna(0)
+merged.to_csv("src/EDA/연관분석/merge.csv", index=False, encoding='utf-8-sig')
+
+mapping_dict = {
+    '비뇨기과': '비뇨의학과',
+    '소화기 내과': '소화기내과',
+    '심장 내과': '심장내과',
+    '완화의료사업': '호스피스완화의료센터',
+    '완화의료사업실': '호스피스완화의료센터',
+    '호스피스완화의료센터': '호스피스완화의료센터',  # 이미 표준이라 그대로 유지
+    '정신과': '정신건강의학과',
+    '호흡기 내과': '호흡기내과'
+}
+merged['진료과'] = merged['진료과'].replace(mapping_dict)
+
+unique_departments = merged['진료과'].unique()
+print(unique_departments)
 
 plt.figure(figsize=(14,8))
 sns.lineplot(data=merged, x='년도', y='실인원', hue='진료과', style='진료과', markers=True, dashes=False, legend=False)
@@ -63,8 +79,6 @@ plt.title('2019~2023년 진료과별 연간 퇴원환자 수 추이')
 plt.ylabel('퇴원 환자 수')
 plt.xlabel('년도')
 plt.show()
-
-merged = pd.merge(annual_demand, doc_sum, on='진료과', how='left').fillna(0)
 
 plt.figure(figsize=(14,8))
 sns.lineplot(data=merged, x='년도', y='실인원', hue='진료과', marker='o')
@@ -75,6 +89,7 @@ plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
 plt.tight_layout()
 plt.show()
 
+'''
 # 연도별 전문의 수 대비 퇴원환자 수 비교(19~23)
 plt.figure(figsize=(12,6))
 for year in sorted(merged['년도'].unique()):
@@ -224,3 +239,4 @@ for year in years:
     plt.xlabel('진료과')
     plt.tight_layout()
     plt.show()
+'''

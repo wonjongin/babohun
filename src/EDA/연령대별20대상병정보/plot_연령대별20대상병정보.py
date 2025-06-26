@@ -19,19 +19,8 @@ chronic_codes = df['상병코드'].unique()
 print(chronic_codes)
 
 chronic_codes = [
-    'E10', 'E11',        # 당뇨병 (E10은 1형, E11은 2형)
-    'I10', 'I11', 'I20', 'I50', 'I63', 'I67', 'I69',  # 고혈압, 심장질환, 뇌혈관질환 등
-    'J44', 'J40', 'J45', 'J43',  # 만성폐쇄성폐질환, 천식 등 (J44, J40 포함)
-    'N18',                # 만성신장질환
-    'M15', 'M17', 'M19', 'M48', 'M50', 'M51', 'M54', 'M75', 'M79',  # 골관절염, 디스크, 요통 등 만성근골격계
-    'F32', 'F41', 'F43', 'F20',  # 정신질환 일부 (우울증, 불안장애, 스트레스, 조현병 등)
-    'C34', 'C61', 'C67',  # 암 일부 (폐암, 전립선암, 방광암)
-    'H25', 'H26', 'H90',  # 노인성 백내장, 노인성 난청 등
-    'G43', 'G56', 'G71', 'G80', 'G82', 'G90',  # 신경계 만성질환 (편두통, 신경병증 등)
-    'K21', 'K29', 'K30', 'K63', 'K64',  # 만성 위염, 역류성 식도염 등 위장질환
-    'L23', 'L24', 'L29',  # 피부염 및 만성피부질환
-    'R52', 'R53', 'R63', 'R68',  # 만성 통증, 쇠약, 체중 감소, 피로 등 증상군
-    'S06', 'S13', 'S33', 'S72', 'S73', 'S83',  # 골절 및 관절손상 일부 (만성 후유증 포함 가능)
+     'I10', 'E11', 'F20', 'F06', 'I20', 'I25', 'I50', 'I65', 'I67', 'I63', 'I69', 'G81', 'G82', 
+    'C16', 'C18', 'C22', 'C25', 'C34', 'C61', 'C67', 'D09', 'D41', 'N18' 
 ]
 df['만성질환여부'] = df['상병코드'].apply(lambda x: '만성질환' if x in chronic_codes else '비만성질환')
 
@@ -55,9 +44,10 @@ print(stats)
 
 ## 시각화
 # 연령대별 주요 상병 Top N 막대 그래프
+df_2023 = df[df['년도'] == 2023]
 top_n = 5
-for age in df['연령대'].unique():
-    temp = df[df['연령대'] == age]
+for age in df_2023['연령대'].unique():
+    temp = df_2023[df_2023['연령대'] == age]
     top_diseases = temp.groupby('상병명')['건수'].sum().sort_values(ascending=False).head(top_n)
     plt.figure(figsize=(8,5))
     sns.barplot(x=top_diseases.values, y=top_diseases.index, palette='viridis')
@@ -67,7 +57,7 @@ for age in df['연령대'].unique():
     plt.show()
 
 # 만성질환 비율 시각화(연령대별, 연도별)
-chronic_age = df.groupby(['연령대', '만성질환여부'])['건수'].sum().unstack().fillna(0)
+chronic_age = df_2023.groupby(['연령대', '만성질환여부'])['건수'].sum().unstack().fillna(0)
 chronic_age['만성질환비율'] = chronic_age['만성질환'] / (chronic_age['만성질환'] + chronic_age['비만성질환'])
 chronic_age.reset_index(inplace=True)
 
@@ -79,7 +69,7 @@ plt.ylim(0,1)
 plt.show()
 
 # 지역별, 연령대별 주요 상병 분포 히트맵
-pivot = df.groupby(['지역', '연령대'])['건수'].sum().unstack().fillna(0)
+pivot = df_2023.groupby(['지역', '연령대'])['건수'].sum().unstack().fillna(0)
 
 plt.figure(figsize=(12,6))
 sns.heatmap(pivot, annot=True, fmt='.0f', cmap='YlGnBu')
