@@ -1,6 +1,6 @@
 import pandas as pd
 
-file_path = 'new_merged_data/다빈도 질환 환자 연령별 분포_순위추가_합계계산_값통일.csv'
+file_path = 'new_merged_data/df_result2.csv'
 df = pd.read_csv(file_path)
 
 # 진료과 맵핑
@@ -276,7 +276,7 @@ df['진료과'] = df['상병코드'].apply(map_icd_to_department)
 df['진료과'] = df['진료과'].apply(lambda x: ', '.join(x) if isinstance(x, list) else str(x))
 
 # 예시: 첫 5개 행 확인
-print(df[['상병명', '상병코드', '진료과']].head())
+print(df[['상병코드', '진료과']].head())
 
-df.to_csv('output_진료과_매핑.csv', index=False)
+df.to_csv('new_merged_data/df_result2_mapping1.csv', index=False)
 
