@@ -40,8 +40,8 @@ plt.figure(figsize=(12, 8))
 sns.barplot(x='장비 수', y='진료과별', data=equipment_by_dept.head(15))
 plt.title('진료과별 보유장비 수 (상위 15개)')
 plt.tight_layout()
-plt.savefig('imgs/EDA_진료정보/진료과별_보유장비_수.png')
-plt.show()
+plt.savefig('imgs/EDA_진료정보/003/진료과별_보유장비_수.png')
+# plt.show()
 
 # 워드클라우드 생성 함수
 def generate_wordcloud_for_column(df, group_col, text_col, group_value):
@@ -75,11 +75,11 @@ def generate_wordcloud_for_column(df, group_col, text_col, group_value):
     plt.axis('off')
     plt.title(f'{group_value} - {text_col} 워드 클라우드')
     plt.tight_layout()
-    plt.savefig(f'imgs/EDA_진료정보/{group_value}_{text_col}_워드클라우드.png')
-    plt.show()
+    plt.savefig(f'imgs/EDA_진료정보/003/{group_value}_{text_col}_워드클라우드.png')
+    # plt.show()
 
 # 주요 진료과 워드클라우드 생성
-top_depts = equipment_by_dept['진료과별'].head(5).tolist()
+top_depts = equipment_by_dept['진료과별'].head(15).tolist()
 for dept in top_depts:
     generate_wordcloud_for_column(df_medical_info, '진료과별', '보유장비', dept)
     generate_wordcloud_for_column(df_medical_info, '진료과별', '진료내용', dept)
@@ -90,8 +90,8 @@ plt.figure(figsize=(14, 10))
 sns.heatmap(region_dept_count, annot=True, fmt='.0f', cmap='YlGnBu')
 plt.title('지역별 진료과 분포')
 plt.tight_layout()
-plt.savefig('imgs/EDA_진료정보/지역별_진료과_분포.png')
-plt.show()
+plt.savefig('imgs/EDA_진료정보/003/지역별_진료과_분포.png')
+# plt.show()
 
 # 진료과별 부속부서 분석
 dept_subdept = df_medical_info.groupby(['진료과별', '부속부서']).size().reset_index(name='장비 수')
@@ -102,5 +102,5 @@ plt.figure(figsize=(12, 8))
 sns.barplot(x='부속부서 수', y='진료과별', data=dept_subdept_count.head(15))
 plt.title('진료과별 부속부서 수 (상위 15개)')
 plt.tight_layout()
-plt.savefig('imgs/EDA_진료정보/진료과별_부속부서_수.png')
-plt.show()
+plt.savefig('imgs/EDA_진료정보/003/진료과별_부속부서_수.png')
+# plt.show()
