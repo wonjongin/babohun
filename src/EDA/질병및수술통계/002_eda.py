@@ -363,5 +363,34 @@ plt.tight_layout()
 plt.savefig('imgs/EDA_질병및수술통계/002/연도별_상병대분류_진료건수_추이.png')
 # plt.show()
 
+# 상병코드 앞 세 글자(알파벳+숫자2개)로 그룹화하여 상위 20개 막대그래프
+# (예: A00, B23 등)
+df['상병코드3'] = df['상병코드'].astype(str).str[:3]
+grouped_code3 = df.groupby('상병코드3')['합계'].sum().sort_values(ascending=False).head(20)
+
+plt.figure(figsize=(12,6))
+sns.barplot(x=grouped_code3.index, y=grouped_code3.values, palette='viridis')
+plt.title('상병코드 앞 세 글자 기준 상위 20개 진료 건수')
+plt.xlabel('상병코드(앞3글자)')
+plt.ylabel('진료 건수 합계')
+plt.tight_layout()
+plt.savefig('imgs/EDA_질병및수술통계/002/상병코드3_상위20_막대그래프.png')
+# plt.show()
+
+# 2023년 데이터만 필터링해서 상병코드 앞 세 글자 기준 상위 20개 막대그래프
+# (예: A00, B23 등)
+df_2023 = df[df['년도'] == 2023].copy()
+df_2023['상병코드3'] = df_2023['상병코드'].astype(str).str[:3]
+grouped_code3_2023 = df_2023.groupby('상병코드3')['합계'].sum().sort_values(ascending=False).head(20)
+
+plt.figure(figsize=(12,6))
+sns.barplot(x=grouped_code3_2023.index, y=grouped_code3_2023.values, palette='viridis')
+plt.title('2023년 상병코드 앞 세 글자 기준 상위 20개 진료 건수')
+plt.xlabel('상병코드(앞3글자)')
+plt.ylabel('진료 건수 합계')
+plt.tight_layout()
+plt.savefig('imgs/EDA_질병및수술통계/002/상병코드3_2023_상위20_막대그래프.png')
+# plt.show()
+
 
 
