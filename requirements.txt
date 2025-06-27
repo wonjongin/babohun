@@ -16,3 +16,4 @@ statsmodels
 xgboost
 lightgbm
 catboost
+optuna
