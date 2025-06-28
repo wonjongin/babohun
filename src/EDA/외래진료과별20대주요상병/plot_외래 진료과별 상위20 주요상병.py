@@ -134,16 +134,18 @@ print("\n연도별 건수 통계")
 print(year_stats)
 
 # Sunburst chart : 상위 1000개
-sunburst_df = df.sort_values('건수', ascending=False).head(1000)
+df_2023 = df[df['년도'] == 2023]
+sunburst_df = df_2023.sort_values('건수', ascending=False).head(1000)
 
 fig = px.sunburst(
     sunburst_df,
-    path=['진료과', '상병명', '지역'],
+    path=['진료과', '상명코드', '지역'],
     values='건수',
     title='진료과 - 주요 상병 - 지역별 건수 Sunburst Chart'
 )
 fig.show()
 
+'''
 # 진료과별 상병 건수 Treemap
 treemap_df = df.groupby(['진료과', '상병명'], as_index=False)['건수'].sum()
 
@@ -236,3 +238,4 @@ plt.xlabel('지역')
 plt.ylabel('건수')
 plt.grid(True)
 plt.show()
+'''

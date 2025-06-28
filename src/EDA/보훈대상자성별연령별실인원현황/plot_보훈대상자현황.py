@@ -50,6 +50,11 @@ statistic_age_gender.to_csv("src/EDA/보훈대상자성별연령별실인원현�
 # 연령대별 인원변화 누적 막대 그래프
 data['기준일'] = pd.to_datetime(data['기준일'])
 data['연도'] = data['기준일'].dt.year
+data['월'] = data['기준일'].dt.month
+
+# 연도별 1월 데이터만 필터링
+data = data[data['월'] == 4]
+
 age_order=['0~4세', '5~9세', '10~14세', '15~19세', '20~24세', '25~29세', '30~34세', '35~39세', '40~44세', '45~49세',
            '50~54세', '55~59세', '60~64세', '65~69세', '70~74세', '75~79세', '80~84세', '85~89세', '90~94세', '95~99세', '100세 이상', '해당없음']
 data['연령구분'] = pd.Categorical(data['연령구분'], categories=age_order, ordered=True)
@@ -127,20 +132,46 @@ plt.ylabel('인원수')
 plt.xticks(rotation=45)
 plt.show()
 
-# 연령대별 본인유족구분 비교 누적 막대 그래프
-df_grouped = data.groupby(['연령대구분', '본인유족구분'], observed=False)['합계'].sum().reset_index()
-pivot_df = df_grouped.pivot(index='연령대구분', columns='본인유족구분', values='합계').fillna(0)
-pivot_df = pivot_df.reindex(big_age_order)
-colors = ['#B8CFCE', '#F7CFD8'] 
-pivot_df.plot(kind='bar', stacked=False, figsize=(12,6), color=colors)
+# 연령대별 인원수 히트맵
+age_yearly_big = data.groupby(['연도', '연령대구분'], observed=False)['합계'].sum().reset_index()
+pivot_heatmap_big = age_yearly_big.pivot(index='연령대구분', columns='연도', values='합계')
+pivot_heatmap_big = pivot_heatmap_big.reindex(big_age_order)
 
-plt.title('연령대별 본인유족구분 비교 누적 막대 그래프')
-plt.xlabel('연령대')
-plt.ylabel('인원수')
-plt.xticks(rotation=45)
-plt.legend(title='Status')
+plt.figure(figsize=(12, 6))
+sns.heatmap(pivot_heatmap_big, annot=True, fmt='g', cmap='YlGnBu', cbar_kws={'label': '인원수'})
+plt.title('연령대별 인원수 히트맵 (big_age 기준)')
+plt.xlabel('연도')
+plt.ylabel('연령대')
 plt.tight_layout()
 plt.show()
+
+# 연령대별 본인유족구분 비교 누적 막대 그래프
+# 연도 목록 추출
+years = data['연도'].unique()
+
+# 색상 설정
+colors = ['#B8CFCE', '#F7CFD8']
+
+for year in sorted(years):
+    # 해당 연도 데이터 필터링
+    year_data = data[data['연도'] == year]
+    
+    # 연령대 및 본인/유족 구분별 집계
+    df_grouped = year_data.groupby(['연령대구분', '본인유족구분'], observed=False)['합계'].sum().reset_index()
+    pivot_df = df_grouped.pivot(index='연령대구분', columns='본인유족구분', values='합계').fillna(0)
+
+    # 연령대 정렬 (big_age_order는 미리 정의되어 있어야 함)
+    pivot_df = pivot_df.reindex(big_age_order)
+
+    # 그래프 그리기
+    pivot_df.plot(kind='bar', stacked=True, figsize=(12, 6), color=colors)
+    plt.title(f'{year}년 연령대별 본인유족구분 비교')
+    plt.xlabel('연령대')
+    plt.ylabel('인원수')
+    plt.xticks(rotation=45)
+    plt.legend(title='구분')
+    plt.tight_layout()
+    plt.show()
 
 # 본인유족 구분 비율 파이 차트
 for year in data['연도'].unique():
@@ -221,3 +252,39 @@ plt.ylabel('가중평균 연령')
 plt.legend(title='구분')
 plt.tight_layout()
 plt.show()
+
+# 성별 인원변화 누적 막대 그래프
+for col in ['합계', '남', '여']:
+    data[col] = pd.to_numeric(data[col], errors='coerce')
+
+# melt
+data_long = data.melt(
+    id_vars=['기준일', '본인유족구분', '연령구분'], 
+    value_vars=['남', '여'], 
+    var_name='성별', 
+    value_name='인원수'
+)
+data_long['연도'] = pd.to_datetime(data_long['기준일']).dt.year
+yearly_gender = data_long.groupby(['연도', '성별'])['인원수'].sum().unstack()
+
+yearly_gender.plot(kind='bar', stacked=True, color=['#83B7DE', '#F7CFD8'])
+
+plt.title('연도별 성별 인원 변화 (누적)')
+plt.xlabel('연도')
+plt.ylabel('인원 수')
+plt.legend(title='성별')
+plt.tight_layout()
+plt.show()
+
+# 성별 인원수 히트맵
+plt.figure(figsize=(8, 5))
+sns.heatmap(yearly_gender.T, annot=True, fmt='g', cmap='RdBu', cbar_kws={'label': '인원 수'})
+
+plt.title('연도별 성별 인원수 히트맵')
+plt.xlabel('연도')
+plt.ylabel('성별')
+plt.yticks(rotation=0)
+plt.tight_layout()
+plt.show()
+
+print(data[data['연도'] == 2025])

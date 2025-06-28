@@ -12,3 +12,8 @@ folium
 geopandas
 plotly
 scikit-learn
+statsmodels
+xgboost
+lightgbm
+catboost
+optuna
