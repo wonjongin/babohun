@@ -1,10 +1,19 @@
 import pandas as pd
 import numpy as np
 import warnings
+from sklearn.exceptions import ConvergenceWarning
+import subprocess
+import os
+import multiprocessing
+
+# CUDA 환경 변수 설정 (GPU 사용 강제)
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+os.environ['XGBOOST_USE_CUDA'] = '1'
+os.environ['LIGHTGBM_USE_GPU'] = '1'
 
 from sklearn.model_selection import train_test_split, StratifiedKFold, GridSearchCV
 from sklearn.preprocessing import OneHotEncoder, StandardScaler, LabelEncoder
-from sklearn.feature_selection import SelectKBest, f_classif
+from sklearn.feature_selection import SelectKBest, f_classif, VarianceThreshold
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.linear_model import LogisticRegression
@@ -25,6 +34,61 @@ from xgboost import XGBClassifier
 from lightgbm import LGBMClassifier
 
 warnings.filterwarnings("ignore")
+
+# 특정 경고만 무시
+warnings.filterwarnings("ignore", category=UserWarning, module="sklearn.preprocessing._encoders")
+warnings.filterwarnings("ignore", category=UserWarning, module="sklearn.feature_selection._univariate_selection")
+warnings.filterwarnings("ignore", category=RuntimeWarning, module="sklearn.feature_selection._univariate_selection")
+warnings.filterwarnings("ignore", category=ConvergenceWarning, module="sklearn.linear_model._sag")
+
+# GPU 사용 가능 여부 확인
+try:
+    result = subprocess.run(['nvidia-smi'], capture_output=True, text=True)
+    if result.returncode == 0:
+        print("✅ GPU 사용 가능: NVIDIA GPU가 감지되었습니다.")
+        print("🚀 GPU 가속이 활성화되어 학습 속도가 크게 향상됩니다.")
+        
+        # CUDA 버전 확인
+        try:
+            cuda_result = subprocess.run(['nvcc', '--version'], capture_output=True, text=True)
+            if cuda_result.returncode == 0:
+                cuda_version = cuda_result.stdout.split('release ')[1].split(',')[0]
+                print(f"🔧 CUDA 버전: {cuda_version}")
+        except:
+            print("⚠️ CUDA 버전 확인 실패")
+        
+        # GPU 상세 정보 출력
+        gpu_info = subprocess.run(['nvidia-smi', '--query-gpu=name,memory.total,driver_version', '--format=csv,noheader'], 
+                                capture_output=True, text=True)
+        if gpu_info.returncode == 0:
+            print(f"📊 GPU 정보: {gpu_info.stdout.strip()}")
+        
+        # 초기 GPU 사용률 확인
+        gpu_util = subprocess.run(['nvidia-smi', '--query-gpu=utilization.gpu', '--format=csv,noheader,nounits'], 
+                                capture_output=True, text=True)
+        if gpu_util.returncode == 0:
+            print(f"🖥️ 초기 GPU 사용률: {gpu_util.stdout.strip()}%")
+            
+        # 환경 변수 확인
+        print(f"🔧 CUDA_VISIBLE_DEVICES: {os.environ.get('CUDA_VISIBLE_DEVICES', 'Not set')}")
+        print(f"🔧 XGBOOST_USE_CUDA: {os.environ.get('XGBOOST_USE_CUDA', 'Not set')}")
+        print(f"🔧 LIGHTGBM_USE_GPU: {os.environ.get('LIGHTGBM_USE_GPU', 'Not set')}")
+            
+    else:
+        print("⚠️ GPU 사용 불가: NVIDIA GPU가 감지되지 않았습니다.")
+        print("CPU 모드로 실행됩니다.")
+except:
+    print("⚠️ GPU 사용 불가: nvidia-smi 명령어를 찾을 수 없습니다.")
+    print("CPU 모드로 실행됩니다.")
+
+print()
+
+# CPU 코어 수 확인
+cpu_count = multiprocessing.cpu_count()
+print(f"🔧 시스템 정보:")
+print(f"  - CPU 코어 수: {cpu_count}개")
+print(f"  - GPU 사용: 활성화")
+print()
 
 # --------------------------------------------------
 # 1) 데이터 적재 및 가공
@@ -128,6 +192,7 @@ def make_pipeline(clf, param_grid):
         [
             ("prep", preprocessor),
             ("smote", SMOTE(random_state=42)),
+            ("variance", VarianceThreshold(threshold=0.01)),  # 상수 피처 제거
             ("select", SelectKBest(f_classif)),
             ("clf", clf),
         ]
@@ -143,7 +208,7 @@ max_k = min(n_features_after_prep, 100)  # 최대 100개로 확장
 # Logistic Regression
 pipe_lr, params_lr = make_pipeline(
     LogisticRegression(
-        penalty="l1", solver="saga", max_iter=2000, class_weight="balanced"
+        penalty="l1", solver="saga", max_iter=5000, class_weight="balanced"
     ),
     {
         "select__k": [max_k//4, max_k//2, max_k],
@@ -167,7 +232,13 @@ pipe_xgb, params_xgb = make_pipeline(
     XGBWrapper(
         eval_metric="mlogloss",
         random_state=42,
-        tree_method="hist",
+        tree_method="hist",  # hist 사용
+        device="cuda",  # 새로운 GPU 설정 방식
+        max_bin=256,  # GPU 메모리 최적화
+        single_precision_histogram=True,  # GPU 메모리 절약
+        enable_categorical=False,  # 카테고리형 비활성화
+        max_leaves=0,  # GPU 최적화
+        grow_policy="lossguide",  # GPU 최적화
     ),
     {
         "select__k": [max_k//4, max_k//2, max_k],
@@ -185,7 +256,30 @@ pipe_lgb, params_lgb = make_pipeline(
         objective="multiclass",
         random_state=42,
         class_weight="balanced",
-        verbose=-1
+        verbose=-1,
+        device="gpu",  # GPU 사용
+        gpu_platform_id=0,  # GPU 플랫폼 ID
+        gpu_device_id=0,  # GPU 디바이스 ID
+        force_col_wise=True,  # GPU 최적화
+        gpu_use_dp=False,  # 단정밀도 사용으로 메모리 절약
+        max_bin=255,  # GPU 최적화
+        num_leaves=31,  # 고정값으로 경고 제거
+        min_child_samples=20,  # 고정값으로 경고 제거
+        subsample=1.0,  # 고정값으로 경고 제거
+        colsample_bytree=1.0,  # 고정값으로 경고 제거
+        # 성능 개선을 위한 추가 설정
+        n_jobs=1,  # GPU 사용시 단일 스레드
+        deterministic=True,  # 재현성 보장
+        force_row_wise=False,  # GPU 최적화
+        # GPU 강제 사용을 위한 추가 설정
+        gpu_use_dp=False,  # 단정밀도 사용
+        gpu_use_dp_for_histogram=False,  # 히스토그램도 단정밀도
+        gpu_use_dp_for_histogram_bin=False,  # 히스토그램 빈도도 단정밀도
+        gpu_use_dp_for_histogram_bin_leaf=False,  # 리프별 히스토그램도 단정밀도
+        gpu_use_dp_for_histogram_bin_leaf_grad=False,  # 그래디언트도 단정밀도
+        gpu_use_dp_for_histogram_bin_leaf_hess=False,  # 헤시안도 단정밀도
+        gpu_use_dp_for_histogram_bin_leaf_hess_grad=False,  # 헤시안 그래디언트도 단정밀도
+        gpu_use_dp_for_histogram_bin_leaf_hess_grad_hess=False,  # 헤시안 그래디언트 헤시안도 단정밀도
     ),
     {
         "select__k": [max_k//4, max_k//2, max_k],
@@ -238,12 +332,53 @@ for i, (name, (pipe, params)) in enumerate(zip(
     print(f"파라미터 조합 수: {len([(k, v) for k, v in params.items() for v in v])}")
     print(f"예상 학습 시간: 약 1-3분")
     
+    # GPU 사용 확인 (XGBoost, LightGBM의 경우)
+    if name in ['xgb', 'lgb']:
+        print(f"🔍 {name.upper()} GPU 사용 확인 중...")
+        try:
+            result = subprocess.run(['nvidia-smi', '--query-gpu=utilization.gpu', '--format=csv,noheader,nounits'], 
+                                  capture_output=True, text=True)
+            print(f"nvidia-smi 명령어 결과: {result.returncode}")
+            print(f"nvidia-smi 출력: {result.stdout.strip()}")
+            if result.returncode == 0:
+                gpu_util = result.stdout.strip()
+                print(f"🖥️ 학습 전 GPU 사용률: {gpu_util}%")
+            else:
+                print(f"❌ nvidia-smi 오류: {result.stderr}")
+        except Exception as e:
+            print(f"❌ GPU 확인 중 오류: {str(e)}")
+        
+        # GPU 메모리 사용량도 확인
+        try:
+            mem_result = subprocess.run(['nvidia-smi', '--query-gpu=memory.used,memory.total', '--format=csv,noheader,nounits'], 
+                                      capture_output=True, text=True)
+            if mem_result.returncode == 0:
+                mem_info = mem_result.stdout.strip().split(',')
+                if len(mem_info) >= 2:
+                    print(f"💾 GPU 메모리: {mem_info[0]}/{mem_info[1]} MB")
+        except:
+            pass
+    
+    # CPU 모델들: 멀티코어 활용
+    n_jobs = max(1, int(cpu_count * 0.75))  # 75% 코어 활용
+    
     grid = GridSearchCV(
-        pipe, params, cv=cv, scoring="accuracy", n_jobs=-1, verbose=1
+        pipe, params, cv=cv, scoring="accuracy", n_jobs=n_jobs, verbose=1
     )
     print(f"GridSearchCV 시작...")
     grid.fit(X_tr, y_tr)  # sample_weight 미사용
     grids[name] = grid
+    
+    # 학습 후 GPU 사용률 확인
+    if name in ['xgb', 'lgb']:
+        try:
+            result = subprocess.run(['nvidia-smi', '--query-gpu=utilization.gpu', '--format=csv,noheader,nounits'], 
+                                  capture_output=True, text=True)
+            if result.returncode == 0:
+                gpu_util = result.stdout.strip()
+                print(f"🖥️ 학습 후 GPU 사용률: {gpu_util}%")
+        except:
+            pass
     
     print(f"✅ {name.upper()} 최적 파라미터: {grid.best_params_}")
     print(f"✅ {name.upper()} 최적 점수: {grid.best_score_:.4f}")
@@ -267,11 +402,15 @@ print("✅ Voting Classifier 완료")
 print("2/2: Stacking Classifier 학습 중...")
 print("  - 메타 모델: LogisticRegression")
 print("  - 교차검증: 5-fold")
+print("  - 병렬 처리: CPU 모델과 GPU 모델 혼재로 인해 단일 스레드 사용")
+
+# Stacking: 병렬 처리
+n_jobs = max(1, int(cpu_count * 0.5))   # 50% 코어 활용
 stack = StackingClassifier(
     estimators=estimators,
-    final_estimator=LogisticRegression(max_iter=1000),
+    final_estimator=LogisticRegression(max_iter=5000),
     cv=cv,
-    n_jobs=-1,
+    n_jobs=n_jobs,
 )
 stack.fit(X_tr, y_tr)
 print("✅ Stacking Classifier 완료")
@@ -389,12 +528,39 @@ for i, (name, sampler) in enumerate(sampling_methods.items(), 1):
             ('clf', XGBWrapper(
                 eval_metric="mlogloss",
                 random_state=42,
-                tree_method="hist",
+                tree_method="hist",  # hist 사용
+                device="cuda",  # 새로운 GPU 설정 방식
+                max_bin=256,  # GPU 메모리 최적화
+                single_precision_histogram=True,  # GPU 메모리 절약
+                enable_categorical=False,  # 카테고리형 비활성화
+                max_leaves=0,  # GPU 최적화
+                grow_policy="lossguide",  # GPU 최적화
             ))
         ])
         
         print("모델 학습 중...")
+        # GPU 사용률 확인
+        try:
+            result = subprocess.run(['nvidia-smi', '--query-gpu=utilization.gpu', '--format=csv,noheader,nounits'], 
+                                  capture_output=True, text=True)
+            if result.returncode == 0:
+                gpu_util = result.stdout.strip()
+                print(f"🖥️ 샘플링 학습 전 GPU 사용률: {gpu_util}%")
+        except:
+            pass
+            
         pipe.fit(X_resampled, y_resampled, clf__sample_weight=sample_weights_resampled)
+        
+        # 학습 후 GPU 사용률 확인
+        try:
+            result = subprocess.run(['nvidia-smi', '--query-gpu=utilization.gpu', '--format=csv,noheader,nounits'], 
+                                  capture_output=True, text=True)
+            if result.returncode == 0:
+                gpu_util = result.stdout.strip()
+                print(f"🖥️ 샘플링 학습 후 GPU 사용률: {gpu_util}%")
+        except:
+            pass
+            
         print(f"✅ {name.upper()} 학습 완료")
 
         # 평가 (테스트 데이터도 전처리)
