@@ -302,16 +302,16 @@ def make_pipeline(clf, param_grid):
 # preprocessor를 먼저 fit시켜야 함
 preprocessor.fit(X_tr)
 n_features_after_prep = len(preprocessor.get_feature_names_out())  # 전처리 후 피처 수
-max_k = min(n_features_after_prep, 100)  # 최대 100개로 확장
+max_k = min(n_features_after_prep, 50)  # 최대 50개로 축소 (100 → 50)
 
 # Logistic Regression
 pipe_lr, params_lr = make_pipeline(
     LogisticRegression(
-        penalty="l1", solver="saga", max_iter=5000, class_weight="balanced"
+        penalty="l1", solver="saga", max_iter=3000, class_weight="balanced"  # max_iter 축소
     ),
     {
-        "select__k": [max_k//4, max_k//2, max_k],
-        "clf__C": [0.001, 0.01, 0.1, 1, 10],
+        "select__k": [max_k//2, max_k],  # 조합 축소
+        "clf__C": [0.01, 0.1, 1],  # 조합 축소
     },
 )
 
@@ -319,10 +319,10 @@ pipe_lr, params_lr = make_pipeline(
 pipe_rf, params_rf = make_pipeline(
     RandomForestClassifier(class_weight="balanced", random_state=42),
     {
-        "select__k": [max_k//4, max_k//2, max_k],
-        "clf__n_estimators": [100, 200, 300],
-        "clf__max_depth": [None, 10, 20, 30],
-        "clf__min_samples_split": [2, 5, 10],
+        "select__k": [max_k//2, max_k],  # 조합 축소
+        "clf__n_estimators": [100, 200],  # 조합 축소
+        "clf__max_depth": [None, 20],  # 조합 축소
+        "clf__min_samples_split": [2, 5],  # 조합 축소
     },
 )
 
@@ -340,12 +340,12 @@ pipe_xgb, params_xgb = make_pipeline(
         grow_policy="lossguide",  # GPU 최적화
     ),
     {
-        "select__k": [max_k//4, max_k//2, max_k],
-        "clf__n_estimators": [200, 400, 600],
-        "clf__max_depth": [3, 6, 9],
-        "clf__learning_rate": [0.01, 0.1, 0.2],
-        "clf__reg_alpha": [0, 0.1, 1],
-        "clf__reg_lambda": [0, 0.1, 1],
+        "select__k": [max_k//2, max_k],  # 조합 축소
+        "clf__n_estimators": [200, 400],  # 조합 축소
+        "clf__max_depth": [3, 6],  # 조합 축소
+        "clf__learning_rate": [0.1, 0.2],  # 조합 축소
+        "clf__reg_alpha": [0, 0.1],  # 조합 축소
+        "clf__reg_lambda": [0, 0.1],  # 조합 축소
     },
 )
 
@@ -380,11 +380,11 @@ pipe_lgb, params_lgb = make_pipeline(
         gpu_use_dp_for_histogram_bin_leaf_hess_grad_hess=False,  # 헤시안 그래디언트 헤시안도 단정밀도
     ),
     {
-        "select__k": [max_k//4, max_k//2, max_k],
-        "clf__n_estimators": [200, 400, 600],
-        "clf__max_depth": [3, 6, 9],
-        "clf__learning_rate": [0.01, 0.1, 0.2],
-        "clf__num_leaves": [31, 63, 127],
+        "select__k": [max_k//2, max_k],  # 조합 축소
+        "clf__n_estimators": [200, 400],  # 조합 축소
+        "clf__max_depth": [3, 6],  # 조합 축소
+        "clf__learning_rate": [0.1, 0.2],  # 조합 축소
+        "clf__num_leaves": [31, 63],  # 조합 축소
     },
 )
 
@@ -392,14 +392,14 @@ pipe_lgb, params_lgb = make_pipeline(
 pipe_gb, params_gb = make_pipeline(
     GradientBoostingClassifier(random_state=42),
     {
-        "select__k": [max_k//4, max_k//2, max_k],
-        "clf__n_estimators": [100, 200, 300],
-        "clf__max_depth": [3, 6, 9],
-        "clf__learning_rate": [0.01, 0.1, 0.2],
+        "select__k": [max_k//2, max_k],  # 조합 축소
+        "clf__n_estimators": [100, 200],  # 조합 축소
+        "clf__max_depth": [3, 6],  # 조합 축소
+        "clf__learning_rate": [0.1, 0.2],  # 조합 축소
     },
 )
 
-cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=42)  # 5-fold → 3-fold로 축소
 
 # --------------------------------------------------
 # 6) 그리드 서치 실행
@@ -428,7 +428,7 @@ for i, (name, (pipe, params)) in enumerate(zip(
 ), 1):
     print(f"=== 모델 {i}/5: {name.upper()} 모델 학습 중... ===")
     print(f"파라미터 조합 수: {len([(k, v) for k, v in params.items() for v in v])}")
-    print(f"예상 학습 시간: 약 1-3분")
+    print(f"예상 학습 시간: 약 30초-1분")  # 시간 단축
     
     # GPU 사용 확인 (XGBoost, LightGBM의 경우)
     if name in ['xgb', 'lgb']:
@@ -458,7 +458,7 @@ for i, (name, (pipe, params)) in enumerate(zip(
             pass
     
     # CPU 모델들: 멀티코어 활용
-    n_jobs = max(1, int(cpu_count * 0.75))  # 75% 코어 활용
+    n_jobs = max(1, int(cpu_count * 0.8))  # 80% 코어 활용 (75% → 80%)
     
     grid = GridSearchCV(
         pipe, params, cv=cv, scoring="accuracy", n_jobs=n_jobs, verbose=0
@@ -503,11 +503,11 @@ print("  - 교차검증: 5-fold")
 print("  - 병렬 처리: CPU 모델과 GPU 모델 혼재로 인해 단일 스레드 사용")
 
 # Stacking: 병렬 처리
-n_jobs = max(1, int(cpu_count * 0.5))   # 50% 코어 활용
+n_jobs = max(1, int(cpu_count * 0.6))   # 60% 코어 활용 (50% → 60%)
 stack = StackingClassifier(
     estimators=estimators,
-    final_estimator=LogisticRegression(max_iter=5000),
-    cv=cv,
+    final_estimator=LogisticRegression(max_iter=3000),  # max_iter 축소
+    cv=StratifiedKFold(n_splits=3, shuffle=True, random_state=42),  # 5-fold → 3-fold
     n_jobs=n_jobs,
 )
 stack.fit(X_tr, y_tr)
@@ -1294,8 +1294,8 @@ base_estimators = [
 # Stacking 모델 생성
 adasyn_stacking = StackingClassifier(
     estimators=base_estimators,
-    final_estimator=LogisticRegression(max_iter=5000, random_state=42),
-    cv=StratifiedKFold(n_splits=5, shuffle=True, random_state=42),
+    final_estimator=LogisticRegression(max_iter=3000, random_state=42),  # max_iter 축소
+    cv=StratifiedKFold(n_splits=3, shuffle=True, random_state=42),  # 5-fold → 3-fold
     n_jobs=1  # GPU 모델과 혼재로 인해 단일 스레드 사용
 )
 
