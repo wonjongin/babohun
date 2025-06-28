@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.metrics import classification_report
-
+import joblib
 
 #자료 전처리
 ekqlseh=pd.read_csv("C:/Users/jenny/babohun/new_merged_data/다빈도 질환 환자 연령별 분포_순위추가_합계계산_값통일.csv",encoding="utf-8-sig")
@@ -26,8 +26,7 @@ df_result.to_csv(
     encoding="utf-8-sig")
 exclude_regions = ['서울', '대전', '대구']
 df_filtered = df_result[~df_result['지역'].isin(exclude_regions)]
-
-
+'''
 #아노바를 위한 검정 두개
 # 1) 정규성 검정: 상병코드별로 Shapiro–Wilk 검정
 print("=== 정규성 검정 (Shapiro–Wilk) ===")
@@ -52,9 +51,11 @@ stat, p = stats.levene(*groups, center='median')
 print(f"Levene H={stat:.4f}, p-value={p:.4e}")
 
 '''
+'''
 등분산 만족
 정규성은 만족하지 않는 코드가 많음
 ->로그변환해보기
+'''
 '''
 # 1) 로그 변환 (0값 방지를 위해 +1)
 df_filtered['log_cost'] = np.log(df_filtered['진료비(천원)'] + 1)
@@ -83,9 +84,10 @@ for code, grp in df_filtered.groupby('상병코드'):
         values = np.random.choice(values, 500, replace=False)
     stat, p = stats.shapiro(values)
     print(f"{code}: W={stat:.4f}, p-value={p:.4e} (n={n})")
-
+'''
 '''정규성 검정 실패
 ->비모수 방법으로 '''
+'''
 # 1) Kruskal–Wallis 검정 (전체 상병코드 간 차이)
 #    - 표본 수 3개 미만인 그룹은 제외
 groups = [
@@ -111,7 +113,7 @@ posthoc = sp.posthoc_dunn(
 # p-value 행렬 출력 (DataFrame 형태)
 print("=== Dunn’s post-hoc (Bonf.) p-value matrix ===")
 print(posthoc)
-
+'''
 
 #모델링(상위진료비 유발 질환코드 선정)
 # 1) 레이블 생성
@@ -242,3 +244,73 @@ print(importances_gb[importances_gb.index.str.startswith('code_')]
 - SHAP 분석 등으로 개별 환자 예측 기여도 해석  
 을 진행하시면 더욱 탄탄한 결과를 얻으실 수 있습니다.
 '''
+# 8) feature_cols 분리 저장
+dt_feature_cols = pd.get_dummies(
+    df_filtered[['상병코드']], prefix='', prefix_sep=''
+).columns.tolist()
+rf_feature_cols = pd.get_dummies(
+    df_filtered[['상병코드','지역']], dtype=int
+).columns.tolist()
+gb_feature_cols = rf_feature_cols  # GB도 RF와 동일한 피처 사용
+
+# 9) 예측 함수 수정
+from sklearn.base import ClassifierMixin
+
+def predict_high_cost(
+    code: str,
+    region: str,
+    model: ClassifierMixin,
+    feature_cols: list,
+    use_region: bool
+) -> tuple[int,float]:
+    """
+    단일 상병코드 (+지역) 조합에 대해 '고비용' 예측 레이블과 확률 반환
+    - use_region=False일 때는 상병코드만 사용 (DT 전용)
+    - use_region=True일 때는 상병코드+지역 사용 (RF, GB 전용)
+    """
+    # 입력 DataFrame 생성
+    if use_region:
+        df_in = pd.DataFrame([{'상병코드': code, '지역': region}])
+        X_in = pd.get_dummies(df_in[['상병코드','지역']], dtype=int)
+    else:
+        df_in = pd.DataFrame([{'상병코드': code}])
+        X_in = pd.get_dummies(df_in[['상병코드']], prefix='', prefix_sep='')
+    # 학습 때 컬럼 순서/차원 맞추기
+    X_in = X_in.reindex(columns=feature_cols, fill_value=0)
+    # 예측 수행
+    pred_label = model.predict(X_in)[0]
+    pred_proba = model.predict_proba(X_in)[0,1]
+    return pred_label, pred_proba
+
+# 10) 모델 로드 및 사용 예시
+
+dt_model = joblib.load("dt_highcost_model.pkl")
+rf_model = joblib.load("rf_highcost_model.pkl")
+gb_model = joblib.load("gb_highcost_model.pkl")
+
+example_code = "M48"
+example_region = "부산"
+
+# Decision Tree (코드만 사용)
+dt_label, dt_prob = predict_high_cost(
+    example_code, example_region,
+    dt_model, dt_feature_cols,
+    use_region=False
+)
+print(f"DecisionTree → 레이블: {dt_label}, 확률: {dt_prob:.2f}")
+
+# Random Forest (코드+지역)
+rf_label, rf_prob = predict_high_cost(
+    example_code, example_region,
+    rf_model, rf_feature_cols,
+    use_region=True
+)
+print(f"RandomForest → 레이블: {rf_label}, 확률: {rf_prob:.2f}")
+
+# Gradient Boosting (코드+지역)
+gb_label, gb_prob = predict_high_cost(
+    example_code, example_region,
+    gb_model, gb_feature_cols,
+    use_region=True
+)
+print(f"GradientBoosting → 레이블: {gb_label}, 확률: {gb_prob:.2f}")
