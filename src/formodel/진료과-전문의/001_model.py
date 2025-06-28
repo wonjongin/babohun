@@ -155,7 +155,7 @@ for col in numeric_columns:
     # 이상치 제거 (99% 분위수 이상)
     q99 = X[col].quantile(0.99)
     X[col] = np.where(X[col] > q99, q99, X[col])
-    
+
     # 음수 값 처리 (로그 변환된 컬럼 제외)
     if 'log' not in col and '비율' not in col:
         X[col] = np.abs(X[col])
