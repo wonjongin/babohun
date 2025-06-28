@@ -349,8 +349,282 @@ except Exception as e:
     print(f"\n=== 최종 결과 (기본 모델) ===")
     print(f"기본 모델 R²: {r2_scores_final.mean():.4f} ± {r2_scores_final.std():.4f}")
 
-'''
-최적 하이퍼파라미터: {'n_estimators': 125, 'max_depth': 10, 'min_samples_split': 9}
-최적 RMSE: 1.2856
-최적 R²: 0.3429 ± 0.1020
-'''
+# 8) 상세한 성능 평가 및 예측 결과 저장
+print("\n" + "="*60)
+print("=== 상세한 성능 평가 및 예측 결과 저장 ===")
+print("="*60)
+
+# 결과 저장 디렉토리 생성
+import os
+results_dir = "model_results_진료과_전문의"
+os.makedirs(f"{results_dir}/performance", exist_ok=True)
+os.makedirs(f"{results_dir}/predictions", exist_ok=True)
+os.makedirs(f"{results_dir}/models", exist_ok=True)
+
+print(f"📁 결과 저장 디렉토리: {results_dir}/")
+
+# 8-1) 개별 모델 성능 평가 및 예측 결과 저장
+print("\n1/3: 개별 모델 성능 평가 및 예측 결과 저장 중...")
+
+performance_results = {}
+prediction_results = {}
+
+# train/test 분리 (전처리된 데이터 사용)
+X_train, X_test, y_train, y_test = train_test_split(X_clean, y_clean, test_size=0.2, random_state=42)
+
+for name, model in trained_models.items():
+    print(f"  - {name} 모델 평가 중...")
+    
+    try:
+        # 모델 학습
+        model.fit(X_train, y_train)
+        
+        # 예측
+        y_pred_train = model.predict(X_train)
+        y_pred_test = model.predict(X_test)
+        
+        # 성능 지표 계산
+        train_r2 = r2_score(y_train, y_pred_train)
+        test_r2 = r2_score(y_test, y_pred_test)
+        train_rmse = np.sqrt(mean_squared_error(y_train, y_pred_train))
+        test_rmse = np.sqrt(mean_squared_error(y_test, y_pred_test))
+        train_mae = mean_absolute_error(y_train, y_pred_train)
+        test_mae = mean_absolute_error(y_test, y_pred_test)
+        
+        # 성능 결과 저장
+        performance_results[name] = {
+            'model_name': name,
+            'train_r2': train_r2,
+            'test_r2': test_r2,
+            'train_rmse': train_rmse,
+            'test_rmse': test_rmse,
+            'train_mae': train_mae,
+            'test_mae': test_mae,
+            'overfitting_score': train_r2 - test_r2  # 과적합 지표
+        }
+        
+        # 예측 결과 저장 (테스트 데이터)
+        test_pred_df = X_test.copy()
+        test_pred_df['y_actual'] = y_test.values
+        test_pred_df['y_predicted'] = y_pred_test
+        test_pred_df['prediction_error'] = y_test.values - y_pred_test
+        test_pred_df['absolute_error'] = np.abs(y_test.values - y_pred_test)
+        test_pred_df['model'] = name
+        
+        prediction_results[name] = test_pred_df
+        
+        print(f"    ✅ {name} - Test R²: {test_r2:.4f}, Test RMSE: {test_rmse:.4f}")
+        
+    except Exception as e:
+        print(f"    ❌ {name} 평가 실패: {str(e)}")
+        continue
+
+# 8-2) 앙상블 모델 성능 평가 및 예측 결과 저장
+print("\n2/3: 앙상블 모델 성능 평가 및 예측 결과 저장 중...")
+
+if len(trained_models) >= 3:
+    # 가중 앙상블 모델
+    ensemble_weights = [0.4, 0.35, 0.25]
+    ensemble_models = list(trained_models.items())[:3]
+    
+    # 앙상블 예측
+    y_pred_train_ensemble = np.zeros(len(X_train))
+    y_pred_test_ensemble = np.zeros(len(X_test))
+    
+    for (name, model), weight in zip(ensemble_models, ensemble_weights):
+        y_pred_train_ensemble += weight * model.predict(X_train)
+        y_pred_test_ensemble += weight * model.predict(X_test)
+    
+    # 앙상블 성능 지표
+    ensemble_train_r2 = r2_score(y_train, y_pred_train_ensemble)
+    ensemble_test_r2 = r2_score(y_test, y_pred_test_ensemble)
+    ensemble_train_rmse = np.sqrt(mean_squared_error(y_train, y_pred_train_ensemble))
+    ensemble_test_rmse = np.sqrt(mean_squared_error(y_test, y_pred_test_ensemble))
+    ensemble_train_mae = mean_absolute_error(y_train, y_pred_train_ensemble)
+    ensemble_test_mae = mean_absolute_error(y_test, y_pred_test_ensemble)
+    
+    # 앙상블 성능 결과 저장
+    performance_results['Weighted_Ensemble'] = {
+        'model_name': 'Weighted_Ensemble',
+        'train_r2': ensemble_train_r2,
+        'test_r2': ensemble_test_r2,
+        'train_rmse': ensemble_train_rmse,
+        'test_rmse': ensemble_test_rmse,
+        'train_mae': ensemble_train_mae,
+        'test_mae': ensemble_test_mae,
+        'overfitting_score': ensemble_train_r2 - ensemble_test_r2,
+        'ensemble_weights': ensemble_weights,
+        'ensemble_models': [name for name, _ in ensemble_models]
+    }
+    
+    # 앙상블 예측 결과 저장
+    ensemble_pred_df = X_test.copy()
+    ensemble_pred_df['y_actual'] = y_test.values
+    ensemble_pred_df['y_predicted'] = y_pred_test_ensemble
+    ensemble_pred_df['prediction_error'] = y_test.values - y_pred_test_ensemble
+    ensemble_pred_df['absolute_error'] = np.abs(y_test.values - y_pred_test_ensemble)
+    ensemble_pred_df['model'] = 'Weighted_Ensemble'
+    
+    prediction_results['Weighted_Ensemble'] = ensemble_pred_df
+    
+    print(f"    ✅ Weighted Ensemble - Test R²: {ensemble_test_r2:.4f}, Test RMSE: {ensemble_test_rmse:.4f}")
+    print(f"    📊 앙상블 가중치: {ensemble_weights}")
+    print(f"    🔧 앙상블 모델: {[name for name, _ in ensemble_models]}")
+
+# 8-3) 최적 모델 성능 평가 및 예측 결과 저장
+print("\n3/3: 최적 모델 성능 평가 및 예측 결과 저장 중...")
+
+try:
+    # 최적 모델 (하이퍼파라미터 튜닝 결과)
+    if 'study_improved' in locals():
+        best_model = RandomForestRegressor(**study_improved.best_params, random_state=42)
+        best_model.fit(X_train, y_train)
+        
+        y_pred_train_best = best_model.predict(X_train)
+        y_pred_test_best = best_model.predict(X_test)
+        
+        best_train_r2 = r2_score(y_train, y_pred_train_best)
+        best_test_r2 = r2_score(y_test, y_pred_test_best)
+        best_train_rmse = np.sqrt(mean_squared_error(y_train, y_pred_train_best))
+        best_test_rmse = np.sqrt(mean_squared_error(y_test, y_pred_test_best))
+        best_train_mae = mean_absolute_error(y_train, y_pred_train_best)
+        best_test_mae = mean_absolute_error(y_test, y_pred_test_best)
+        
+        # 최적 모델 성능 결과 저장
+        performance_results['Optimized_RF'] = {
+            'model_name': 'Optimized_RF',
+            'train_r2': best_train_r2,
+            'test_r2': best_test_r2,
+            'train_rmse': best_train_rmse,
+            'test_rmse': best_test_rmse,
+            'train_mae': best_train_mae,
+            'test_mae': best_test_mae,
+            'overfitting_score': best_train_r2 - best_test_r2,
+            'best_params': study_improved.best_params
+        }
+        
+        # 최적 모델 예측 결과 저장
+        best_pred_df = X_test.copy()
+        best_pred_df['y_actual'] = y_test.values
+        best_pred_df['y_predicted'] = y_pred_test_best
+        best_pred_df['prediction_error'] = y_test.values - y_pred_test_best
+        best_pred_df['absolute_error'] = np.abs(y_test.values - y_pred_test_best)
+        best_pred_df['model'] = 'Optimized_RF'
+        
+        prediction_results['Optimized_RF'] = best_pred_df
+        
+        print(f"    ✅ Optimized RF - Test R²: {best_test_r2:.4f}, Test RMSE: {best_test_rmse:.4f}")
+        print(f"    🔧 최적 파라미터: {study_improved.best_params}")
+    
+except Exception as e:
+    print(f"    ❌ 최적 모델 평가 실패: {str(e)}")
+
+# 9) 결과 저장
+print("\n" + "="*60)
+print("=== 결과 저장 시작 ===")
+print("="*60)
+
+# 9-1) 성능 비교 결과 저장
+print("1/4: 성능 비교 결과 저장 중...")
+
+if performance_results:
+    performance_df = pd.DataFrame(performance_results).T
+    performance_df = performance_df.sort_values('test_r2', ascending=False)
+    
+    # CSV 저장
+    performance_df.to_csv(f"{results_dir}/performance/model_performance_comparison.csv", encoding='utf-8-sig')
+    
+    # 성능 요약 출력
+    print("\n📊 모델 성능 비교 (Test R² 기준 내림차순):")
+    print(performance_df[['test_r2', 'test_rmse', 'test_mae', 'overfitting_score']].round(4))
+    
+    print(f"✅ 성능 비교 결과 저장 완료: {results_dir}/performance/model_performance_comparison.csv")
+
+# 9-2) 개별 모델 예측 결과 저장
+print("\n2/4: 개별 모델 예측 결과 저장 중...")
+
+for name, pred_df in prediction_results.items():
+    try:
+        # CSV 저장
+        pred_df.to_csv(f"{results_dir}/predictions/{name}_predictions.csv", encoding='utf-8-sig', index=False)
+        print(f"  ✅ {name} 예측 결과 저장: {results_dir}/predictions/{name}_predictions.csv")
+        
+        # 예측 결과 요약 출력
+        print(f"    📈 {name} 예측 결과 요약:")
+        print(f"      - 실제값 평균: {pred_df['y_actual'].mean():.2f}")
+        print(f"      - 예측값 평균: {pred_df['y_predicted'].mean():.2f}")
+        print(f"      - 평균 절대 오차: {pred_df['absolute_error'].mean():.2f}")
+        print(f"      - 최대 절대 오차: {pred_df['absolute_error'].max():.2f}")
+        
+    except Exception as e:
+        print(f"  ❌ {name} 예측 결과 저장 실패: {str(e)}")
+
+# 9-3) 통합 예측 결과 저장
+print("\n3/4: 통합 예측 결과 저장 중...")
+
+try:
+    # 모든 모델의 예측 결과를 하나의 데이터프레임으로 통합
+    all_predictions = []
+    
+    for name, pred_df in prediction_results.items():
+        # 기본 정보만 선택
+        basic_cols = ['y_actual', 'y_predicted', 'prediction_error', 'absolute_error', 'model']
+        feature_cols = [col for col in pred_df.columns if col not in basic_cols]
+        
+        # 피처와 예측 결과만 포함
+        result_df = pred_df[feature_cols + basic_cols].copy()
+        all_predictions.append(result_df)
+    
+    if all_predictions:
+        combined_predictions = pd.concat(all_predictions, ignore_index=True)
+        combined_predictions.to_csv(f"{results_dir}/predictions/combined_predictions.csv", encoding='utf-8-sig', index=False)
+        print(f"✅ 통합 예측 결과 저장: {results_dir}/predictions/combined_predictions.csv")
+        print(f"   📊 총 {len(combined_predictions)}개 예측 결과")
+        
+except Exception as e:
+    print(f"❌ 통합 예측 결과 저장 실패: {str(e)}")
+
+# 9-4) 모델 저장
+print("\n4/4: 모델 저장 중...")
+
+import joblib
+
+for name, model in trained_models.items():
+    try:
+        model_path = f"{results_dir}/models/{name}_model.pkl"
+        joblib.dump(model, model_path)
+        print(f"  ✅ {name} 모델 저장: {model_path}")
+    except Exception as e:
+        print(f"  ❌ {name} 모델 저장 실패: {str(e)}")
+
+# 최적 모델도 저장
+if 'best_model' in locals():
+    try:
+        best_model_path = f"{results_dir}/models/Optimized_RF_model.pkl"
+        joblib.dump(best_model, best_model_path)
+        print(f"  ✅ Optimized RF 모델 저장: {best_model_path}")
+    except Exception as e:
+        print(f"  ❌ Optimized RF 모델 저장 실패: {str(e)}")
+
+print("\n" + "="*60)
+print("🎉 모든 분석 및 저장이 완료되었습니다!")
+print("="*60)
+print(f"📁 결과 파일 위치: {results_dir}/")
+print("📊 성능 비교: performance/model_performance_comparison.csv")
+print("🎯 예측 결과: predictions/")
+print("💾 모델 파일: models/")
+print("="*60)
+
+# 10) 최종 성능 요약
+print("\n📈 최종 성능 요약:")
+if performance_results:
+    best_model_name = performance_df.index[0]
+    best_performance = performance_df.loc[best_model_name]
+    
+    print(f"🏆 최고 성능 모델: {best_model_name}")
+    print(f"   - Test R²: {best_performance['test_r2']:.4f}")
+    print(f"   - Test RMSE: {best_performance['test_rmse']:.4f}")
+    print(f"   - Test MAE: {best_performance['test_mae']:.4f}")
+    print(f"   - 과적합 점수: {best_performance['overfitting_score']:.4f}")
+
+print("\n" + "="*60)

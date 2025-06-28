@@ -177,3 +177,11 @@ cython_debug/
 imgs
 fonts
 catboost_info
+
+# Model files and results
+*.pkl
+*.joblib
+*.h5
+*.hdf5
+*.model
+*.bin

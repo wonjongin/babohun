@@ -1,0 +1,338 @@
+{
+  "XGB": {
+    "model_name": "XGB",
+    "class_names": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "confidence_accuracy": [
+      {
+        "confidence_bin": "0-0.5",
+        "accuracy": 0.2708333333333333
+      },
+      {
+        "confidence_bin": "0.5-0.7",
+        "accuracy": 0.7666666666666667
+      },
+      {
+        "confidence_bin": "0.7-0.8",
+        "accuracy": NaN
+      },
+      {
+        "confidence_bin": "0.8-0.9",
+        "accuracy": NaN
+      },
+      {
+        "confidence_bin": "0.9-1.0",
+        "accuracy": 1.0
+      }
+    ],
+    "probability_stats": {
+      "mean_confidence": 0.7294570207595825,
+      "std_confidence": 0.27053219079971313,
+      "min_confidence": 0.2761194705963135,
+      "max_confidence": 0.9983354210853577
+    }
+  },
+  "LGB": {
+    "model_name": "LGB",
+    "class_names": [
+      "가정의학과",
+      "내과",
+      "비뇨의학과",
+      "소아청소년과",
+      "신경과",
+      "신경외과",
+      "안과",
+      "외과",
+      "응급실",
+      "이비인후과",
+      "재활의학과",
+      "정신건강의학과",
+      "정형외과",
+      "치과",
+      "피부과"
+    ],
+    "confidence_accuracy": [
+      {
+        "confidence_bin": "0-0.5",
+        "accuracy": 0.3081395348837209
+      },
+      {
+        "confidence_bin": "0.5-0.7",
+        "accuracy": 0.7340425531914894
+      },
+      {
+        "confidence_bin": "0.7-0.8",
+        "accuracy": 0.8055555555555556
+      },
+      {
+        "confidence_bin": "0.8-0.9",
+        "accuracy": NaN
+      },
+      {
+        "confidence_bin": "0.9-1.0",
+        "accuracy": 1.0
+      }
+    ],
+    "probability_stats": {
+      "mean_confidence": 0.7597926967397404,
+      "std_confidence": 0.2596268030886553,
+      "min_confidence": 0.27916476612007773,
+      "max_confidence": 0.9999814970738006
+    }
+  },
+  "GB": {
+    "model_name": "GB",
+    "class_names": [
+      "가정의학과",
+      "내과",
+      "비뇨의학과",
+      "소아청소년과",
+      "신경과",
+      "신경외과",
+      "안과",
+      "외과",
+      "응급실",
+      "이비인후과",
+      "재활의학과",
+      "정신건강의학과",
+      "정형외과",
+      "치과",
+      "피부과"
+    ],
+    "confidence_accuracy": [
+      {
+        "confidence_bin": "0-0.5",
+        "accuracy": 0.3026315789473684
+      },
+      {
+        "confidence_bin": "0.5-0.7",
+        "accuracy": 0.7136150234741784
+      },
+      {
+        "confidence_bin": "0.7-0.8",
+        "accuracy": 0.835820895522388
+      },
+      {
+        "confidence_bin": "0.8-0.9",
+        "accuracy": NaN
+      },
+      {
+        "confidence_bin": "0.9-1.0",
+        "accuracy": 1.0
+      }
+    ],
+    "probability_stats": {
+      "mean_confidence": 0.7610881841127575,
+      "std_confidence": 0.256525917130426,
+      "min_confidence": 0.2766824046607299,
+      "max_confidence": 0.9999859416460157
+    }
+  },
+  "RF": {
+    "model_name": "RF",
+    "class_names": [
+      "가정의학과",
+      "내과",
+      "비뇨의학과",
+      "소아청소년과",
+      "신경과",
+      "신경외과",
+      "안과",
+      "외과",
+      "응급실",
+      "이비인후과",
+      "재활의학과",
+      "정신건강의학과",
+      "정형외과",
+      "치과",
+      "피부과"
+    ],
+    "confidence_accuracy": [
+      {
+        "confidence_bin": "0-0.5",
+        "accuracy": 0.7381889763779528
+      },
+      {
+        "confidence_bin": "0.5-0.7",
+        "accuracy": 1.0
+      },
+      {
+        "confidence_bin": "0.7-0.8",
+        "accuracy": 1.0
+      },
+      {
+        "confidence_bin": "0.8-0.9",
+        "accuracy": 1.0
+      },
+      {
+        "confidence_bin": "0.9-1.0",
+        "accuracy": 1.0
+      }
+    ],
+    "probability_stats": {
+      "mean_confidence": 0.46038553861286474,
+      "std_confidence": 0.27081756089451914,
+      "min_confidence": 0.17525348260756932,
+      "max_confidence": 0.9820320514856603
+    }
+  },
+  "LR": {
+    "model_name": "LR",
+    "class_names": [
+      "가정의학과",
+      "내과",
+      "비뇨의학과",
+      "소아청소년과",
+      "신경과",
+      "신경외과",
+      "안과",
+      "외과",
+      "응급실",
+      "이비인후과",
+      "재활의학과",
+      "정신건강의학과",
+      "정형외과",
+      "치과",
+      "피부과"
+    ],
+    "confidence_accuracy": [
+      {
+        "confidence_bin": "0-0.5",
+        "accuracy": 0.5462962962962963
+      },
+      {
+        "confidence_bin": "0.5-0.7",
+        "accuracy": NaN
+      },
+      {
+        "confidence_bin": "0.7-0.8",
+        "accuracy": NaN
+      },
+      {
+        "confidence_bin": "0.8-0.9",
+        "accuracy": NaN
+      },
+      {
+        "confidence_bin": "0.9-1.0",
+        "accuracy": 1.0
+      }
+    ],
+    "probability_stats": {
+      "mean_confidence": 0.6768894712275412,
+      "std_confidence": 0.31051659038351903,
+      "min_confidence": 0.22788716406581275,
+      "max_confidence": 0.999796530685526
+    }
+  },
+  "Voting": {
+    "model_name": "Voting",
+    "class_names": [
+      "가정의학과",
+      "내과",
+      "비뇨의학과",
+      "소아청소년과",
+      "신경과",
+      "신경외과",
+      "안과",
+      "외과",
+      "응급실",
+      "이비인후과",
+      "재활의학과",
+      "정신건강의학과",
+      "정형외과",
+      "치과",
+      "피부과"
+    ],
+    "confidence_accuracy": [
+      {
+        "confidence_bin": "0-0.5",
+        "accuracy": 0.49137931034482757
+      },
+      {
+        "confidence_bin": "0.5-0.7",
+        "accuracy": 0.8095238095238095
+      },
+      {
+        "confidence_bin": "0.7-0.8",
+        "accuracy": NaN
+      },
+      {
+        "confidence_bin": "0.8-0.9",
+        "accuracy": 1.0
+      },
+      {
+        "confidence_bin": "0.9-1.0",
+        "accuracy": 1.0
+      }
+    ],
+    "probability_stats": {
+      "mean_confidence": 0.6741030161461031,
+      "std_confidence": 0.26991827360199866,
+      "min_confidence": 0.23998126718514706,
+      "max_confidence": 0.9940892905847158
+    }
+  },
+  "Stacking": {
+    "model_name": "Stacking",
+    "class_names": [
+      "가정의학과",
+      "내과",
+      "비뇨의학과",
+      "소아청소년과",
+      "신경과",
+      "신경외과",
+      "안과",
+      "외과",
+      "응급실",
+      "이비인후과",
+      "재활의학과",
+      "정신건강의학과",
+      "정형외과",
+      "치과",
+      "피부과"
+    ],
+    "confidence_accuracy": [
+      {
+        "confidence_bin": "0-0.5",
+        "accuracy": 0.3584905660377358
+      },
+      {
+        "confidence_bin": "0.5-0.7",
+        "accuracy": 0.7027027027027027
+      },
+      {
+        "confidence_bin": "0.7-0.8",
+        "accuracy": 0.7475409836065574
+      },
+      {
+        "confidence_bin": "0.8-0.9",
+        "accuracy": NaN
+      },
+      {
+        "confidence_bin": "0.9-1.0",
+        "accuracy": 1.0
+      }
+    ],
+    "probability_stats": {
+      "mean_confidence": 0.8421261940434183,
+      "std_confidence": 0.1700090139680304,
+      "min_confidence": 0.3733976596277657,
+      "max_confidence": 0.9974323477579852
+    }
+  }
+}

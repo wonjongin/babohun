@@ -605,9 +605,6 @@ for i, (name, sampler) in enumerate(sampling_methods.items(), 1):
         print("✅ ADASYN 학습 완료")
         print("ADASYN 평가 중...")
         
-        # 테스트 데이터 전처리
-        X_te_preprocessed = preprocessor.transform(X_te)
-        
         # 예측
         y_pred = test_model.predict(X_te_preprocessed)
         
@@ -657,7 +654,7 @@ print("=== 데이터 추출 및 저장 시작 ===")
 print("="*60)
 
 # 결과 저장 디렉토리
-results_dir = "model_results_연령지역_진료과"
+results_dir = "model_results"
 os.makedirs(f"{results_dir}/performance", exist_ok=True)
 os.makedirs(f"{results_dir}/features", exist_ok=True)
 os.makedirs(f"{results_dir}/predictions", exist_ok=True)
@@ -853,7 +850,7 @@ if feature_importance_results:
 
 # 피처 중요도 메타데이터 저장
 with open(f"{results_dir}/features/feature_importance_metadata.json", 'w', encoding='utf-8') as f:
-    json.dump(convert_numpy_types(feature_importance_results), f, ensure_ascii=False, indent=2)
+    json.dump(feature_importance_results, f, ensure_ascii=False, indent=2)
 
 print(f"✅ 피처 중요도 저장 완료: {results_dir}/features/")
 
@@ -926,7 +923,7 @@ for name, model in basic_models.items():
 
 # 예측 확률 메타데이터 저장
 with open(f"{results_dir}/predictions/prediction_probability_metadata.json", 'w', encoding='utf-8') as f:
-    json.dump(convert_numpy_types(prediction_probability_results), f, ensure_ascii=False, indent=2)
+    json.dump(prediction_probability_results, f, ensure_ascii=False, indent=2)
 
 print(f"✅ 예측 확률 분포 저장 완료: {results_dir}/predictions/")
 
@@ -993,7 +990,7 @@ for name, model in basic_models.items():
 
 # 클래스별 성능 메타데이터 저장
 with open(f"{results_dir}/performance/class_performance_metadata.json", 'w', encoding='utf-8') as f:
-    json.dump(convert_numpy_types(class_performance_results), f, ensure_ascii=False, indent=2)
+    json.dump(class_performance_results, f, ensure_ascii=False, indent=2)
 
 print(f"✅ 클래스별 성능 분석 저장 완료: {results_dir}/performance/")
 
