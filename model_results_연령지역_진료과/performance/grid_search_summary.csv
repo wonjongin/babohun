@@ -1,0 +1,6 @@
+﻿model,best_score,best_params,total_combinations
+lr,0.8023726851851851,"{'clf__C': 0.1, 'select__k': 50}",2
+rf,0.8478009259259259,"{'clf__max_depth': 20, 'clf__min_samples_split': 2, 'clf__n_estimators': 100, 'select__k': 50}",2
+xgb,0.8289930555555555,"{'clf__learning_rate': 0.1, 'clf__max_depth': 3, 'clf__n_estimators': 100, 'clf__reg_alpha': 0, 'clf__reg_lambda': 0, 'select__k': 50}",2
+lgb,0.8321759259259259,"{'clf__learning_rate': 0.1, 'clf__max_depth': 3, 'clf__n_estimators': 100, 'clf__num_leaves': 31, 'select__k': 50}",2
+gb,0.8307291666666666,"{'clf__learning_rate': 0.1, 'clf__max_depth': 3, 'clf__n_estimators': 100, 'select__k': 50}",2

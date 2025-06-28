@@ -1,0 +1,1408 @@
+{
+  "Voting": {
+    "model_name": "Voting",
+    "feature_importance": [
+      {
+        "feature_name": "ohe__지역_대구",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__지역_대전",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__지역_부산",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__지역_서울",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__지역_인천",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_60-64",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_65-69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_70-79",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_80-89",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_90이상",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__구분_입원(연인원)",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_B35",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C16",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C18",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C22",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C25",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C34",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C61",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C67",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_D13",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_E11",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_E14",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_E30",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_E86",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_F00",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_F03",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_F06",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_F20",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_G20",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_G62",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_G81",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_G82",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_G95",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_H04",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_H25",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_H35",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_H36",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_H42",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_H90",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I10",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I11",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I20",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I25",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I48",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I50",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I61",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I63",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I70",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J00",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J15",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J18",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J21",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J30",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J40",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J44",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J45",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J98",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K02",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K04",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K05",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K08",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K21",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K29",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K40",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K56",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K59",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K63",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K80",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K81",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_L23",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_L24",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_L29",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_L30",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_L89",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_M17",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_M19",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_M43",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_M48",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_M50",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_M51",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_M54",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_M75",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_M96",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_N17",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_N18",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_N30",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_N31",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_N40",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_R07",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_R41",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_R42",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_R52",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_R53",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_R63",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_S06",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_S22",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_S32",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_S46",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_S72",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_S82",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_T84",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_U07",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_Z00",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_Z03",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_Z11",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_Z26",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_Z29",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_Z49",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_Z50",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_Z51",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_광주_60-64",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_광주_65-69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_광주_70-79",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_광주_80-89",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_광주_90이상",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대구_59이하",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대구_60-64",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대구_65-69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대구_70-79",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대구_80-89",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대구_90이상",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대전_59이하",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대전_60-64",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대전_65-69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대전_70-79",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대전_80-89",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대전_90이상",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_부산_59이하",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_부산_60-64",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_부산_65-69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_부산_70-79",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_부산_80-89",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_부산_90이상",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_서울_59이하",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_서울_60-64",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_서울_65-69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_서울_70-79",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_서울_80-89",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_서울_90이상",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_인천_59이하",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_인천_60-64",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_인천_65-69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_인천_70-79",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_인천_80-89",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_인천_90이상",
+        "importance": NaN
+      },
+      {
+        "feature_name": "scale__year_num",
+        "importance": NaN
+      },
+      {
+        "feature_name": "scale__age_num",
+        "importance": NaN
+      },
+      {
+        "feature_name": "scale__is_major_city",
+        "importance": NaN
+      },
+      {
+        "feature_name": "scale__is_inpatient",
+        "importance": NaN
+      },
+      {
+        "feature_name": "scale__year_trend",
+        "importance": NaN
+      },
+      {
+        "feature_name": "scale__age_city_interaction",
+        "importance": NaN
+      },
+      {
+        "feature_name": "scale__age_year_interaction",
+        "importance": NaN
+      }
+    ],
+    "top_features": [
+      {
+        "feature_name": "ohe__지역_대구",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__지역_대전",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__지역_부산",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__지역_서울",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__지역_인천",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_60-64",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_65-69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_70-79",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_80-89",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_90이상",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__구분_입원(연인원)",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_B35",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C16",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C18",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C22",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C25",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C34",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C61",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C67",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_D13",
+        "importance": NaN
+      }
+    ]
+  },
+  "Stacking": {
+    "model_name": "Stacking",
+    "feature_importance": [
+      {
+        "feature_name": "ohe__지역_대구",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__지역_대전",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__지역_부산",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__지역_서울",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__지역_인천",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_60-64",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_65-69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_70-79",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_80-89",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_90이상",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__구분_입원(연인원)",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_B35",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C16",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C18",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C22",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C25",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C34",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C61",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C67",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_D13",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_E11",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_E14",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_E30",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_E86",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_F00",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_F03",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_F06",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_F20",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_G20",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_G62",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_G81",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_G82",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_G95",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_H04",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_H25",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_H35",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_H36",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_H42",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_H90",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I10",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I11",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I20",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I25",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I48",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I50",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I61",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I63",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_I70",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J00",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J15",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J18",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J21",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J30",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J40",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J44",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J45",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_J98",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K02",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K04",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K05",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K08",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K21",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K29",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K40",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K56",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K59",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K63",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K80",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_K81",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_L23",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_L24",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_L29",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_L30",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_L89",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_M17",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_M19",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_M43",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_M48",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_M50",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_M51",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_M54",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_M75",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_M96",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_N17",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_N18",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_N30",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_N31",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_N40",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_R07",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_R41",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_R42",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_R52",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_R53",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_R63",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_S06",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_S22",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_S32",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_S46",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_S72",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_S82",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_T84",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_U07",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_Z00",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_Z03",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_Z11",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_Z26",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_Z29",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_Z49",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_Z50",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_Z51",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_광주_60-64",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_광주_65-69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_광주_70-79",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_광주_80-89",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_광주_90이상",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대구_59이하",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대구_60-64",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대구_65-69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대구_70-79",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대구_80-89",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대구_90이상",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대전_59이하",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대전_60-64",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대전_65-69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대전_70-79",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대전_80-89",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_대전_90이상",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_부산_59이하",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_부산_60-64",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_부산_65-69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_부산_70-79",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_부산_80-89",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_부산_90이상",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_서울_59이하",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_서울_60-64",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_서울_65-69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_서울_70-79",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_서울_80-89",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_서울_90이상",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_인천_59이하",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_인천_60-64",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_인천_65-69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_인천_70-79",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_인천_80-89",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__region_age_인천_90이상",
+        "importance": NaN
+      },
+      {
+        "feature_name": "scale__year_num",
+        "importance": NaN
+      },
+      {
+        "feature_name": "scale__age_num",
+        "importance": NaN
+      },
+      {
+        "feature_name": "scale__is_major_city",
+        "importance": NaN
+      },
+      {
+        "feature_name": "scale__is_inpatient",
+        "importance": NaN
+      },
+      {
+        "feature_name": "scale__year_trend",
+        "importance": NaN
+      },
+      {
+        "feature_name": "scale__age_city_interaction",
+        "importance": NaN
+      },
+      {
+        "feature_name": "scale__age_year_interaction",
+        "importance": NaN
+      }
+    ],
+    "top_features": [
+      {
+        "feature_name": "ohe__지역_대구",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__지역_대전",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__지역_부산",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__지역_서울",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__지역_인천",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_60-64",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_65-69",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_70-79",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_80-89",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__age_group_90이상",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__구분_입원(연인원)",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_B35",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C16",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C18",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C22",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C25",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C34",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C61",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_C67",
+        "importance": NaN
+      },
+      {
+        "feature_name": "ohe__disease_group_D13",
+        "importance": NaN
+      }
+    ]
+  }
+}

@@ -18,3 +18,4 @@ lightgbm
 catboost
 optuna
 pulp
+scikit-posthocs

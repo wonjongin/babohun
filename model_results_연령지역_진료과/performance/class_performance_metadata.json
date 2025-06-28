@@ -1,0 +1,788 @@
+{
+  "LGB": {
+    "model_name": "LGB",
+    "class_performance": [
+      {
+        "class_name": "가정의학과",
+        "precision": 1.0,
+        "recall": 0.4605601233299075,
+        "f1_score": 0.630662327381476,
+        "support": 7784.0,
+        "accuracy": 0.5
+      },
+      {
+        "class_name": "내과",
+        "precision": 0.7552796669719255,
+        "recall": 0.7492789877138499,
+        "f1_score": 0.752267360992674,
+        "support": 397358.0,
+        "accuracy": 0.7859531772575251
+      },
+      {
+        "class_name": "비뇨의학과",
+        "precision": 0.996453671302967,
+        "recall": 0.9840856817601004,
+        "f1_score": 0.9902310589789222,
+        "support": 172172.0,
+        "accuracy": 0.8484848484848485
+      },
+      {
+        "class_name": "소아청소년과",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 15036.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "신경과",
+        "precision": 0.7963657662431841,
+        "recall": 0.6413625796017386,
+        "f1_score": 0.710508634847957,
+        "support": 89037.0,
+        "accuracy": 0.6111111111111112
+      },
+      {
+        "class_name": "신경외과",
+        "precision": 1.0,
+        "recall": 0.9610516701461378,
+        "f1_score": 0.9801390598489637,
+        "support": 15328.0,
+        "accuracy": 0.84375
+      },
+      {
+        "class_name": "안과",
+        "precision": 0.5804347826086956,
+        "recall": 0.3815222487664382,
+        "f1_score": 0.4604130461140525,
+        "support": 44789.0,
+        "accuracy": 0.6578947368421053
+      },
+      {
+        "class_name": "외과",
+        "precision": 1.0,
+        "recall": 0.9163152773272786,
+        "f1_score": 0.9563303994583615,
+        "support": 3083.0,
+        "accuracy": 0.7692307692307693
+      },
+      {
+        "class_name": "응급실",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 15418.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "이비인후과",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 15142.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "재활의학과",
+        "precision": 1.0,
+        "recall": 0.9001578033769922,
+        "f1_score": 0.9474558394857698,
+        "support": 63370.0,
+        "accuracy": 0.7738095238095238
+      },
+      {
+        "class_name": "정신건강의학과",
+        "precision": 0.06148294410022469,
+        "recall": 1.0,
+        "f1_score": 0.1158434894162925,
+        "support": 4515.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "정형외과",
+        "precision": 1.0,
+        "recall": 0.9443343548773167,
+        "f1_score": 0.9713703329969727,
+        "support": 254843.0,
+        "accuracy": 0.8671328671328671
+      },
+      {
+        "class_name": "치과",
+        "precision": 1.0,
+        "recall": 0.8449353713943578,
+        "f1_score": 0.9159511866865839,
+        "support": 113572.0,
+        "accuracy": 0.8269230769230769
+      },
+      {
+        "class_name": "피부과",
+        "precision": 0.4916960976036893,
+        "recall": 0.7646845211075806,
+        "f1_score": 0.5985326251088096,
+        "support": 22030.0,
+        "accuracy": 0.6956521739130435
+      }
+    ],
+    "overall_stats": {
+      "macro_precision": 0.8454475285887124,
+      "macro_recall": 0.8365525746267799,
+      "macro_f1": 0.8019803574211224,
+      "weighted_f1": 0.8488945058779606
+    }
+  },
+  "GB": {
+    "model_name": "GB",
+    "class_performance": [
+      {
+        "class_name": "가정의학과",
+        "precision": 1.0,
+        "recall": 0.4605601233299075,
+        "f1_score": 0.630662327381476,
+        "support": 7784.0,
+        "accuracy": 0.5
+      },
+      {
+        "class_name": "내과",
+        "precision": 0.7352853512377248,
+        "recall": 0.7077471700582346,
+        "f1_score": 0.7212534975392199,
+        "support": 397358.0,
+        "accuracy": 0.7959866220735786
+      },
+      {
+        "class_name": "비뇨의학과",
+        "precision": 0.9826533723800264,
+        "recall": 0.9919963757173059,
+        "f1_score": 0.9873027709614112,
+        "support": 172172.0,
+        "accuracy": 0.9696969696969697
+      },
+      {
+        "class_name": "소아청소년과",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 15036.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "신경과",
+        "precision": 0.8869257950530035,
+        "recall": 0.6117344474768917,
+        "f1_score": 0.7240641284696373,
+        "support": 89037.0,
+        "accuracy": 0.5
+      },
+      {
+        "class_name": "신경외과",
+        "precision": 1.0,
+        "recall": 0.9610516701461378,
+        "f1_score": 0.9801390598489637,
+        "support": 15328.0,
+        "accuracy": 0.84375
+      },
+      {
+        "class_name": "안과",
+        "precision": 0.3254146259593232,
+        "recall": 0.4761883498180357,
+        "f1_score": 0.38662195232484364,
+        "support": 44789.0,
+        "accuracy": 0.7631578947368421
+      },
+      {
+        "class_name": "외과",
+        "precision": 1.0,
+        "recall": 0.9163152773272786,
+        "f1_score": 0.9563303994583615,
+        "support": 3083.0,
+        "accuracy": 0.7692307692307693
+      },
+      {
+        "class_name": "응급실",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 15418.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "이비인후과",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 15142.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "재활의학과",
+        "precision": 1.0,
+        "recall": 0.9001578033769922,
+        "f1_score": 0.9474558394857698,
+        "support": 63370.0,
+        "accuracy": 0.7738095238095238
+      },
+      {
+        "class_name": "정신건강의학과",
+        "precision": 0.06148294410022469,
+        "recall": 1.0,
+        "f1_score": 0.1158434894162925,
+        "support": 4515.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "정형외과",
+        "precision": 1.0,
+        "recall": 0.9443343548773167,
+        "f1_score": 0.9713703329969727,
+        "support": 254843.0,
+        "accuracy": 0.8671328671328671
+      },
+      {
+        "class_name": "치과",
+        "precision": 1.0,
+        "recall": 0.8449353713943578,
+        "f1_score": 0.9159511866865839,
+        "support": 113572.0,
+        "accuracy": 0.8269230769230769
+      },
+      {
+        "class_name": "피부과",
+        "precision": 1.0,
+        "recall": 0.7447571493418066,
+        "f1_score": 0.8537086661289903,
+        "support": 22030.0,
+        "accuracy": 0.6086956521739131
+      }
+    ],
+    "overall_stats": {
+      "macro_precision": 0.8661174725820202,
+      "macro_recall": 0.8373185395242844,
+      "macro_f1": 0.8127135767132349,
+      "weighted_f1": 0.841351327862363
+    }
+  },
+  "RF": {
+    "model_name": "RF",
+    "class_performance": [
+      {
+        "class_name": "가정의학과",
+        "precision": 1.0,
+        "recall": 0.4605601233299075,
+        "f1_score": 0.630662327381476,
+        "support": 7784.0,
+        "accuracy": 0.5
+      },
+      {
+        "class_name": "내과",
+        "precision": 0.7756520245408354,
+        "recall": 1.0,
+        "f1_score": 0.8736531863459122,
+        "support": 397358.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "비뇨의학과",
+        "precision": 1.0,
+        "recall": 0.9838010826382919,
+        "f1_score": 0.9918344044151015,
+        "support": 172172.0,
+        "accuracy": 0.8333333333333334
+      },
+      {
+        "class_name": "소아청소년과",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 15036.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "신경과",
+        "precision": 1.0,
+        "recall": 0.6087132315778834,
+        "f1_score": 0.756770342444235,
+        "support": 89037.0,
+        "accuracy": 0.4861111111111111
+      },
+      {
+        "class_name": "신경외과",
+        "precision": 1.0,
+        "recall": 0.9610516701461378,
+        "f1_score": 0.9801390598489637,
+        "support": 15328.0,
+        "accuracy": 0.84375
+      },
+      {
+        "class_name": "안과",
+        "precision": 1.0,
+        "recall": 0.3668088146643149,
+        "f1_score": 0.5367375608481165,
+        "support": 44789.0,
+        "accuracy": 0.631578947368421
+      },
+      {
+        "class_name": "외과",
+        "precision": 1.0,
+        "recall": 0.9163152773272786,
+        "f1_score": 0.9563303994583615,
+        "support": 3083.0,
+        "accuracy": 0.7692307692307693
+      },
+      {
+        "class_name": "응급실",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 15418.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "이비인후과",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 15142.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "재활의학과",
+        "precision": 1.0,
+        "recall": 0.9001578033769922,
+        "f1_score": 0.9474558394857698,
+        "support": 63370.0,
+        "accuracy": 0.7738095238095238
+      },
+      {
+        "class_name": "정신건강의학과",
+        "precision": 1.0,
+        "recall": 0.9685492801771871,
+        "f1_score": 0.984023402340234,
+        "support": 4515.0,
+        "accuracy": 0.875
+      },
+      {
+        "class_name": "정형외과",
+        "precision": 1.0,
+        "recall": 0.9443343548773167,
+        "f1_score": 0.9713703329969727,
+        "support": 254843.0,
+        "accuracy": 0.8671328671328671
+      },
+      {
+        "class_name": "치과",
+        "precision": 1.0,
+        "recall": 0.8449353713943578,
+        "f1_score": 0.9159511866865839,
+        "support": 113572.0,
+        "accuracy": 0.8269230769230769
+      },
+      {
+        "class_name": "피부과",
+        "precision": 1.0,
+        "recall": 0.7447571493418066,
+        "f1_score": 0.8537086661289903,
+        "support": 22030.0,
+        "accuracy": 0.6086956521739131
+      }
+    ],
+    "overall_stats": {
+      "macro_precision": 0.9850434683027224,
+      "macro_recall": 0.8466656105900984,
+      "macro_f1": 0.8932424472253812,
+      "weighted_f1": 0.9020682114447042
+    }
+  },
+  "LR": {
+    "model_name": "LR",
+    "class_performance": [
+      {
+        "class_name": "가정의학과",
+        "precision": 1.0,
+        "recall": 0.4605601233299075,
+        "f1_score": 0.630662327381476,
+        "support": 7784.0,
+        "accuracy": 0.5
+      },
+      {
+        "class_name": "내과",
+        "precision": 0.8143205198704337,
+        "recall": 0.5105698136189531,
+        "f1_score": 0.6276254955552771,
+        "support": 397358.0,
+        "accuracy": 0.7023411371237458
+      },
+      {
+        "class_name": "비뇨의학과",
+        "precision": 1.0,
+        "recall": 0.9838010826382919,
+        "f1_score": 0.9918344044151015,
+        "support": 172172.0,
+        "accuracy": 0.8333333333333334
+      },
+      {
+        "class_name": "소아청소년과",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 15036.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "신경과",
+        "precision": 0.574926501114133,
+        "recall": 0.7621325965609803,
+        "f1_score": 0.6554238745134402,
+        "support": 89037.0,
+        "accuracy": 0.6805555555555556
+      },
+      {
+        "class_name": "신경외과",
+        "precision": 1.0,
+        "recall": 0.9610516701461378,
+        "f1_score": 0.9801390598489637,
+        "support": 15328.0,
+        "accuracy": 0.84375
+      },
+      {
+        "class_name": "안과",
+        "precision": 0.21622883592512893,
+        "recall": 0.9512157002835517,
+        "f1_score": 0.35235980332560035,
+        "support": 44789.0,
+        "accuracy": 0.868421052631579
+      },
+      {
+        "class_name": "외과",
+        "precision": 1.0,
+        "recall": 0.9163152773272786,
+        "f1_score": 0.9563303994583615,
+        "support": 3083.0,
+        "accuracy": 0.7692307692307693
+      },
+      {
+        "class_name": "응급실",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 15418.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "이비인후과",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 15142.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "재활의학과",
+        "precision": 1.0,
+        "recall": 0.9001578033769922,
+        "f1_score": 0.9474558394857698,
+        "support": 63370.0,
+        "accuracy": 0.7738095238095238
+      },
+      {
+        "class_name": "정신건강의학과",
+        "precision": 1.0,
+        "recall": 0.9685492801771871,
+        "f1_score": 0.984023402340234,
+        "support": 4515.0,
+        "accuracy": 0.875
+      },
+      {
+        "class_name": "정형외과",
+        "precision": 1.0,
+        "recall": 0.9443343548773167,
+        "f1_score": 0.9713703329969727,
+        "support": 254843.0,
+        "accuracy": 0.8671328671328671
+      },
+      {
+        "class_name": "치과",
+        "precision": 1.0,
+        "recall": 0.8449353713943578,
+        "f1_score": 0.9159511866865839,
+        "support": 113572.0,
+        "accuracy": 0.8269230769230769
+      },
+      {
+        "class_name": "피부과",
+        "precision": 0.4821626854198104,
+        "recall": 0.7687244666364049,
+        "f1_score": 0.5926198099837279,
+        "support": 22030.0,
+        "accuracy": 0.7391304347826086
+      }
+    ],
+    "overall_stats": {
+      "macro_precision": 0.8725092361553004,
+      "macro_recall": 0.864823169357824,
+      "macro_f1": 0.8403863957327673,
+      "weighted_f1": 0.8041381004617709
+    }
+  },
+  "Voting": {
+    "model_name": "Voting",
+    "class_performance": [
+      {
+        "class_name": "가정의학과",
+        "precision": 1.0,
+        "recall": 0.4605601233299075,
+        "f1_score": 0.630662327381476,
+        "support": 7784.0,
+        "accuracy": 0.5
+      },
+      {
+        "class_name": "내과",
+        "precision": 0.7498686404861444,
+        "recall": 0.660844880435275,
+        "f1_score": 0.7025478167113018,
+        "support": 397358.0,
+        "accuracy": 0.7290969899665551
+      },
+      {
+        "class_name": "비뇨의학과",
+        "precision": 1.0,
+        "recall": 0.9838010826382919,
+        "f1_score": 0.9918344044151015,
+        "support": 172172.0,
+        "accuracy": 0.8333333333333334
+      },
+      {
+        "class_name": "소아청소년과",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 15036.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "신경과",
+        "precision": 0.7615571473061351,
+        "recall": 0.6866134303716432,
+        "f1_score": 0.7221460971460971,
+        "support": 89037.0,
+        "accuracy": 0.6527777777777778
+      },
+      {
+        "class_name": "신경외과",
+        "precision": 1.0,
+        "recall": 0.9610516701461378,
+        "f1_score": 0.9801390598489637,
+        "support": 15328.0,
+        "accuracy": 0.84375
+      },
+      {
+        "class_name": "안과",
+        "precision": 0.1627155412583672,
+        "recall": 0.48900399651700194,
+        "f1_score": 0.24418034249018908,
+        "support": 44789.0,
+        "accuracy": 0.8157894736842105
+      },
+      {
+        "class_name": "외과",
+        "precision": 1.0,
+        "recall": 0.9163152773272786,
+        "f1_score": 0.9563303994583615,
+        "support": 3083.0,
+        "accuracy": 0.7692307692307693
+      },
+      {
+        "class_name": "응급실",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 15418.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "이비인후과",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 15142.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "재활의학과",
+        "precision": 1.0,
+        "recall": 0.9001578033769922,
+        "f1_score": 0.9474558394857698,
+        "support": 63370.0,
+        "accuracy": 0.7738095238095238
+      },
+      {
+        "class_name": "정신건강의학과",
+        "precision": 1.0,
+        "recall": 0.9685492801771871,
+        "f1_score": 0.984023402340234,
+        "support": 4515.0,
+        "accuracy": 0.875
+      },
+      {
+        "class_name": "정형외과",
+        "precision": 1.0,
+        "recall": 0.9443343548773167,
+        "f1_score": 0.9713703329969727,
+        "support": 254843.0,
+        "accuracy": 0.8671328671328671
+      },
+      {
+        "class_name": "치과",
+        "precision": 1.0,
+        "recall": 0.8449353713943578,
+        "f1_score": 0.9159511866865839,
+        "support": 113572.0,
+        "accuracy": 0.8269230769230769
+      },
+      {
+        "class_name": "피부과",
+        "precision": 0.4916960976036893,
+        "recall": 0.7646845211075806,
+        "f1_score": 0.5985326251088096,
+        "support": 22030.0,
+        "accuracy": 0.6956521739130435
+      }
+    ],
+    "overall_stats": {
+      "macro_precision": 0.8777224951102891,
+      "macro_recall": 0.8387234527799313,
+      "macro_f1": 0.8430115889379908,
+      "weighted_f1": 0.8292676648333059
+    }
+  },
+  "Stacking": {
+    "model_name": "Stacking",
+    "class_performance": [
+      {
+        "class_name": "가정의학과",
+        "precision": 1.0,
+        "recall": 0.4605601233299075,
+        "f1_score": 0.630662327381476,
+        "support": 7784.0,
+        "accuracy": 0.5
+      },
+      {
+        "class_name": "내과",
+        "precision": 0.7756520245408354,
+        "recall": 1.0,
+        "f1_score": 0.8736531863459122,
+        "support": 397358.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "비뇨의학과",
+        "precision": 1.0,
+        "recall": 0.9838010826382919,
+        "f1_score": 0.9918344044151015,
+        "support": 172172.0,
+        "accuracy": 0.8333333333333334
+      },
+      {
+        "class_name": "소아청소년과",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 15036.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "신경과",
+        "precision": 1.0,
+        "recall": 0.6087132315778834,
+        "f1_score": 0.756770342444235,
+        "support": 89037.0,
+        "accuracy": 0.4861111111111111
+      },
+      {
+        "class_name": "신경외과",
+        "precision": 1.0,
+        "recall": 0.9610516701461378,
+        "f1_score": 0.9801390598489637,
+        "support": 15328.0,
+        "accuracy": 0.84375
+      },
+      {
+        "class_name": "안과",
+        "precision": 1.0,
+        "recall": 0.3668088146643149,
+        "f1_score": 0.5367375608481165,
+        "support": 44789.0,
+        "accuracy": 0.631578947368421
+      },
+      {
+        "class_name": "외과",
+        "precision": 1.0,
+        "recall": 0.9163152773272786,
+        "f1_score": 0.9563303994583615,
+        "support": 3083.0,
+        "accuracy": 0.7692307692307693
+      },
+      {
+        "class_name": "응급실",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 15418.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "이비인후과",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 15142.0,
+        "accuracy": 1.0
+      },
+      {
+        "class_name": "재활의학과",
+        "precision": 1.0,
+        "recall": 0.9001578033769922,
+        "f1_score": 0.9474558394857698,
+        "support": 63370.0,
+        "accuracy": 0.7738095238095238
+      },
+      {
+        "class_name": "정신건강의학과",
+        "precision": 1.0,
+        "recall": 0.9685492801771871,
+        "f1_score": 0.984023402340234,
+        "support": 4515.0,
+        "accuracy": 0.875
+      },
+      {
+        "class_name": "정형외과",
+        "precision": 1.0,
+        "recall": 0.9443343548773167,
+        "f1_score": 0.9713703329969727,
+        "support": 254843.0,
+        "accuracy": 0.8671328671328671
+      },
+      {
+        "class_name": "치과",
+        "precision": 1.0,
+        "recall": 0.8449353713943578,
+        "f1_score": 0.9159511866865839,
+        "support": 113572.0,
+        "accuracy": 0.8269230769230769
+      },
+      {
+        "class_name": "피부과",
+        "precision": 1.0,
+        "recall": 0.7447571493418066,
+        "f1_score": 0.8537086661289903,
+        "support": 22030.0,
+        "accuracy": 0.6086956521739131
+      }
+    ],
+    "overall_stats": {
+      "macro_precision": 0.9850434683027224,
+      "macro_recall": 0.8466656105900984,
+      "macro_f1": 0.8932424472253812,
+      "weighted_f1": 0.9020682114447042
+    }
+  }
+}

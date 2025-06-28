@@ -32,8 +32,8 @@ from sklearn.metrics import (
 # ----------------------------------------------------------------------
 # 1) 데이터 로드 & 전처리
 # ----------------------------------------------------------------------
-data_csv = r"C:/Users/jenny/babohun/new_merged_data/다빈도 질환 환자 연령별 분포_순위추가_합계계산_값통일.csv"
-mapping_csv = r"C:/Users/jenny/babohun/df_result2_with_심평원.csv"
+data_csv = r"new_merged_data/다빈도 질환 환자 연령별 분포_순위추가_합계계산_값통일.csv"
+mapping_csv = r"df_result2_with_심평원.csv"
 
 ekqlseh = pd.read_csv(data_csv, encoding="utf-8-sig")
 ekqlseh.loc[ekqlseh['구분'].str.contains('외래'), '연인원'] = ekqlseh['실인원']
@@ -193,7 +193,7 @@ preds = [
 df['pred_bin'], df['pred_cost'] = zip(*preds)
 
 # 4) CSV로 저장
-output_path = r"C:/Users/jenny/babohun/src/formodel/진료비_구간예측결과.csv"
+output_path = r"src/formodel/진료비_구간예측결과.csv"
 df.to_csv(output_path, index=False, encoding='utf-8-sig')
 
 print(f"예측 결과를 '{output_path}'에 저장했습니다.")
