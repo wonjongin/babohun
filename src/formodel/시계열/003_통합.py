@@ -110,9 +110,9 @@ for 병원 in df['병원'].unique():
         # Random Forest & XGBoost
         try:
             # 연도를 feature로 사용
-        X_train = np.array(train.index).reshape(-1,1).astype(int)
-        y_train = train.values
-        X_test = np.array(test.index).reshape(-1,1).astype(int)
+            X_train = np.array(train.index).reshape(-1,1).astype(int)
+            y_train = train.values
+            X_test = np.array(test.index).reshape(-1,1).astype(int)
             y_test = test.values
             
             # 데이터 검증
@@ -122,14 +122,14 @@ for 병원 in df['병원'].unique():
 
             # RF 모델
             rf = RandomForestRegressor(n_estimators=50, random_state=42)
-        rf.fit(X_train, y_train)
-        rf_pred = rf.predict(X_test)
+            rf.fit(X_train, y_train)
+            rf_pred = rf.predict(X_test)
             rf_metrics = calculate_metrics(y_test, rf_pred)
 
             # XGB 모델
             xgb = XGBRegressor(n_estimators=50, random_state=42)
-        xgb.fit(X_train, y_train)
-        xgb_pred = xgb.predict(X_test)
+            xgb.fit(X_train, y_train)
+            xgb_pred = xgb.predict(X_test)
             xgb_metrics = calculate_metrics(y_test, xgb_pred)
 
             # 모델 성능 저장
