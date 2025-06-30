@@ -176,7 +176,6 @@ cython_debug/
 
 imgs
 fonts
-catboost_info
 
 # Model files and results
 *.pkl
@@ -185,3 +184,6 @@ catboost_info
 *.hdf5
 *.model
 *.bin
+
+.DS_Store
+*.zip

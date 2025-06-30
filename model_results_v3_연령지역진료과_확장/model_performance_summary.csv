@@ -1,0 +1,33 @@
+Type,Model,Accuracy,F1_Score,Best_Params
+Sampling-Original,Random Forest,0.9903846153846154,0.9894648829431438,
+Sampling-Original,XGBoost,1.0,1.0,
+Sampling-Original,LightGBM,1.0,1.0,
+Sampling-Original,Neural Network,0.8365384615384616,0.8258193078108332,
+Sampling-Original,Logistic Regression,0.8269230769230769,0.8117189232543355,
+Sampling-SMOTE,Random Forest,0.9807692307692307,0.9798666371942234,
+Sampling-SMOTE,XGBoost,1.0,1.0,
+Sampling-SMOTE,LightGBM,1.0,1.0,
+Sampling-SMOTE,Neural Network,0.8461538461538461,0.8358311336844432,
+Sampling-SMOTE,Logistic Regression,0.8461538461538461,0.8410450660450661,
+Sampling-ADASYN,Random Forest,0.9903846153846154,0.9894648829431438,
+Sampling-ADASYN,XGBoost,1.0,1.0,
+Sampling-ADASYN,LightGBM,1.0,1.0,
+Sampling-ADASYN,Neural Network,0.8365384615384616,0.8258193078108332,
+Sampling-ADASYN,Logistic Regression,0.8269230769230769,0.8117189232543355,
+Sampling-RandomUnderSampler,Random Forest,0.8557692307692307,0.8686569050270629,
+Sampling-RandomUnderSampler,XGBoost,0.9903846153846154,0.9904443607606853,
+Sampling-RandomUnderSampler,LightGBM,1.0,1.0,
+Sampling-RandomUnderSampler,Neural Network,0.41346153846153844,0.44075646607594565,
+Sampling-RandomUnderSampler,Logistic Regression,0.6538461538461539,0.6827266483516484,
+Sampling-SMOTEENN,Random Forest,0.9711538461538461,0.970125067240452,
+Sampling-SMOTEENN,XGBoost,1.0,1.0,
+Sampling-SMOTEENN,LightGBM,1.0,1.0,
+Sampling-SMOTEENN,Neural Network,0.8269230769230769,0.8142628205128205,
+Sampling-SMOTEENN,Logistic Regression,0.8173076923076923,0.8200364852538764,
+Ensemble,Voting,1.0,1.0,
+Ensemble,Stacking,1.0,1.0,
+Tuned,Random Forest,1.0,1.0,"{'max_depth': None, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 100}"
+Tuned,XGBoost,1.0,1.0,"{'colsample_bytree': 0.8, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 100, 'reg_alpha': 0, 'reg_lambda': 0, 'subsample': 0.8}"
+Tuned,LightGBM,1.0,1.0,"{'colsample_bytree': 0.8, 'learning_rate': 0.1, 'max_depth': -1, 'n_estimators': 100, 'num_leaves': 31, 'reg_alpha': 0, 'reg_lambda': 0, 'subsample': 0.8}"
+Tuned,Neural Network,0.8365384615384616,0.8258193078108332,"{'alpha': 0.0001, 'hidden_layer_sizes': (100, 50), 'learning_rate_init': 0.001, 'max_iter': 500}"
+Tuned,Logistic Regression,0.8557692307692307,0.8389147617088794,"{'C': 10, 'penalty': 'l2', 'solver': 'liblinear'}"

@@ -1,0 +1,46 @@
+Type,Model,Accuracy,F1_Score,Best_Params
+Sampling-Original,Random Forest,0.9615384615384616,0.9569937541091387,
+Sampling-Original,XGBoost,1.0,1.0,
+Sampling-Original,LightGBM,1.0,1.0,
+Sampling-Original,CatBoost,1.0,1.0,
+Sampling-Original,AdaBoost,0.75,0.6482142857142856,
+Sampling-Original,Neural Network,0.875,0.8690055433740276,
+Sampling-Original,Logistic Regression,0.8365384615384616,0.8145601398906517,
+Sampling-SMOTE,Random Forest,0.9711538461538461,0.970240829397684,
+Sampling-SMOTE,XGBoost,1.0,1.0,
+Sampling-SMOTE,LightGBM,1.0,1.0,
+Sampling-SMOTE,CatBoost,1.0,1.0,
+Sampling-SMOTE,AdaBoost,0.5769230769230769,0.4624742653939734,
+Sampling-SMOTE,Neural Network,0.9134615384615384,0.9103708791208791,
+Sampling-SMOTE,Logistic Regression,0.8461538461538461,0.8461980618204336,
+Sampling-ADASYN,Random Forest,0.9423076923076923,0.9374416433239964,
+Sampling-ADASYN,XGBoost,1.0,1.0,
+Sampling-ADASYN,LightGBM,1.0,1.0,
+Sampling-ADASYN,CatBoost,1.0,1.0,
+Sampling-ADASYN,AdaBoost,0.5769230769230769,0.4624742653939734,
+Sampling-ADASYN,Neural Network,0.8942307692307693,0.8869666995457135,
+Sampling-ADASYN,Logistic Regression,0.8173076923076923,0.8047637390857729,
+Sampling-RandomUnderSampler,Random Forest,0.7596153846153846,0.7835342867021585,
+Sampling-RandomUnderSampler,XGBoost,0.9903846153846154,0.9904443607606853,
+Sampling-RandomUnderSampler,LightGBM,1.0,1.0,
+Sampling-RandomUnderSampler,CatBoost,1.0,1.0,
+Sampling-RandomUnderSampler,AdaBoost,0.23076923076923078,0.20393559928443647,
+Sampling-RandomUnderSampler,Neural Network,0.47115384615384615,0.49301333975303047,
+Sampling-RandomUnderSampler,Logistic Regression,0.6538461538461539,0.6687409091255245,
+Sampling-SMOTEENN,Random Forest,0.6442307692307693,0.6679685208003285,
+Sampling-SMOTEENN,XGBoost,0.9903846153846154,0.9895348837209302,
+Sampling-SMOTEENN,LightGBM,0.9807692307692307,0.9798544675187748,
+Sampling-SMOTEENN,CatBoost,0.9903846153846154,0.9895348837209302,
+Sampling-SMOTEENN,AdaBoost,0.7692307692307693,0.6739130434782609,
+Sampling-SMOTEENN,Neural Network,0.6538461538461539,0.6613930623831614,
+Sampling-SMOTEENN,Logistic Regression,0.6923076923076923,0.7235389610389611,
+Ensemble,Voting,1.0,1.0,
+Ensemble,Stacking,1.0,1.0,
+Ensemble,Weighted_Voting,1.0,1.0,
+Tuned,Random Forest,1.0,1.0,"{'max_depth': None, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 100}"
+Tuned,XGBoost,1.0,1.0,"{'colsample_bytree': 0.8, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 100, 'reg_alpha': 0, 'reg_lambda': 0, 'subsample': 0.8}"
+Tuned,LightGBM,1.0,1.0,"{'colsample_bytree': 1.0, 'learning_rate': 0.1, 'max_depth': -1, 'n_estimators': 100, 'num_leaves': 31, 'reg_alpha': 0, 'reg_lambda': 0, 'subsample': 0.8}"
+Tuned,CatBoost,1.0,1.0,"{'depth': 4, 'iterations': 100, 'l2_leaf_reg': 1, 'learning_rate': 0.1}"
+Tuned,AdaBoost,0.9711538461538461,0.9576923076923076,"{'learning_rate': 0.5, 'n_estimators': 50}"
+Tuned,Neural Network,0.875,0.8610314356077068,"{'alpha': 0.0001, 'hidden_layer_sizes': (150, 100), 'learning_rate_init': 0.01, 'max_iter': 500}"
+Tuned,Logistic Regression,0.8365384615384616,0.8176045967130379,"{'C': 10, 'penalty': 'l2', 'solver': 'liblinear'}"
