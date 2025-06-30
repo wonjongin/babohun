@@ -280,6 +280,25 @@ for name, mp in models_and_params.items():
             pred_df[f"{col}_예측_{name}"] = y_pred[:, i]
         pred_dfs[name] = pred_df
 
+        # 1. 병원명 칼럼 추가 (원본 data의 병원명 열 복사)
+        pred_df["병원명"] = data["병원명"].values
+
+        # 2. 예측 결과 칼럼 추가
+        for i, col in enumerate(y.columns):
+            pred_df[f"{col}_예측_{name}"] = y_pred[:, i]
+
+        # 3. 병원명 칼럼을 맨 앞으로 이동 (선택사항)
+        cols = pred_df.columns.tolist()
+        cols = ['병원명'] + [c for c in cols if c != '병원명']
+        pred_df = pred_df[cols]
+
+        print(pred_df)
+        pred_dfs[name] = pred_df
+
+    except Exception as e:
+        print(f"{name} 모델 처리 중 오류 발생: {e}")
+        continue
+
     except Exception as e:
         print(f"{name} 모델 처리 중 오류 발생: {e}")
         continue
