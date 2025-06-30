@@ -1,0 +1,5 @@
+Feature_Type,Best_Model_Accuracy,Best_Accuracy,Best_Accuracy_F1,Best_Accuracy_CV,Best_Model_F1,Best_F1_Score,Best_F1_Accuracy,Best_F1_CV
+시계열 피쳐,Random Forest,0.5673076923076923,0.4348776223776224,0.5335628227194491,,,,
+시계열 피쳐,,,,,Random Forest,0.4348776223776224,0.5673076923076923,0.5335628227194491
+연령지역진료과 피쳐,Logistic Regression,0.6153846153846154,0.5448147514332164,0.5601262191623637,,,,
+연령지역진료과 피쳐,,,,,Logistic Regression,0.5448147514332164,0.6153846153846154,0.5601262191623637

@@ -27,16 +27,51 @@ from sklearn.ensemble import (
 )
 from sklearn.metrics import (
     classification_report,
-    mean_absolute_error, mean_squared_error
+    mean_absolute_error, mean_squared_error, r2_score
 )
+
+# 모델 성능 저장용 리스트
+model_performance = []
+
+def calculate_classification_metrics(y_true, y_pred, model_name):
+    """분류 모델 성능 지표 계산"""
+    from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+    
+    accuracy = accuracy_score(y_true, y_pred)
+    precision = precision_score(y_true, y_pred, average='weighted')
+    recall = recall_score(y_true, y_pred, average='weighted')
+    f1 = f1_score(y_true, y_pred, average='weighted')
+    
+    return {
+        'model_name': model_name,
+        'model_type': 'classification',
+        'accuracy': accuracy,
+        'precision': precision,
+        'recall': recall,
+        'f1_score': f1
+    }
+
+def calculate_regression_metrics(y_true, y_pred, model_name):
+    """회귀 모델 성능 지표 계산"""
+    mae = mean_absolute_error(y_true, y_pred)
+    rmse = np.sqrt(mean_squared_error(y_true, y_pred))
+    r2 = r2_score(y_true, y_pred)
+    
+    return {
+        'model_name': model_name,
+        'model_type': 'regression',
+        'mae': mae,
+        'rmse': rmse,
+        'r2_score': r2
+    } 
 
 # ----------------------------------------------------------------------
 # 1) 데이터 로드 & 전처리
 # ----------------------------------------------------------------------
 print("=== 데이터 로딩 시작 ===")
 
-data_csv = r"new_merged_data/다빈도 질환 환자 연령별 분포_순위추가_합계계산_값통일.csv"
-mapping_csv = r"df_result2_with_심평원.csv"
+data_csv = "final_merged_data/다빈도 질환 환자 연령별 분포.csv"
+mapping_csv = "new_merged_data/df_result2_with_심평원.csv"
 
 # 연령지역진료과 데이터 로드 (성능 향상을 위해)
 try:
@@ -52,11 +87,31 @@ ekqlseh = ekqlseh[ekqlseh['구분'] != '입원(실인원)']
 
 df = ekqlseh.drop(columns=['순위', '상병명', '실인원'])
 df = df[~df['지역'].isin(['서울', '대전', '대구'])].copy()
-df.rename(columns={'진료비(천원)': '진료비'}, inplace=True)
+
+# 중복 확인 및 제거
+print(f"원본 데이터 행 수: {len(df)}")
+print(f"중복 행 수: {df.duplicated().sum()}")
+
+# 중복이 너무 많으면 원본 데이터의 고유한 조합만 유지
+if df.duplicated().sum() > len(df) * 0.5:  # 50% 이상 중복이면
+    print("중복이 너무 많아 원본 데이터의 고유한 조합만 유지합니다.")
+    # 실제 데이터 구조에 맞는 컬럼 사용
+    available_keys = ['상병코드', '지역', '구분', '연인원', '진료비(천원)', '진료과']
+    # 존재하는 컬럼만 필터링
+    existing_keys = [key for key in available_keys if key in df.columns]
+    print(f"사용할 컬럼: {existing_keys}")
+    df = df.drop_duplicates(subset=existing_keys)
+    print(f"고유 조합 기준 중복 제거 후 행 수: {len(df)}")
+else:
+    if df.duplicated().sum() > 0:
+        print("일반적인 중복 제거를 수행합니다.")
+        df = df.drop_duplicates()
+        print(f"중복 제거 후 행 수: {len(df)}")
 
 mapping = pd.read_csv(mapping_csv, encoding="utf-8-sig")
 df = df.merge(mapping[['상병코드', '진료과']], on='상병코드', how='left')
 df.dropna(subset=['진료과'], inplace=True)
+print(f"진료과 매핑 후 행 수: {len(df)}")
 
 # ----------------------------------------------------------------------
 # 2) 연령지역진료과 데이터 기반 추가 피처 생성
@@ -76,7 +131,30 @@ if df_age_region is not None:
     department_stats.columns = ['진료과', '평균확률', '평균신뢰도', '총샘플수', '평균연령', '대도시비율']
     
     # 진료과별로 매핑
+    print(f"진료과 통계 merge 전 행 수: {len(df)}")
+    print(f"진료과 통계 데이터 진료과 수: {len(department_stats)}")
+    
+    # merge 전 중복 확인
+    print(f"merge 전 중복 행 수: {df.duplicated().sum()}")
+    
     df = df.merge(department_stats, on='진료과', how='left')
+    
+    # merge 후 중복 확인
+    print(f"진료과 통계 merge 후 행 수: {len(df)}")
+    print(f"merge 후 중복 행 수: {df.duplicated().sum()}")
+    
+    # 중복이 너무 많으면 원본 데이터의 고유한 조합만 유지
+    if df.duplicated().sum() > len(df) * 0.5:  # 50% 이상 중복이면
+        print("중복이 너무 많아 원본 데이터의 고유한 조합만 유지합니다.")
+        # 원본 데이터의 고유한 조합 기준으로 중복 제거
+        original_keys = ['상병코드', '지역', '연령대', '구분', '연인원', '진료비', '진료과']
+        df = df.drop_duplicates(subset=original_keys)
+        print(f"고유 조합 기준 중복 제거 후 행 수: {len(df)}")
+    else:
+        if df.duplicated().sum() > 0:
+            print("일반적인 중복 제거를 수행합니다.")
+            df = df.drop_duplicates()
+            print(f"중복 제거 후 행 수: {len(df)}")
     
     # 지역별 통계 정보 추출
     region_stats = df_age_region.groupby('지역').agg({
@@ -89,7 +167,30 @@ if df_age_region is not None:
     region_stats.columns = ['지역', '지역평균확률', '지역평균신뢰도', '지역총샘플수', '지역평균연령']
     
     # 지역별로 매핑
+    print(f"지역 통계 merge 전 행 수: {len(df)}")
+    print(f"지역 통계 데이터 지역 수: {len(region_stats)}")
+    
+    # merge 전 중복 확인
+    print(f"merge 전 중복 행 수: {df.duplicated().sum()}")
+    
     df = df.merge(region_stats, on='지역', how='left')
+    
+    # merge 후 중복 확인
+    print(f"지역 통계 merge 후 행 수: {len(df)}")
+    print(f"merge 후 중복 행 수: {df.duplicated().sum()}")
+    
+    # 중복이 너무 많으면 원본 데이터의 고유한 조합만 유지
+    if df.duplicated().sum() > len(df) * 0.5:  # 50% 이상 중복이면
+        print("중복이 너무 많아 원본 데이터의 고유한 조합만 유지합니다.")
+        # 원본 데이터의 고유한 조합 기준으로 중복 제거
+        original_keys = ['상병코드', '지역', '연령대', '구분', '연인원', '진료비', '진료과']
+        df = df.drop_duplicates(subset=original_keys)
+        print(f"고유 조합 기준 중복 제거 후 행 수: {len(df)}")
+    else:
+        if df.duplicated().sum() > 0:
+            print("일반적인 중복 제거를 수행합니다.")
+            df = df.drop_duplicates()
+            print(f"중복 제거 후 행 수: {len(df)}")
     
     # 연령대별 통계 정보 추출
     age_stats = df_age_region.groupby('age_group').agg({
@@ -152,19 +253,19 @@ else:
 # ----------------------------------------------------------------------
 # 3) 비모수 검정: Kruskal–Wallis + Dunn's
 # ----------------------------------------------------------------------
-groups = [g['진료비'].values for _, g in df.groupby('상병코드') if len(g) >= 3]
+groups = [g['진료비(천원)'].values for _, g in df.groupby('상병코드') if len(g) >= 3]
 H, p = stats.kruskal(*groups)
 print(f"=== Kruskal–Wallis 검정: H={H:.4f}, p-value={p:.4e} ===")
 
-dunn = sp.posthoc_dunn(df, val_col='진료비', group_col='상병코드', p_adjust='bonferroni')
+dunn = sp.posthoc_dunn(df, val_col='진료비(천원)', group_col='상병코드', p_adjust='bonferroni')
 print("=== Dunn's post-hoc (Bonferroni) ===")
 print(dunn)
 
 # ----------------------------------------------------------------------
 # 4) 분류 모델: 고비용 여부 예측 (연령지역진료과 데이터 포함)
 # ----------------------------------------------------------------------
-thr = df['진료비'].quantile(0.75)
-df['high_cost'] = (df['진료비'] >= thr).astype(int)
+thr = df['진료비(천원)'].quantile(0.75)
+df['high_cost'] = (df['진료비(천원)'] >= thr).astype(int)
 
 # Decision Tree (연령지역진료과 데이터 포함)
 X_dt = pd.get_dummies(df[['상병코드', '평균확률', '종합신뢰도']], prefix='', prefix_sep='')
@@ -174,8 +275,13 @@ X_tr_dt, X_te_dt, y_tr, y_te = train_test_split(
 )
 dt = DecisionTreeClassifier(max_depth=4, class_weight='balanced', random_state=42)
 dt.fit(X_tr_dt, y_tr)
+y_pred_dt = dt.predict(X_te_dt)
 print("\n=== DecisionTreeClassifier (연령지역진료과 데이터 포함) ===")
-print(classification_report(y_te, dt.predict(X_te_dt)))
+print(classification_report(y_te, y_pred_dt))
+
+# 성능 저장
+dt_performance = calculate_classification_metrics(y_te, y_pred_dt, "DecisionTree_Classification")
+model_performance.append(dt_performance)
 
 # RandomForest & GradientBoosting (연령지역진료과 데이터 포함)
 X_rf = pd.get_dummies(df[['상병코드', '지역', '평균확률', '종합신뢰도', '진료과_지역_상호작용', '총샘플수_log']], dtype=int)
@@ -192,16 +298,23 @@ gb = GradientBoostingClassifier(
 )
 rf.fit(X_tr_rf, y_tr)
 gb.fit(X_tr_rf, y_tr)
+y_pred_rf = rf.predict(X_te_rf)
+y_pred_gb = gb.predict(X_te_rf)
 print("\n=== RandomForestClassifier (연령지역진료과 데이터 포함) ===")
-print(classification_report(y_te, rf.predict(X_te_rf)))
+print(classification_report(y_te, y_pred_rf))
 print("\n=== GradientBoostingClassifier (연령지역진료과 데이터 포함) ===")
-print(classification_report(y_te, gb.predict(X_te_rf)))
+print(classification_report(y_te, y_pred_gb))
+
+# 성능 저장
+rf_performance = calculate_classification_metrics(y_te, y_pred_rf, "RandomForest_Classification")
+gb_performance = calculate_classification_metrics(y_te, y_pred_gb, "GradientBoosting_Classification")
+model_performance.extend([rf_performance, gb_performance])
 
 # ----------------------------------------------------------------------
 # 5) 회귀 모델: 진료비 직접 예측 (연령지역진료과 데이터 포함)
 # ----------------------------------------------------------------------
 X_reg = X_rf.copy()
-y_reg = df['진료비'].values
+y_reg = df['진료비(천원)'].values
 X_tr_rg, X_te_rg, y_tr_rg, y_te_rg = train_test_split(
     X_reg, y_reg, test_size=0.3, random_state=42
 )
@@ -215,16 +328,20 @@ print("\n=== 회귀 모델 평가 (연령지역진료과 데이터 포함) ===")
 for name, m in [("DT", dtr), ("RF", rfr), ("GB", gbr)]:
     pred = m.predict(X_te_rg)
     print(f"{name} → MAE: {mean_absolute_error(y_te_rg, pred):.0f}천원, RMSE: {np.sqrt(mean_squared_error(y_te_rg, pred)):.0f}천원")
+    
+    # 성능 저장
+    reg_performance = calculate_regression_metrics(y_te_rg, pred, f"{name}_Regression")
+    model_performance.append(reg_performance)
 
 # ----------------------------------------------------------------------
 # 6) 로그 스케일 기반 진료비 구간 예측 (연령지역진료과 데이터 포함)
 # ----------------------------------------------------------------------
 # 6.1) 로그 스케일 구간 정의
-min_v = df['진료비'].min()
-max_v = df['진료비'].max()
+min_v = df['진료비(천원)'].min()
+max_v = df['진료비(천원)'].max()
 bins = np.logspace(np.log10(min_v), np.log10(max_v), num=6)
 # 6.2) 구간 클래스 할당
-labels = pd.cut(df['진료비'], bins=bins, labels=False, include_lowest=True)
+labels = pd.cut(df['진료비(천원)'], bins=bins, labels=False, include_lowest=True)
 # 6.3) NaN & 희귀 구간 제거
 valid_idx = labels.dropna().index
 counts = labels.loc[valid_idx].value_counts().sort_index()
@@ -240,6 +357,10 @@ lgb_clf.fit(X_tr, y_tr)
 y_pred = lgb_clf.predict(X_te)
 print("\n=== 로그 스케일 구간 분류 성능 (연령지역진료과 데이터 포함) ===")
 print(classification_report(y_te, y_pred))
+
+# LightGBM 성능 저장
+lgb_performance = calculate_classification_metrics(y_te, y_pred, "LightGBM_Classification")
+model_performance.append(lgb_performance)
 
 # 6.6) 대표 진료비 예측 함수
 def predict_cost_bin(code, region, model, feat_cols, bins, age_region_features=None):
@@ -323,9 +444,53 @@ for _, row in df.iterrows():
 # 예측 결과를 df에 컬럼으로 추가
 df['pred_bin_age_region'], df['pred_cost_age_region'] = zip(*preds)
 
+# 최종 중복 확인 및 제거
+print(f"예측 완료 후 데이터 행 수: {len(df)}")
+print(f"최종 중복 행 수: {df.duplicated().sum()}")
+if df.duplicated().sum() > 0:
+    print("최종 중복 행을 제거합니다.")
+    df = df.drop_duplicates()
+    print(f"최종 중복 제거 후 행 수: {len(df)}")
+
 # CSV로 저장
 output_path = f"{results_dir}/진료비_구간예측결과_연령지역진료과연계.csv"
 df.to_csv(output_path, index=False, encoding='utf-8-sig')
 
+# 모델 성능 요약 및 CSV 저장
+print("\n" + "="*60)
+print("모델별 성능 요약")
+print("="*60)
+
+# 분류 모델 성능 요약
+classification_models = [p for p in model_performance if p['model_type'] == 'classification']
+if classification_models:
+    print("\n📊 분류 모델 성능:")
+    print("-" * 50)
+    for model in classification_models:
+        print(f"{model['model_name']}:")
+        print(f"  정확도: {model['accuracy']:.4f}")
+        print(f"  정밀도: {model['precision']:.4f}")
+        print(f"  재현율: {model['recall']:.4f}")
+        print(f"  F1점수: {model['f1_score']:.4f}")
+        print()
+
+# 회귀 모델 성능 요약
+regression_models = [p for p in model_performance if p['model_type'] == 'regression']
+if regression_models:
+    print("\n📈 회귀 모델 성능:")
+    print("-" * 50)
+    for model in regression_models:
+        print(f"{model['model_name']}:")
+        print(f"  MAE: {model['mae']:.0f}천원")
+        print(f"  RMSE: {model['rmse']:.0f}천원")
+        print(f"  R²: {model['r2_score']:.4f}")
+        print()
+
+# 성능 데이터를 DataFrame으로 변환하여 CSV 저장
+performance_df = pd.DataFrame(model_performance)
+performance_csv_path = f"{results_dir}/모델별_성능_요약.csv"
+performance_df.to_csv(performance_csv_path, index=False, encoding='utf-8-sig')
+
+print(f"모델 성능 요약이 '{performance_csv_path}'에 저장되었습니다.")
 print(f"예측 결과를 '{output_path}'에 저장했습니다.")
-print(f"모든 결과가 '{results_dir}' 디렉토리에 저장되었습니다!") 
+print(f"모든 결과가 '{results_dir}' 디렉토리에 저장되었습니다!")

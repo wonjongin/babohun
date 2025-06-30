@@ -19,3 +19,4 @@ catboost
 optuna
 pulp
 scikit-posthocs
+imbalanced-learn
