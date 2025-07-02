@@ -210,7 +210,7 @@ print()
 print("6/6: 결과 저장 및 시각화 중...")
 
 # 결과 저장 디렉토리 생성
-results_dir = "optimization_results"
+results_dir = "optimization_results_전문의_분배_최적화"
 os.makedirs(results_dir, exist_ok=True)
 
 # 1) 상세 결과 저장

@@ -493,4 +493,4 @@ performance_df.to_csv(performance_csv_path, index=False, encoding='utf-8-sig')
 
 print(f"모델 성능 요약이 '{performance_csv_path}'에 저장되었습니다.")
 print(f"예측 결과를 '{output_path}'에 저장했습니다.")
-print(f"모든 결과가 '{results_dir}' 디렉토리에 저장되었습니다!")
+print(f"모든 결과가 '{results_dir}' 디렉토리에 저장되었습니다!") 

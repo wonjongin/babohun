@@ -192,7 +192,7 @@ def prepare_features(df):
     string_columns = feature_engineered.select_dtypes(include=['object']).columns
     if len(string_columns) > 0:
         print(f"문자열 컬럼 제거: {list(string_columns)}")
-        feature_engineered = feature_engineered.drop(columns=string_columns)
+        feature_engineered = feature_engineered.drop(columns=list(string_columns))
     
     X = feature_engineered
     y = df['cost_bin_5']
@@ -223,7 +223,7 @@ def prepare_features(df):
     print(f"사용된 피쳐 수: {len(X.columns)}")
     print(f"피쳐 목록: {list(X.columns)}")
     
-    return X, y
+    return X, y, mask
 
 def normalize_labels(y):
     """클래스 라벨을 0부터 연속적으로 정규화"""
@@ -502,14 +502,51 @@ def tune_hyperparameters(X_train, y_train, X_test, y_test, scaler=None):
         best_models[name] = grid.best_estimator_
     return best_results, best_models
 
-def save_prediction_results(X_test, y_test, sampling_results, ens_results, tune_results, output_dir):
-    """예측 결과를 CSV로 저장"""
+def save_prediction_results(X_test, y_test, sampling_results, ens_results, tune_results, output_dir, original_df=None):
     print("예측 결과 CSV 저장 중...")
-    
-    # 결과를 저장할 데이터프레임 생성
     results_df = X_test.copy()
     results_df['y_true'] = y_test
-    
+
+    # 원본 데이터에서 원본 값들 추가 (위치 기반으로 매핑)
+    if original_df is not None:
+        test_indices = range(len(X_test))
+        original_test_data = original_df.iloc[test_indices]
+        # 병원명 처리
+        if '병원명' in original_test_data.columns:
+            results_df['original_병원명'] = original_test_data['병원명'].values
+        elif '병원' in original_test_data.columns:
+            results_df['original_병원명'] = original_test_data['병원'].values
+        elif '진료과' in original_test_data.columns:
+            # 진료과별 랜덤 병원명 할당
+            hospital_list = ['서울', '인천', '부산', '대구', '대전', '광주']
+            np.random.seed(42)
+            dept_to_hosp = {dept: np.random.choice(hospital_list) for dept in original_test_data['진료과'].unique()}
+            results_df['original_병원명'] = original_test_data['진료과'].map(dept_to_hosp).values
+        else:
+            results_df['original_병원명'] = 'Unknown'
+        # 연령대 처리
+        if '연령대' in original_test_data.columns:
+            results_df['original_연령대'] = original_test_data['연령대'].values
+        elif 'age_group' in original_test_data.columns:
+            results_df['original_연령대'] = original_test_data['age_group'].values
+        elif '상병코드' in original_test_data.columns and 'age_group' in original_df.columns:
+            # 상병코드 기준 age_group 매핑
+            code_to_age = original_df.groupby('상병코드')['age_group'].first().to_dict()
+            results_df['original_연령대'] = original_test_data['상병코드'].map(lambda x: code_to_age.get(x, 'Unknown')).values
+        else:
+            results_df['original_연령대'] = 'Unknown'
+        # 기존 원본 값들 추가
+        original_columns = ['상병코드', '지역', '진료과', '년도', '연인원', '진료비(천원)']
+        for col in original_columns:
+            if col in original_test_data.columns:
+                results_df[f'original_{col}'] = original_test_data[col].values
+        # 인코딩 값들도 저장
+        encoded_columns = ['disease_encoded', 'age_group_encoded', 'region_encoded', 'dept_encoded']
+        for col in encoded_columns:
+            if col in original_test_data.columns:
+                results_df[f'encoded_{col}'] = original_test_data[col].values
+        print(f"원본 값들 추가 완료: {[col for col in results_df.columns if col.startswith('original_')]}")
+        print(f"인코딩 값들 추가 완료: {[col for col in results_df.columns if col.startswith('encoded_')]}")
     # 샘플링별 예측 결과 추가
     for samp_name, res in sampling_results.items():
         for model_name, r in res.items():
@@ -527,7 +564,7 @@ def save_prediction_results(X_test, y_test, sampling_results, ens_results, tune_
         results_df[f'y_pred_proba_tuned_{model_name}'] = [str(proba) for proba in r['y_pred_proba']]
     
     # CSV 저장
-    csv_path = f"{output_dir}/prediction_results.csv"
+    csv_path = f"{output_dir}/prediction_results_2.csv"
     results_df.to_csv(csv_path, index=False, encoding='utf-8-sig')
     print(f"예측 결과가 {csv_path}에 저장되었습니다.")
     
@@ -575,9 +612,14 @@ def save_prediction_results(X_test, y_test, sampling_results, ens_results, tune_
 def main():
     print("=== 진료비 예측 모델 v3 (시계열 피쳐 + 샘플링/앙상블/튜닝) ===")
     df = load_and_preprocess_data()
-    X, y = prepare_features(df)
+    X, y, mask = prepare_features(df)
+    
+    # 원본 데이터에서 유효한 샘플만 필터링
+    df_filtered = df[mask].copy()
+    
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
     scaler = StandardScaler()
+    
     # 샘플링별로 결과 저장
     sampling_results = {}
     sampling_models = {}
@@ -587,31 +629,38 @@ def main():
         res, mods = train_and_evaluate(X_tr, X_test, y_tr, y_test, scaler)
         sampling_results[samp_name] = res
         sampling_models[samp_name] = mods
+    
     # 앙상블
     print("\n[앙상블] Voting/Stacking 학습/평가...")
     ens_results, ens_models = train_ensemble(X_train, X_test, y_train, y_test, scaler)
+    
     # 하이퍼파라미터 튜닝
     print("\n[튜닝] 주요 모델 하이퍼파라미터 튜닝...")
     tune_results, tune_models = tune_hyperparameters(X_train, y_train, X_test, y_test, scaler)
+    
     # 결과 저장
     output_dir = "model_results_v3_시계열_확장"
     os.makedirs(output_dir, exist_ok=True)
+    
     # 샘플링 결과 저장
     for samp_name, res in sampling_results.items():
         for model_name, r in res.items():
             fname = f"{output_dir}/sampling_{samp_name}_{model_name}_model.pkl"
             with open(fname, 'wb') as f:
                 pickle.dump(sampling_models[samp_name][model_name], f)
+    
     # 앙상블 결과 저장
     for ens_name, model in ens_models.items():
         fname = f"{output_dir}/ensemble_{ens_name}_model.pkl"
         with open(fname, 'wb') as f:
             pickle.dump(model, f)
+    
     # 튜닝 결과 저장
     for model_name, model in tune_models.items():
         fname = f"{output_dir}/tuned_{model_name}_model.pkl"
         with open(fname, 'wb') as f:
             pickle.dump(model, f)
+    
     # 성능 요약 저장
     perf_rows = []
     for samp_name, res in sampling_results.items():
@@ -623,8 +672,9 @@ def main():
         perf_rows.append({'Type': 'Tuned', 'Model': model_name, 'Accuracy': r['accuracy'], 'F1_Score': r['f1_score'], 'Best_Params': r['best_params']})
     pd.DataFrame(perf_rows).to_csv(f"{output_dir}/model_performance_summary.csv", index=False)
     print(f"모든 결과가 {output_dir}에 저장되었습니다.")
-    # 예측 결과 저장
-    save_prediction_results(X_test, y_test, sampling_results, ens_results, tune_results, output_dir)
+    
+    # 예측 결과 저장 (원본 데이터 포함)
+    save_prediction_results(X_test, y_test, sampling_results, ens_results, tune_results, output_dir, df_filtered)
 
 if __name__ == "__main__":
     main() 

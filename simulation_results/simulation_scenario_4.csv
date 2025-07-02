@@ -1,0 +1,2 @@
+scenario_id,patients_served,patients_rejected,total_patients,rejection_rate_percent,average_wait_time_hours,average_bed_utilization,average_specialist_utilization,bed_capacity_total,total_specialists,병상가동률,병상당의사수,의사당외래환자수,외래대비입원비율
+4,6765,0,6765,0.0,0.0,0.0006690113261634666,0.004709414193303322,3430,404,36.15018630396484,0.11778425655976676,4.301349518513495,0.09246591000461943

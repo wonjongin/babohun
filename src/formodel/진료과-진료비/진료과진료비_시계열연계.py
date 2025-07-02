@@ -399,7 +399,7 @@ output_path = f"{results_dir}/진료비_구간예측결과_시계열연계.csv"
 df.to_csv(output_path, index=False, encoding='utf-8-sig')
 
 print(f"예측 결과를 '{output_path}'에 저장했습니다.")
-print(f"모든 결과가 '{results_dir}' 디렉토리에 저장되었습니다!")
+print(f"모든 결과가 '{results_dir}' 디렉토리에 저장되었습니다!") 
 
 # ----------------------------------------------------------------------
 # 8) 모델 성능 요약 및 저장

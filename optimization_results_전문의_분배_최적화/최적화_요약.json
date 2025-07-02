@@ -1,0 +1,15 @@
+{
+  "timestamp": "2025-07-02T04:12:49.369467",
+  "total_doctors": 157,
+  "total_patients": 1656923,
+  "optimization_status": "Optimal",
+  "objective_value": 0.997203638441,
+  "current_ratio_std": 6650.247866690446,
+  "optimal_ratio_std": 3450.668560762899,
+  "improvement_percentage": 48.11218123092074,
+  "total_hospitals": 5,
+  "total_departments": 18,
+  "doctors_increased": 23,
+  "doctors_decreased": 25,
+  "doctors_unchanged": 29
+}
