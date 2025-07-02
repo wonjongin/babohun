@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-07-02T02:19:14.077745",
+  "total_beds": 21138,
+  "total_patients": 400223,
+  "optimization_status": "Optimal",
+  "objective_value": 0.0,
+  "current_utilization_std": 7.132071128631756,
+  "optimal_utilization_std": 7.132071128631756,
+  "utilization_improvement_percentage": 0.0,
+  "current_optimal_utilization_ratio": 0.0,
+  "optimal_optimal_utilization_ratio": 0.0,
+  "total_hospitals": 5,
+  "total_departments": 14,
+  "beds_increased": 0,
+  "beds_decreased": 0,
+  "beds_unchanged": 55
+}
