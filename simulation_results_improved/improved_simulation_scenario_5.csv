@@ -1,0 +1,2 @@
+scenario_id,patients_served,patients_rejected,total_patients,rejection_rate_percent,average_wait_time_hours,bed_utilization_rate,doctors_per_bed,outpatients_per_doctor,admission_outpatient_ratio
+5,14244,0,14244,0.0,0.0,73.54986144655165,0.11778425655976676,4.301349518513495,0.09246591000461943

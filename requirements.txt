@@ -20,3 +20,5 @@ optuna
 pulp
 scikit-posthocs
 imbalanced-learn
+simpy
+ortools

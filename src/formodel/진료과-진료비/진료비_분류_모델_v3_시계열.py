@@ -275,7 +275,7 @@ def get_base_models():
         'Neural Network': MLPClassifier(hidden_layer_sizes=(100, 50), max_iter=500, random_state=42),
         'Logistic Regression': LogisticRegression(random_state=42, max_iter=1000)
     }
-
+    
 def get_param_grids():
     return {
         'Random Forest': {
