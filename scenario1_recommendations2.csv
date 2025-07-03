@@ -1,0 +1,1 @@
+지역,구분,year_num,y_predicted,병원,진료과,연도,RF예측,predicted_inpatients,prev_inpatients,growth_rate,bed_change_pct,specialist_change_pct,marketing_priority,scenario
