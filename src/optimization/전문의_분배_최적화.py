@@ -27,6 +27,9 @@ print("1/6: 데이터 로드 및 전처리 중...")
 df_pred = pd.read_csv('analysis_data/병원별_진료과별_입원외래_통합_시계열예측결과_개선.csv')
 df_info = pd.read_csv('new_merged_data/병원_통합_데이터.csv')
 
+# '서울'을 '중앙'으로 병원명 일괄 변경
+df_info['병원명'] = df_info['병원명'].replace('서울', '중앙')
+
 # 최근 연도(2023)만 사용
 df_pred = df_pred[df_pred['연도'] == 2023]
 
