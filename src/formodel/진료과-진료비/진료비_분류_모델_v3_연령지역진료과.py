@@ -250,21 +250,23 @@ def train_and_evaluate(X_train, X_test, y_train, y_test, scaler=None):
     for name, model in models.items():
         print(f"  {name} 모델 학습/평가 중...")
         
-        # 교차검증으로 성능 평가
+        # 교차검증으로 성능 평가 (F1과 Accuracy 모두 계산)
         if scaler and name in ['Neural Network', 'Logistic Regression']:
             # 스케일링이 필요한 모델의 경우 Pipeline 사용
             pipeline = Pipeline([
                 ('scaler', StandardScaler()),
                 ('classifier', model)
             ])
-            cv_scores = cross_val_score(pipeline, X_train, y_train, cv=cv, scoring='f1_weighted')
+            cv_f1_scores = cross_val_score(pipeline, X_train, y_train, cv=cv, scoring='f1_weighted')
+            cv_acc_scores = cross_val_score(pipeline, X_train, y_train, cv=cv, scoring='accuracy')
             # 최종 모델 학습
             pipeline.fit(X_train, y_train)
             y_pred = pipeline.predict(X_test)
             y_pred_proba = pipeline.predict_proba(X_test)
             trained_models[name] = pipeline
         else:
-            cv_scores = cross_val_score(model, X_train, y_train, cv=cv, scoring='f1_weighted')
+            cv_f1_scores = cross_val_score(model, X_train, y_train, cv=cv, scoring='f1_weighted')
+            cv_acc_scores = cross_val_score(model, X_train, y_train, cv=cv, scoring='accuracy')
             # 최종 모델 학습
             model.fit(X_train, y_train)
             y_pred = model.predict(X_test)
@@ -275,17 +277,60 @@ def train_and_evaluate(X_train, X_test, y_train, y_test, scaler=None):
         test_accuracy = accuracy_score(y_test, y_pred)
         test_f1 = f1_score(y_test, y_pred, average='weighted')
         
+        # 추가 성능 지표
+        from sklearn.metrics import precision_score, recall_score, roc_auc_score, precision_recall_fscore_support, classification_report
+        test_precision = precision_score(y_test, y_pred, average='weighted', zero_division='warn')
+        test_recall = recall_score(y_test, y_pred, average='weighted', zero_division='warn')
+        
+        # Macro average 계산
+        test_precision_macro = precision_score(y_test, y_pred, average='macro', zero_division='warn')
+        test_recall_macro = recall_score(y_test, y_pred, average='macro', zero_division='warn')
+        test_f1_macro = f1_score(y_test, y_pred, average='macro', zero_division='warn')
+        
+        # 클래스별 개별 지표
+        precision_per_class, recall_per_class, f1_per_class, support_per_class = precision_recall_fscore_support(
+            y_test, y_pred, average=None, zero_division='warn'
+        )
+        
+        # Classification report 문자열 저장
+        class_report = classification_report(y_test, y_pred, output_dict=True)
+        
+        # ROC AUC 계산 (다중 클래스의 경우)
+        try:
+            if len(np.unique(y_test)) > 2:
+                test_auc = roc_auc_score(y_test, y_pred_proba, multi_class='ovr', average='weighted')
+        else:
+                test_auc = roc_auc_score(y_test, y_pred_proba[:, 1])
+        except:
+            test_auc = 0.0
+        
         results[name] = {
-            'cv_f1_mean': cv_scores.mean(),
-            'cv_f1_std': cv_scores.std(),
+            'cv_f1_mean': cv_f1_scores.mean(),
+            'cv_f1_std': cv_f1_scores.std(),
+            'cv_acc_mean': cv_acc_scores.mean(),
+            'cv_acc_std': cv_acc_scores.std(),
             'test_accuracy': test_accuracy,
             'test_f1_score': test_f1,
+            'test_precision': test_precision,
+            'test_recall': test_recall,
+            'test_precision_macro': test_precision_macro,
+            'test_recall_macro': test_recall_macro,
+            'test_f1_macro': test_f1_macro,
+            'test_auc': test_auc,
+            'precision_per_class': precision_per_class.tolist() if hasattr(precision_per_class, 'tolist') else list(precision_per_class),
+            'recall_per_class': recall_per_class.tolist() if hasattr(recall_per_class, 'tolist') else list(recall_per_class),
+            'f1_per_class': f1_per_class.tolist() if hasattr(f1_per_class, 'tolist') else list(f1_per_class),
+            'support_per_class': support_per_class.tolist() if hasattr(support_per_class, 'tolist') else list(support_per_class),
+            'classification_report': class_report,
             'y_pred': y_pred,
             'y_pred_proba': y_pred_proba
         }
         
-        print(f"    CV F1: {cv_scores.mean():.4f} (+/- {cv_scores.std() * 2:.4f})")
-        print(f"    Test Accuracy: {test_accuracy:.4f}, Test F1: {test_f1:.4f}")
+        print(f"    CV F1: {cv_f1_scores.mean():.4f} (+/- {cv_f1_scores.std() * 2:.4f})")
+        print(f"    CV Accuracy: {cv_acc_scores.mean():.4f} (+/- {cv_acc_scores.std() * 2:.4f})")
+        print(f"    Test - Acc: {test_accuracy:.4f}, F1(w): {test_f1:.4f}, F1(m): {test_f1_macro:.4f}")
+        print(f"    Test - Prec(w): {test_precision:.4f}, Rec(w): {test_recall:.4f}, AUC: {test_auc:.4f}")
+        print(f"    Test - Prec(m): {test_precision_macro:.4f}, Rec(m): {test_recall_macro:.4f}")
     
     return results, trained_models
 
@@ -302,46 +347,97 @@ def train_ensemble(X_train, X_test, y_train, y_test, scaler=None):
     # Voting
     print("  Voting 앙상블 학습/평가 중...")
     voting = VotingClassifier(estimators=estimators, voting='soft')
-    cv_scores = cross_val_score(voting, X_train, y_train, cv=cv, scoring='f1_weighted')
+    cv_f1_scores = cross_val_score(voting, X_train, y_train, cv=cv, scoring='f1_weighted')
+    cv_acc_scores = cross_val_score(voting, X_train, y_train, cv=cv, scoring='accuracy')
     voting.fit(X_train, y_train)
     y_pred = voting.predict(X_test)
     y_pred_proba = voting.predict_proba(X_test)
     
+    # 추가 성능 지표
+    from sklearn.metrics import precision_score, recall_score, roc_auc_score, precision_recall_fscore_support, classification_report
+    test_precision = precision_score(y_test, y_pred, average='weighted', zero_division='warn')
+    test_recall = recall_score(y_test, y_pred, average='weighted', zero_division='warn')
+    
+    # Macro average 계산
+    test_precision_macro = precision_score(y_test, y_pred, average='macro', zero_division='warn')
+    test_recall_macro = recall_score(y_test, y_pred, average='macro', zero_division='warn')
+    test_f1_macro = f1_score(y_test, y_pred, average='macro', zero_division='warn')
+    
+    # 클래스별 개별 지표
+    precision_per_class, recall_per_class, f1_per_class, support_per_class = precision_recall_fscore_support(
+        y_test, y_pred, average=None, zero_division='warn'
+    )
+    
+    # Classification report 문자열 저장
+    class_report = classification_report(y_test, y_pred, output_dict=True)
+    
+    try:
+        if len(np.unique(y_test)) > 2:
+            test_auc = roc_auc_score(y_test, y_pred_proba, multi_class='ovr', average='weighted')
+        else:
+            test_auc = roc_auc_score(y_test, y_pred_proba[:, 1])
+    except:
+        test_auc = 0.0
+    
     voting_result = {
-        'cv_f1_mean': cv_scores.mean(),
-        'cv_f1_std': cv_scores.std(),
+        'cv_f1_mean': cv_f1_scores.mean(),
+        'cv_f1_std': cv_f1_scores.std(),
+        'cv_acc_mean': cv_acc_scores.mean(),
+        'cv_acc_std': cv_acc_scores.std(),
         'test_accuracy': accuracy_score(y_test, y_pred),
         'test_f1_score': f1_score(y_test, y_pred, average='weighted'),
+        'test_precision': test_precision,
+        'test_recall': test_recall,
+        'test_auc': test_auc,
         'y_pred': y_pred,
         'y_pred_proba': y_pred_proba
     }
     results['Voting'] = voting_result
     trained_models['Voting'] = voting
     
-    print(f"    CV F1: {cv_scores.mean():.4f} (+/- {cv_scores.std() * 2:.4f})")
-    print(f"    Test Accuracy: {voting_result['test_accuracy']:.4f}, Test F1: {voting_result['test_f1_score']:.4f}")
+    print(f"    CV F1: {cv_f1_scores.mean():.4f} (+/- {cv_f1_scores.std() * 2:.4f})")
+    print(f"    CV Accuracy: {cv_acc_scores.mean():.4f} (+/- {cv_acc_scores.std() * 2:.4f})")
+    print(f"    Test Accuracy: {voting_result['test_accuracy']:.4f}, Test F1: {voting_result['test_f1_score']:.4f}, Test AUC: {test_auc:.4f}")
     
     # Stacking
     print("  Stacking 앙상블 학습/평가 중...")
     stacking = StackingClassifier(estimators=estimators, final_estimator=LogisticRegression())
-    cv_scores = cross_val_score(stacking, X_train, y_train, cv=cv, scoring='f1_weighted')
+    cv_f1_scores = cross_val_score(stacking, X_train, y_train, cv=cv, scoring='f1_weighted')
+    cv_acc_scores = cross_val_score(stacking, X_train, y_train, cv=cv, scoring='accuracy')
     stacking.fit(X_train, y_train)
     y_pred = stacking.predict(X_test)
     y_pred_proba = stacking.predict_proba(X_test)
     
+    # 추가 성능 지표
+    test_precision = precision_score(y_test, y_pred, average='weighted', zero_division='warn')
+    test_recall = recall_score(y_test, y_pred, average='weighted', zero_division='warn')
+    try:
+        if len(np.unique(y_test)) > 2:
+            test_auc = roc_auc_score(y_test, y_pred_proba, multi_class='ovr', average='weighted')
+        else:
+            test_auc = roc_auc_score(y_test, y_pred_proba[:, 1])
+    except:
+        test_auc = 0.0
+    
     stacking_result = {
-        'cv_f1_mean': cv_scores.mean(),
-        'cv_f1_std': cv_scores.std(),
+        'cv_f1_mean': cv_f1_scores.mean(),
+        'cv_f1_std': cv_f1_scores.std(),
+        'cv_acc_mean': cv_acc_scores.mean(),
+        'cv_acc_std': cv_acc_scores.std(),
         'test_accuracy': accuracy_score(y_test, y_pred),
         'test_f1_score': f1_score(y_test, y_pred, average='weighted'),
+        'test_precision': test_precision,
+        'test_recall': test_recall,
+        'test_auc': test_auc,
         'y_pred': y_pred,
         'y_pred_proba': y_pred_proba
     }
     results['Stacking'] = stacking_result
     trained_models['Stacking'] = stacking
     
-    print(f"    CV F1: {cv_scores.mean():.4f} (+/- {cv_scores.std() * 2:.4f})")
-    print(f"    Test Accuracy: {stacking_result['test_accuracy']:.4f}, Test F1: {stacking_result['test_f1_score']:.4f}")
+    print(f"    CV F1: {cv_f1_scores.mean():.4f} (+/- {cv_f1_scores.std() * 2:.4f})")
+    print(f"    CV Accuracy: {cv_acc_scores.mean():.4f} (+/- {cv_acc_scores.std() * 2:.4f})")
+    print(f"    Test Accuracy: {stacking_result['test_accuracy']:.4f}, Test F1: {stacking_result['test_f1_score']:.4f}, Test AUC: {test_auc:.4f}")
     
     return results, trained_models
 
@@ -454,8 +550,13 @@ def save_prediction_results(X_test, y_test, sampling_results, ens_results, tune_
                 'Model': model_name,
                 'CV_F1_Mean': r['cv_f1_mean'],
                 'CV_F1_Std': r['cv_f1_std'],
+                'CV_Acc_Mean': r.get('cv_acc_mean', 0),
+                'CV_Acc_Std': r.get('cv_acc_std', 0),
                 'Test_Accuracy': r['test_accuracy'],
-                'Test_F1_Score': r['test_f1_score']
+                'Test_F1_Score': r['test_f1_score'],
+                'Test_Precision': r.get('test_precision', 0),
+                'Test_Recall': r.get('test_recall', 0),
+                'Test_AUC': r.get('test_auc', 0)
             })
     
     for ens_name, r in ens_results.items():
@@ -464,8 +565,13 @@ def save_prediction_results(X_test, y_test, sampling_results, ens_results, tune_
             'Model': ens_name,
             'CV_F1_Mean': r['cv_f1_mean'],
             'CV_F1_Std': r['cv_f1_std'],
+            'CV_Acc_Mean': r.get('cv_acc_mean', 0),
+            'CV_Acc_Std': r.get('cv_acc_std', 0),
             'Test_Accuracy': r['test_accuracy'],
-            'Test_F1_Score': r['test_f1_score']
+            'Test_F1_Score': r['test_f1_score'],
+            'Test_Precision': r.get('test_precision', 0),
+            'Test_Recall': r.get('test_recall', 0),
+            'Test_AUC': r.get('test_auc', 0)
         })
     
     for model_name, r in tune_results.items():
@@ -474,8 +580,13 @@ def save_prediction_results(X_test, y_test, sampling_results, ens_results, tune_
             'Model': model_name,
             'CV_F1_Mean': r.get('cv_f1_mean', 0),
             'CV_F1_Std': r.get('cv_f1_std', 0),
+            'CV_Acc_Mean': r.get('cv_acc_mean', 0),
+            'CV_Acc_Std': r.get('cv_acc_std', 0),
             'Test_Accuracy': r['accuracy'],
             'Test_F1_Score': r['f1_score'],
+            'Test_Precision': r.get('test_precision', 0),
+            'Test_Recall': r.get('test_recall', 0),
+            'Test_AUC': r.get('test_auc', 0),
             'Best_Params': str(r['best_params'])
         })
     

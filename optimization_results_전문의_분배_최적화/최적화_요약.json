@@ -1,15 +1,15 @@
 {
-  "timestamp": "2025-07-02T04:12:49.369467",
-  "total_doctors": 157,
-  "total_patients": 1656923,
+  "timestamp": "2025-07-04T00:20:44.500872",
+  "total_doctors": 227,
+  "total_patients": 2541093,
   "optimization_status": "Optimal",
   "objective_value": 0.997203638441,
-  "current_ratio_std": 6650.247866690446,
-  "optimal_ratio_std": 3450.668560762899,
-  "improvement_percentage": 48.11218123092074,
-  "total_hospitals": 5,
-  "total_departments": 18,
-  "doctors_increased": 23,
-  "doctors_decreased": 25,
-  "doctors_unchanged": 29
+  "current_ratio_std": 13985.553540316516,
+  "optimal_ratio_std": 3729.4312926473467,
+  "improvement_percentage": 73.3336883527962,
+  "total_hospitals": 6,
+  "total_departments": 20,
+  "doctors_increased": 26,
+  "doctors_decreased": 35,
+  "doctors_unchanged": 32
 }

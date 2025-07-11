@@ -1,0 +1,4 @@
+﻿,총_현재전문의수,총_최적전문의수,총_변화량,평균_변화율(%),timestamp,total_doctors,total_patients,optimization_status,objective_value,current_ratio_std,optimal_ratio_std,improvement_percentage,total_hospitals,total_departments,doctors_increased,doctors_decreased,doctors_unchanged
+PuLP,157,157.0,0.0,15.815295815295816,2025-07-02T04:12:49.369467,157,1656923,Optimal,0.997203638441,6650.247866690446,3450.668560762899,48.11218123092074,5,18,23,25,29
+SLSQP,157.0,157.00000000027933,2.7933544366476326e-10,-1.8145303115438691,,,,,,,,,,,,,
+GA,157.0,156.6435454189335,-0.3564545810664464,2.993950710918843,,,,,,,,,,,,,
